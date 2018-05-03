@@ -11,14 +11,14 @@
 
 <body>
   <p>
-    SUM: <strong><span id="sum">0</span> WEBD</strong> | MEAN: <strong><span id="mean">0</span> WEBD</strong> | MEDIAN: <strong><span id="median">0</span> WEBD</strong> | ~POWER: <strong><span id="power">0</span> Kh/s</strong> | *GLOBAL: <strong><span id="global_power">0</span> Kh/s</strong>    | Chance/Dominance: <strong><span id="dominance">0</span>%</strong> | Block Time: <strong><span id="block_time">0</span> s</strong> | ~Block Mining Time: <strong><span id="block_mining_time">0</span> s</strong>
+    SUM: <strong><span id="sum">0</span> WEBD</strong> | MEAN: <strong><span id="mean">0</span> WEBD</strong> | MEDIAN: <strong><span id="median">0</span> WEBD</strong> | ~POWER: <strong><span id="power">0</span> Kh/s</strong> | *GLOBAL: <strong><span id="global_power">0</span> Kh/s</strong> | Chance/Dominance: <strong><span id="dominance">0</span>%</strong> | Block Time: <strong><span id="block_time">0</span> s</strong> | ~Block Mining Time: <strong><span id="block_mining_time">0</span> s</strong>
   </p>
 
   <p>Projections:
     <ul>
       <li>24 hour reward <strong><span id="reward_24">0</span></strong> WEBD / <strong><span id="reward_24_usd">0</span></strong> USD</li>
       <li>24 hour cost <strong><span id="cost_24_usd">0</span></strong> USD</li>
-      <li>24 hour ROI <strong><span id="roi_24">0</span></strong> %</li>
+      <li>24 hour ROI <strong><span id="roi_24">0</span></strong>%</li>
     </ul>
   </p>
 
@@ -211,6 +211,28 @@
         'http://165.227.157.12:58214/',
         'http://165.227.157.12:63271/',
       ]
+    }, {
+      ip: '167.99.140.66',
+      alias: 'wd7x',
+      addresses: [
+        'http://167.99.140.66:49407/',
+        'http://167.99.140.66:51834/',
+        'http://167.99.140.66:54369/',
+        'http://167.99.140.66:56240/',
+      ]
+    }, {
+      ip: '159.89.6.218',
+      alias: 'wd6x',
+      addresses: [
+        'http://159.89.6.218:51424/',
+        'http://159.89.6.218:54022/',
+        'http://159.89.6.218:54524/',
+        'http://159.89.6.218:55922/',
+        'http://159.89.6.218:56920/',
+        'http://159.89.6.218:61067/',
+        'http://159.89.6.218:62143/',
+        'http://159.89.6.218:63995/',
+      ]
     }];
 
     var amounts = [];
@@ -298,14 +320,14 @@
           ]).draw(false);
         });
 
-        var global_power = 1000;
+        var global_power = 1300;
         var power = amounts.length * 600 / 1014;
         var block_time = 20;
         var reward_block = 6000;
         var dominance = power / global_power * 100;
         var reward_24 = reward_block * 60 * 60 * 24 / 20 * dominance / 100;
         var reward_24_usd = reward_24 * 0.001;
-        var cost_24_usd = 0.932*4*24 + 0.467*2*24 + 0.238*1*24;
+        var cost_24_usd = 0.932*4*24 + 0.467*2*24 + 0.238*2*24 + 0.119*1*24;
         var roi_24 = reward_24_usd / cost_24_usd * 100;
         var block_mining_time = 100 / dominance * 20;
 
