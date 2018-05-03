@@ -1,0 +1,226 @@
+<html>
+
+<head>
+  <title>WebDollar Nodes</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/async/2.6.0/async.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/rg-1.0.2/rr-1.2.3/datatables.min.css"/>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/rg-1.0.2/rr-1.2.3/datatables.min.js"></script>
+  <script type="text/javascript" src=" https://unpkg.com/simple-statistics@6.0.0/dist/simple-statistics.min.js"></script>
+</head>
+
+<body>
+  <p>
+    SUM: <strong><span id="sum">0</span></strong> |
+    MEAN: <strong><span id="mean">0</span></strong> |
+    MEDIAN: <strong><span id="median">0</span></strong>
+  </p>
+  <p>
+    <table id="nodes">
+      <thead>
+          <tr>
+              <th>Server</th>
+              <th>Port</th>
+              <th>Generation</th>
+              <th>Amount</th>
+              <th>Wallet</th>
+          </tr>
+      </thead>
+    </table>
+  </p>
+  <p><textarea id="wallets" cols="100" rows="10"></textarea></p>
+
+  <script type="text/javascript">
+    var nodes = [{
+      ip: '138.197.108.145',
+      alias: 'wd2x',
+      addresses: [
+        'http://138.197.108.145:57435/',
+        'http://138.197.108.145:57197/',
+        'http://138.197.108.145:63356/',
+        'http://138.197.108.145:53351/',
+        'http://138.197.108.145:63831/',
+        'http://138.197.108.145:56323/',
+        'http://138.197.108.145:60462/',
+        'http://138.197.108.145:59584/',
+      ]
+    }, {
+      ip: '138.197.70.200',
+      alias: 'wd3x',
+      addresses: [
+        'http://138.197.70.200:61701/',
+        'http://138.197.70.200:59947/',
+        'http://138.197.70.200:55491/',
+        'http://138.197.70.200:54637/',
+        'http://138.197.70.200:53118/',
+        'http://138.197.70.200:54131/',
+        'http://138.197.70.200:60817/',
+        'http://138.197.70.200:63816/',
+        'http://138.197.70.200:49875/',
+        'http://138.197.70.200:49189/',
+        'http://138.197.70.200:59310/',
+        'http://138.197.70.200:62277/',
+        'http://138.197.70.200:61621/',
+        'http://138.197.70.200:57527/',
+        'http://138.197.70.200:57663/',
+        'http://138.197.70.200:56454/',
+        'http://138.197.70.200:58343/',
+        'http://138.197.70.200:50470/',
+        'http://138.197.70.200:61038/',
+        'http://138.197.70.200:57584/',
+        'http://138.197.70.200:61443/',
+        'http://138.197.70.200:51458/',
+        'http://138.197.70.200:51629/',
+        'http://138.197.70.200:64457/',
+        'http://138.197.70.200:51790/',
+        'http://138.197.70.200:58215/',
+        'http://138.197.70.200:63093/',
+        'http://138.197.70.200:54601/',
+        'http://138.197.70.200:57230/',
+        'http://138.197.70.200:64471/',
+        'http://138.197.70.200:64516/',
+        'http://138.197.70.200:65505/',
+      ]
+    }, {
+      ip: '178.62.62.181',
+      alias: 'wd4x',
+      addresses: [
+        'http://178.62.62.181:51440/',
+        'http://178.62.62.181:54861/',
+        'http://178.62.62.181:57302/',
+        'http://178.62.62.181:63917/',
+        'http://178.62.62.181:61385/',
+        'http://178.62.62.181:58975/',
+        'http://178.62.62.181:60060/',
+        'http://178.62.62.181:61784/',
+        'http://178.62.62.181:64685/',
+        'http://178.62.62.181:56194/',
+        'http://178.62.62.181:62851/',
+        'http://178.62.62.181:60932/',
+        'http://178.62.62.181:49761/',
+        'http://178.62.62.181:59465/',
+        'http://178.62.62.181:59305/',
+        'http://178.62.62.181:55271/',
+      ]
+    }, {
+      ip: '139.59.186.44',
+      alias: 'wd4x',
+      addresses: [
+        'http://139.59.186.44:57664/',
+        'http://139.59.186.44:50700/',
+        'http://139.59.186.44:64626/',
+        'http://139.59.186.44:51278/',
+        'http://139.59.186.44:52801/',
+        'http://139.59.186.44:57330/',
+        'http://139.59.186.44:60116/',
+        'http://139.59.186.44:57798/',
+        'http://139.59.186.44:50643/',
+        'http://139.59.186.44:52510/',
+        'http://139.59.186.44:57559/',
+        'http://139.59.186.44:62990/',
+        'http://139.59.186.44:55038/',
+        'http://139.59.186.44:62540/',
+        'http://139.59.186.44:53017/',
+        'http://139.59.186.44:57217/',
+      ]
+    }];
+
+    var amounts = [];
+    var wallets = [];
+
+    $('#wallets').hide();
+
+    function printwallets() {
+      $('#wallets').val(JSON.stringify(wallets));
+      $('#wallets').show();
+    }
+
+    function getwallets() {
+      $.each(nodes, function(index, node) {
+        $.each(node.addresses, function(index, address) {
+          var wallet = address + 'wallet';
+
+          $.getJSON(wallet, (function(link) {
+            return function(data) {
+              // Older versions use a different format
+              if (data.data) {
+                data = data.data;
+              }
+
+              wallets.push(data);
+            }
+          })(address));
+        });
+      });
+    }
+
+    function getbalances() {
+      $.each(nodes, function(index, node) {
+        $.each(node.addresses, function(index, address) {
+          var balance = address + 'balance';
+
+          $.getJSON(balance, (function(link) {
+            return function(data) {
+              sum += parseInt(data);
+
+              $('<li/>', {
+                html: '<a href="' + link + '">' + data + '</a>'
+              }).appendTo('#nodes');
+
+              $('#sum').html(sum);
+            }
+          })(address));
+        });
+      });
+    }
+
+    function getbalances2() {
+      var calls = [];
+
+      $.each(nodes, function(index, node) {
+        $.each(node.addresses, function(index, address) {
+          var balance = address + 'balance';
+
+          calls.push(function(callback) {
+            $.getJSON(balance, function(data) {
+              callback(null, {
+                node: node,
+                address: address,
+                data
+              });
+            });
+          });
+        });
+      });
+
+      async.parallel(calls, function(err, results) {
+        $.each(results, function(index, result) {
+          amounts.push(result.data);
+
+          var port = result.address.split(':');
+          port = port[2];
+          port = port.substr(0, port.length-1);
+
+          table.row.add([
+            result.node.ip,
+            '<a href="'+result.address+'" target="_blank">'+port+'</a>',
+            result.node.alias,
+            '<a href="'+result.address+'balance" target="_blank">'+result.data+'</a>',
+            '<a href="'+result.address+'" target="_blank">View</a>'
+          ]).draw( false );
+        });
+
+        $('#sum').html(ss.sum(amounts));
+        $('#mean').html(ss.mean(amounts));
+        $('#median').html(ss.medianSorted(amounts));
+      });
+    }
+
+    $(document).ready(function() {
+        table = $('#nodes').DataTable();
+        getbalances2();
+    });
+  </script>
+</body>
+
+</html>
