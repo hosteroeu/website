@@ -11,10 +11,26 @@
 
 <body>
   <p>
-    SUM: <strong><span id="sum">0</span></strong> |
-    MEAN: <strong><span id="mean">0</span></strong> |
-    MEDIAN: <strong><span id="median">0</span></strong>
+    SUM: <strong><span id="sum">0</span> WEBD</strong> |
+    MEAN: <strong><span id="mean">0</span> WEBD</strong> |
+    MEDIAN: <strong><span id="median">0</span> WEBD</strong> |
+    ~POWER: <strong><span id="power">0</span> Kh/s</strong> |
+    *GLOBAL: <strong><span id="global_power">0</span> Kh/s</strong> |
+    Chance/Dominance: <strong><span id="dominance">0</span>%</strong> |
+    Block Time: <strong><span id="block_time">0</span> s</strong> |
+    ~Block Mining Time: <strong><span id="block_mining_time">0</span> s</strong>
   </p>
+
+  <p>Projections:
+    <ul>
+      <li>24 hour reward <strong><span id="reward_24">0</span></strong> WEBD / <strong><span id="reward_24_usd">0</span></strong> USD</li>
+      <li>24 hour cost <strong><span id="cost_24_usd">0</span></strong> USD</li>
+      <li>24 hour ROI <strong><span id="roi_24">0</span></strong> %</li>
+    </ul>
+  </p>
+
+  <p><i>*</i> Means hardcoded values. <i>~</i> Means estimated values. <i>Chance</i> Means probability to get reward at each block.</p>
+
   <p>
     <table id="nodes">
       <thead>
@@ -210,9 +226,32 @@
           ]).draw( false );
         });
 
+        var global_power = 1000;
+        var power = amounts.length * 600 / 1014;
+        var block_time = 20;
+        var reward_block = 6000;
+        var dominance = power/global_power*100;
+        var reward_24 = reward_block * 60*60*24/20 * dominance / 100;
+        var reward_24_usd = reward_24 * 0.001;
+        var cost_24_usd = 120;
+        var roi_24 = reward_24_usd / cost_24_usd * 100;
+        var block_mining_time = 100 / dominance * 20;
+
         $('#sum').html(ss.sum(amounts));
-        $('#mean').html(ss.mean(amounts));
+        $('#mean').html(parseInt(ss.mean(amounts)));
         $('#median').html(ss.medianSorted(amounts));
+        // Hardcoded for now. Expressed in Kh/s
+        $('#power').html(parseInt(power));
+        // Hardcoded for now
+        $('#global_power').html(global_power);
+        $('#dominance').html(parseInt(dominance));
+        // Hardcoded for now
+        $('#block_time').html(block_time);
+        $('#reward_24').html(parseInt(reward_24));
+        $('#reward_24_usd').html(parseInt(reward_24_usd));
+        $('#roi_24').html(parseInt(roi_24));
+        $('#cost_24_usd').html(parseInt(cost_24_usd));
+        $('#block_mining_time').html(parseInt(block_mining_time));
       });
     }
 
