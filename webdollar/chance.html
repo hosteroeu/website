@@ -1,67 +1,84 @@
 <html>
 
 <head>
-  <title>WebDollar Mining Chance</title>
+  <title>WebDollar Mining Reward Calculator</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript" src=" https://unpkg.com/simple-statistics@6.0.0/dist/simple-statistics.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 
 <body>
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
-      <h1 class="display-4">WebDollar Mining Chance</h1>
-      <p class="lead">Find out how many blocks per day you can mine with your hash power.</p>
+      <h1 class="display-4">
+        <img src="webdollar-logo-white.png" width="50" /> Mining Reward Calculator
+      </h1>
+      <p class="lead">Find out how many blocks per day you can mine on the WebDollar network.</p>
       <hr class="my-4">
-      <p>
-        Your Power
-        <div class="input-group">
-          <input type="text" class="form-control" value="600" placeholder="0" id="power_input" />
-          <div class="input-group-append">
-            <span class="input-group-text">hashes/s</span>
-          </div>
-        </div>
-      </p>
-      <p>
-        *Global Power
-        <div class="input-group">
-          <input type="text" class="form-control" value="1300" placeholder="0" id="global_power_input" />
-          <div class="input-group-append">
-            <span class="input-group-text">Kh/s</span>
-          </div>
-        </div>
-      </p>
-      <p><i>*Manualy update the Global Power displayed on <a href="https://webdollar.io" target="_blank">webdollar.io</a>. 1 Mh/s = 1024 Kh/s</i></p>
 
-      <p class="lead">
-        <a class="btn btn-primary btn-lg" href="javascript:;" role="button" onclick="compute()">Compute</a>
+      <strong>
+        <label for="power_input">Your Hash rate</label>
+      </strong>
+      <div class="input-group">
+        <input type="text" class="form-control" value="600" placeholder="0" id="power_input" />
+        <div class="input-group-append">
+          <span class="input-group-text">hashes/s&nbsp;<span class="badge badge-info" data-toggle="tooltip" data-placement="top" title="1040 hashes/s = 1 Kh/s">i</span></span>
+        </div>
+      </div>
+
+      <br />
+      <strong>
+        <label for="global_power_input">*Global Hash rate</label>
+      </strong>
+      <div class="input-group">
+        <input type="text" class="form-control" value="1300" placeholder="0" id="global_power_input" />
+        <div class="input-group-append">
+          <span class="input-group-text">Kh/s&nbsp;<span class="badge badge-info" data-toggle="tooltip" data-placement="top" title="1024 Kh/s = 1 Mh/s">i</span></span>
+        </div>
+      </div>
+
+      <p>
+        <small class="form-text text-muted">
+          <i>* You need to manually update the <strong>Global Hash rate</strong> <span class="badge badge-info" data-toggle="tooltip" data-html="true" title="<img src=webdollar-global-hash.png width=400 />">i</span> displayed on <a href="https://webdollar.io" target="_blank">webdollar.io</a></i>.
+        </small>
       </p>
 
       <div class="alert alert-secondary" role="alert">
-        Chance: <strong><span id="dominance">0</span>%</strong> | Block Time: <strong><span id="block_time">0</span> s</strong> | Block Reward: <strong><span id="block_reward">0</span> WEBD</strong>
+        <center>
+          1 Block Mined Every: <strong><span class="block_time">0</span> seconds</strong>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Block Reward: <strong><span id="block_reward">0</span> WEBD</strong>
+        </center>
       </div>
 
-      <i>Chance</i> means probability to get reward at each block. It also indicates how much of the network's processing power you are representing.</p>
-
-      <p>Projections:
-        <ul>
-          <li>24 hour reward: <strong><span id="reward_24">0</span> WEBD</strong> *</li>
-          <li>24 hour blocks: <strong><span id="reward_24_blocks">0</span></strong></li>
-          <li>Mine a block every:
-            <strong><span id="block_mining_time_seconds">0</span> s</strong> /
-            <strong><span id="block_mining_time_minutes">0</span> m</strong> /
-            <strong><span id="block_mining_time_hours">0</span> h</strong>
-          </li>
-        </ul>
-
-        <i>* You need to round up to the nearest multiple of 6000. You can only mine in chunks of 6000.</i>
+      <p class="lead">
+        <center>
+          <a class="btn btn-primary btn-lg" href="javascript:;" role="button" onclick="compute()">Compute</a>
+        </center>
       </p>
+
+      <hr class="my-4">
+
+      <div class="card">
+        <div class="card-body">
+          <p class="lead">Results:</p>
+          <ul>
+            <li>You can mine a block every
+              <strong><span id="block_mining_time_minutes">0</span> minutes</strong> or
+              <strong><span id="block_mining_time_hours">0</span> hours</strong>
+            </li>
+            <li>You can mine <strong><span id="reward_24">0</span> WEBD</strong>
+              <span class="badge badge-info" data-toggle="tooltip" data-placement="top" title="You need to round up to the nearest multiple of 6000. You can only mine in chunks of 6000 WEBD.">i</span> or <strong><span id="reward_24_blocks">0</span> block</strong>              every day</li>
+            <li>You have a <strong><span id="dominance">0</span>%</strong> chance to mine a block every <strong><span class="block_time">0</span> seconds</strong></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 
   <p>
-    <center>&copy2018 <a href="http://hostero.eu">Hostero</a></center>
+    <center><small class="form-text text-muted">&copy;2018 <a href="http://hostero.eu">Hostero</a></small></center>
   </p>
 
   <script type="text/javascript">
@@ -76,8 +93,8 @@
 
       $('#power').html(numeral(power).format('0,0'));
       $('#global_power').html(numeral(global_power).format('0,0'));
-      $('#dominance').html(dominance);
-      $('#block_time').html(block_time);
+      $('#dominance').html(numeral(dominance).format('0.00000'));
+      $('.block_time').html(block_time);
       $('#reward_24').html(numeral(reward_24).format('0,0'));
       $('#reward_24_blocks').html(numeral(reward_24 / 6000).format('0,0'));
       $('#block_mining_time_seconds').html(numeral(block_mining_time).format('0,0'));
@@ -86,7 +103,10 @@
       $('#block_reward').html(block_reward);
     }
 
-    compute();
+    $(function() {
+      $('[data-toggle="tooltip"]').tooltip();
+      compute();
+    });
   </script>
 </body>
 
