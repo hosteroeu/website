@@ -116,20 +116,28 @@
     $.each(fallback.nodes, function(index, node) {
       var url = 'https://' + node.addr[0];
       var timer = Date.now();
-
-      $.getJSON(url, (function(timer) {
+      var callback = (function(timer) {
         return function(data) {
-          var port = url.split(':');
-          port = port[2];
-          port = port.substr(0, port.length - 1);
-
           table.row.add([
             '<a href="' + url + '" target="_blank">' + url + '</a>',
             data.blocks.length,
             Date.now() - timer
           ]).draw(false);
         }
-      })(timer));
+      })(timer);
+
+      $.ajax({
+        dataType: 'json',
+        url: url,
+        success: callback,
+        timeout: 10000
+      }).fail(function(xhr, status) {
+        table.row.add([
+          '<a href="' + url + '" target="_blank">' + url + '</a>',
+          '-',
+          status
+        ]).draw(false);
+      });
     });
 
     $(document).ready(function() {
