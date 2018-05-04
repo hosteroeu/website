@@ -12,34 +12,37 @@
 </head>
 
 <body>
-  <p>
-    SUM: <strong><span id="sum">0</span> WEBD</strong> | MEAN: <strong><span id="mean">0</span> WEBD</strong> | MEDIAN: <strong><span id="median">0</span> WEBD</strong> | ~POWER: <strong><span id="power">0</span> Kh/s</strong> | *GLOBAL: <strong><span id="global_power">0</span> Kh/s</strong> | Chance/Dominance: <strong><span id="dominance">0</span>%</strong> | Block Time: <strong><span id="block_time">0</span> s</strong> | ~Block Mining Time: <strong><span id="block_mining_time">0</span> s</strong> | Current Time: <strong><span id="current_time">00:00</span></strong>
-  </p>
+  <div class="container">
+    <br />
+    <div class="alert alert-secondary" role="alert">
+      SUM: <strong><span id="sum">0</span> WEBD</strong> | MEAN: <strong><span id="mean">0</span> WEBD</strong> | MEDIAN: <strong><span id="median">0</span> WEBD</strong> | ~POWER: <strong><span id="power">0</span> Kh/s</strong> | *GLOBAL: <strong><span id="global_power">0</span> Kh/s</strong>      | Chance/Dominance: <strong><span id="dominance">0</span>%</strong> | Block Time: <strong><span id="block_time">0</span> s</strong> | ~Block Mining Time: <strong><span id="block_mining_time">0</span> s / <span id="block_mining_time_minutes">0</span> m</strong> | Current Time: <strong><span id="current_time">00:00</span></strong>
+    </div>
 
-  <p>Projections:
-    <ul>
-      <li>24 hour reward <strong><span id="reward_24">0</span></strong> WEBD / <strong><span id="reward_24_usd">0</span></strong> USD</li>
-      <li>24 hour cost <strong><span id="cost_24_usd">0</span></strong> USD</li>
-      <li>24 hour ROI <strong><span id="roi_24">0</span></strong>%</li>
-    </ul>
-  </p>
+    <p><i>*</i> Means hardcoded values. <i>~</i> Means estimated values. <i>Chance</i> Means probability to get reward at each block.</p>
 
-  <p><i>*</i> Means hardcoded values. <i>~</i> Means estimated values. <i>Chance</i> Means probability to get reward at each block.</p>
+    <p>Projections:
+      <ul>
+        <li>24 hour reward <strong><span id="reward_24">0</span></strong> WEBD / <strong><span id="reward_24_usd">0</span></strong> USD</li>
+        <li>24 hour cost <strong><span id="cost_24_usd">0</span></strong> USD</li>
+        <li>24 hour ROI <strong><span id="roi_24">0</span></strong>%</li>
+      </ul>
+    </p>
 
-  <p>
-    <table id="nodes">
-      <thead>
-        <tr>
-          <th>Server</th>
-          <th>Port</th>
-          <th>Generation</th>
-          <th>Amount</th>
-          <th>Wallet</th>
-        </tr>
-      </thead>
-    </table>
-  </p>
-  <p><textarea id="wallets" cols="100" rows="10"></textarea></p>
+    <p>
+      <table id="nodes">
+        <thead>
+          <tr>
+            <th>Server</th>
+            <th>Port</th>
+            <th>Generation</th>
+            <th>Amount</th>
+            <th>Wallet</th>
+          </tr>
+        </thead>
+      </table>
+    </p>
+    <p><textarea id="wallets" cols="100" rows="10"></textarea></p>
+  </div>
 
   <script type="text/javascript">
     var nodes = [{
@@ -322,16 +325,16 @@
           ]).draw(false);
         });
 
-        var global_power = 500;
+        var global_power = 1400;
         var power = amounts.length * 600 / 1014;
-        var block_time = 20;
+        var block_time = 40;
         var reward_block = 6000;
         var dominance = power / global_power * 100;
-        var reward_24 = reward_block * 60 * 60 * 24 / 20 * dominance / 100;
+        var reward_24 = reward_block * 60 * 60 * 24 / block_time * dominance / 100;
         var reward_24_usd = reward_24 * 0.001;
-        var cost_24_usd = 0.932*4*24 + 0.467*2*24 + 0.238*2*24 + 0.119*1*24;
+        var cost_24_usd = 0.932 * 4 * 24 + 0.467 * 2 * 24 + 0.238 * 2 * 24 + 0.119 * 1 * 24;
         var roi_24 = reward_24_usd / cost_24_usd * 100;
-        var block_mining_time = 100 / dominance * 20;
+        var block_mining_time = 100 / dominance * block_time;
         var current_time = new Date();
         current_time = current_time.getHours() + ':' + current_time.getMinutes();
 
@@ -350,6 +353,7 @@
         $('#roi_24').html(numeral(roi_24).format('0,0'));
         $('#cost_24_usd').html(numeral(cost_24_usd).format('0,0'));
         $('#block_mining_time').html(numeral(block_mining_time).format('0,0'));
+        $('#block_mining_time_minutes').html(numeral(block_mining_time/60).format('0,0'));
         $('#current_time').html(current_time);
       });
     }
