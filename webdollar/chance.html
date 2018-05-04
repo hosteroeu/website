@@ -72,8 +72,8 @@
       var block_time = 40;
       var block_reward = 6000;
       var dominance = power / global_power / 1024 * 100;
-      var reward_24 = block_reward * 60 * 60 * 24 / 20 * dominance / 100;
-      var block_mining_time = 100 / dominance * 20;
+      var reward_24 = block_reward * 60 * 60 * 24 / block_time * dominance / 100;
+      var block_mining_time = 100 / dominance * block_time;
 
       $('#power').html(numeral(power).format('0,0'));
       $('#global_power').html(numeral(global_power).format('0,0'));
