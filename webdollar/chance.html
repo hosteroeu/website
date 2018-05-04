@@ -25,7 +25,7 @@
       <div class="input-group">
         <input type="text" class="form-control" value="600" placeholder="0" id="power_input" />
         <div class="input-group-append">
-          <span class="input-group-text">hashes/s&nbsp;<span class="badge badge-info" data-toggle="tooltip" data-placement="top" title="1040 hashes/s = 1 Kh/s">i</span></span>
+          <span class="input-group-text">hashes/s&nbsp;<span class="badge badge-info" data-toggle="tooltip" data-placement="top" title="1000 hashes/s = 1 kH/s">i</span></span>
         </div>
       </div>
 
@@ -36,7 +36,7 @@
       <div class="input-group">
         <input type="text" class="form-control" value="1300" placeholder="0" id="global_power_input" />
         <div class="input-group-append">
-          <span class="input-group-text">Kh/s&nbsp;<span class="badge badge-info" data-toggle="tooltip" data-placement="top" title="1024 Kh/s = 1 Mh/s">i</span></span>
+          <span class="input-group-text">kH/s&nbsp;<span class="badge badge-info" data-toggle="tooltip" data-placement="top" title="1000 kH/s = 1 MH/s">i</span></span>
         </div>
       </div>
 
@@ -87,7 +87,7 @@
       var power = parseInt($('#power_input').val());
       var block_time = 40;
       var block_reward = 6000;
-      var dominance = power / global_power / 1024 * 100;
+      var dominance = power / global_power / 1000 * 100;
       var reward_24 = block_reward * 60 * 60 * 24 / block_time * dominance / 100;
       var block_mining_time = 100 / dominance * block_time;
 
