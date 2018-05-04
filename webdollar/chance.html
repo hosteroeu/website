@@ -69,7 +69,7 @@
     function compute() {
       var global_power = parseInt($('#global_power_input').val());
       var power = parseInt($('#power_input').val());
-      var block_time = 20;
+      var block_time = 40;
       var block_reward = 6000;
       var dominance = power / global_power / 1024 * 100;
       var reward_24 = block_reward * 60 * 60 * 24 / 20 * dominance / 100;
