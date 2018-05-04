@@ -29,7 +29,7 @@
     </p>
 
     <p>
-      <table id="nodes">
+      <table id="nodes" class="table table-striped table-bordered">
         <thead>
           <tr>
             <th>Server</th>
@@ -359,7 +359,9 @@
     }
 
     $(document).ready(function() {
-      table = $('#nodes').DataTable();
+      table = $('#nodes').DataTable({
+        'pageLength': 100
+      });
       getbalances2();
     });
   </script>
