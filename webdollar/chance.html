@@ -36,7 +36,7 @@
       <p><i>*Manualy update the Global Power displayed on <a href="https://webdollar.io" target="_blank">webdollar.io</a>. 1 Mh/s = 1024 Kh/s</i></p>
 
       <p class="lead">
-        <a class="btn btn-primary btn-lg" href="#" role="button">Compute</a>
+        <a class="btn btn-primary btn-lg" href="javascript:;" role="button" onclick="compute()">Compute</a>
       </p>
 
       <div class="alert alert-secondary" role="alert">
@@ -66,24 +66,28 @@
   </p>
 
   <script type="text/javascript">
-    var global_power = parseInt($('#global_power_input').val());
-    var power = parseInt($('#power_input').val());
-    var block_time = 20;
-    var block_reward = 6000;
-    var dominance = power / global_power / 1024 * 100;
-    var reward_24 = block_reward * 60 * 60 * 24 / 20 * dominance / 100;
-    var block_mining_time = 100 / dominance * 20;
+    function compute() {
+      var global_power = parseInt($('#global_power_input').val());
+      var power = parseInt($('#power_input').val());
+      var block_time = 20;
+      var block_reward = 6000;
+      var dominance = power / global_power / 1024 * 100;
+      var reward_24 = block_reward * 60 * 60 * 24 / 20 * dominance / 100;
+      var block_mining_time = 100 / dominance * 20;
 
-    $('#power').html(numeral(power).format('0,0'));
-    $('#global_power').html(numeral(global_power).format('0,0'));
-    $('#dominance').html(dominance);
-    $('#block_time').html(block_time);
-    $('#reward_24').html(numeral(reward_24).format('0,0'));
-    $('#reward_24_blocks').html(numeral(reward_24/6000).format('0,0'));
-    $('#block_mining_time_seconds').html(numeral(block_mining_time).format('0,0'));
-    $('#block_mining_time_minutes').html(numeral(block_mining_time/60).format('0,0'));
-    $('#block_mining_time_hours').html(numeral(block_mining_time/60/60).format('0,0'));
-    $('#block_reward').html(block_reward);
+      $('#power').html(numeral(power).format('0,0'));
+      $('#global_power').html(numeral(global_power).format('0,0'));
+      $('#dominance').html(dominance);
+      $('#block_time').html(block_time);
+      $('#reward_24').html(numeral(reward_24).format('0,0'));
+      $('#reward_24_blocks').html(numeral(reward_24 / 6000).format('0,0'));
+      $('#block_mining_time_seconds').html(numeral(block_mining_time).format('0,0'));
+      $('#block_mining_time_minutes').html(numeral(block_mining_time / 60).format('0,0'));
+      $('#block_mining_time_hours').html(numeral(block_mining_time / 60 / 60).format('0,0'));
+      $('#block_reward').html(block_reward);
+    }
+
+    compute();
   </script>
 </body>
 

@@ -7,11 +7,13 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/rg-1.0.2/rr-1.2.3/datatables.min.css" />
   <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/rg-1.0.2/rr-1.2.3/datatables.min.js"></script>
   <script type="text/javascript" src=" https://unpkg.com/simple-statistics@6.0.0/dist/simple-statistics.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
   <p>
-    SUM: <strong><span id="sum">0</span> WEBD</strong> | MEAN: <strong><span id="mean">0</span> WEBD</strong> | MEDIAN: <strong><span id="median">0</span> WEBD</strong> | ~POWER: <strong><span id="power">0</span> Kh/s</strong> | *GLOBAL: <strong><span id="global_power">0</span> Kh/s</strong> | Chance/Dominance: <strong><span id="dominance">0</span>%</strong> | Block Time: <strong><span id="block_time">0</span> s</strong> | ~Block Mining Time: <strong><span id="block_mining_time">0</span> s</strong>
+    SUM: <strong><span id="sum">0</span> WEBD</strong> | MEAN: <strong><span id="mean">0</span> WEBD</strong> | MEDIAN: <strong><span id="median">0</span> WEBD</strong> | ~POWER: <strong><span id="power">0</span> Kh/s</strong> | *GLOBAL: <strong><span id="global_power">0</span> Kh/s</strong> | Chance/Dominance: <strong><span id="dominance">0</span>%</strong> | Block Time: <strong><span id="block_time">0</span> s</strong> | ~Block Mining Time: <strong><span id="block_mining_time">0</span> s</strong> | Current Time: <strong><span id="current_time">00:00</span></strong>
   </p>
 
   <p>Projections:
@@ -315,12 +317,12 @@
             result.node.ip,
             '<a href="' + result.address + '" target="_blank">' + port + '</a>',
             result.node.alias,
-            '<a href="' + result.address + 'balance" target="_blank">' + result.data + '</a>',
+            '<a href="' + result.address + 'balance" target="_blank">' + numeral(result.data).format('0,0') + '</a>',
             '<a href="' + result.address + '" target="_blank">View</a>'
           ]).draw(false);
         });
 
-        var global_power = 1300;
+        var global_power = 500;
         var power = amounts.length * 600 / 1014;
         var block_time = 20;
         var reward_block = 6000;
@@ -330,22 +332,25 @@
         var cost_24_usd = 0.932*4*24 + 0.467*2*24 + 0.238*2*24 + 0.119*1*24;
         var roi_24 = reward_24_usd / cost_24_usd * 100;
         var block_mining_time = 100 / dominance * 20;
+        var current_time = new Date();
+        current_time = current_time.getHours() + ':' + current_time.getMinutes();
 
-        $('#sum').html(ss.sum(amounts));
-        $('#mean').html(parseInt(ss.mean(amounts)));
-        $('#median').html(ss.medianSorted(amounts));
+        $('#sum').html(numeral(ss.sum(amounts)).format('0,0'));
+        $('#mean').html(numeral(ss.mean(amounts)).format('0,0'));
+        $('#median').html(numeral(ss.medianSorted(amounts)).format('0,0'));
         // Hardcoded for now. Expressed in Kh/s
-        $('#power').html(parseInt(power));
+        $('#power').html(numeral(power).format('0,0'));
         // Hardcoded for now
-        $('#global_power').html(global_power);
+        $('#global_power').html(numeral(global_power).format('0,0'));
         $('#dominance').html(parseInt(dominance));
         // Hardcoded for now
         $('#block_time').html(block_time);
-        $('#reward_24').html(parseInt(reward_24));
-        $('#reward_24_usd').html(parseInt(reward_24_usd));
-        $('#roi_24').html(parseInt(roi_24));
-        $('#cost_24_usd').html(parseInt(cost_24_usd));
-        $('#block_mining_time').html(parseInt(block_mining_time));
+        $('#reward_24').html(numeral(reward_24).format('0,0'));
+        $('#reward_24_usd').html(numeral(reward_24_usd).format('0,0'));
+        $('#roi_24').html(numeral(roi_24).format('0,0'));
+        $('#cost_24_usd').html(numeral(cost_24_usd).format('0,0'));
+        $('#block_mining_time').html(numeral(block_mining_time).format('0,0'));
+        $('#current_time').html(current_time);
       });
     }
 
