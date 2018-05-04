@@ -19,9 +19,12 @@
           <tr>
             <th>Node</th>
             <th>Block</th>
+            <th>*Response (ms)</th>
           </tr>
         </thead>
       </table>
+
+      <p><i>*Response time is calculated between the request and when the data is received.</i></p>
     </p>
   </div>
 
@@ -112,18 +115,22 @@
 
     $.each(fallback.nodes, function(index, node) {
       var url = 'https://' + node.addr[0];
+      var timer = Date.now();
 
-        $.getJSON(url, function(data) {
-            var port = url.split(':');
-            port = port[2];
-            port = port.substr(0, port.length - 1);
+      $.getJSON(url, (function(timer) {
+        return function(data) {
+          var port = url.split(':');
+          port = port[2];
+          port = port.substr(0, port.length - 1);
 
-            table.row.add([
-              '<a href="' + url + '" target="_blank">' + url + '</a>',
-              data.blocks.length
-            ]).draw(false);
-        });
-      });
+          table.row.add([
+            '<a href="' + url + '" target="_blank">' + url + '</a>',
+            data.blocks.length,
+            Date.now() - timer
+          ]).draw(false);
+        }
+      })(timer));
+    });
 
     $(document).ready(function() {
       table = $('#nodes').DataTable({
