@@ -1,0 +1,137 @@
+<html>
+
+<head>
+  <title>WebDollar Nodes</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/async/2.6.0/async.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/rg-1.0.2/rr-1.2.3/datatables.min.css" />
+  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/rg-1.0.2/rr-1.2.3/datatables.min.js"></script>
+  <script type="text/javascript" src=" https://unpkg.com/simple-statistics@6.0.0/dist/simple-statistics.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+    <br />
+    <h1>WebDollar Fallback Nodes</h1>
+    <br />
+    <p>
+      <table id="nodes">
+        <thead>
+          <tr>
+            <th>Node</th>
+            <th>Block</th>
+          </tr>
+        </thead>
+      </table>
+    </p>
+  </div>
+
+  <script type="text/javascript">
+    var fallback = {
+      "protocol": "WebDollar",
+      "name": "fallback nodes",
+      "nodes": [{
+          "addr": ["webdollar.ddns.net:80"],
+        },
+        {
+          "addr": ["webdollar.ddns.net:8080"],
+        },
+        {
+          "addr": ["webdollar.ddns.net:8081"],
+        },
+        {
+          "addr": ["webdollar.ddns.net:8082"],
+        },
+        {
+          "addr": ["webdollar.ddns.net:8083"],
+        },
+
+        {
+          "addr": ["skyhub.me:80"],
+        },
+        {
+          "addr": ["skyhub.me:443"],
+        },
+        {
+          "addr": ["presa7.ro:80"],
+        },
+        {
+          "addr": ["presa7.ro:443"],
+        },
+        {
+          "addr": ["webdollar-vps1.ddns.net:80"],
+        },
+        {
+          "addr": ["webdollar-vps1.ddns.net:443"],
+        },
+        {
+          "addr": ["webdollar-vps2.ddns.net:80"],
+        },
+        {
+          "addr": ["webdollar-vps2.ddns.net:443"],
+        },
+        {
+          "addr": ["webdollar-vps3.ddns.net:80"],
+        },
+        {
+          "addr": ["webdollar-vps3.ddns.net:443"],
+        },
+        {
+          "addr": ["hcern.ddns.net:80"]
+        },
+        {
+          "addr": ["hcern.ddns.net:443"]
+        },
+        {
+          "addr": ["hcern.ddns.net:8080"]
+        },
+        {
+          "addr": ["hcern.ddns.net:8081"]
+        },
+
+        {
+          "addr": ["robitza.ddns.net:80"]
+        },
+        {
+          "addr": ["robitza.ddns.net:443"]
+        },
+        {
+          "addr": ["robitza.ddns.net:8080"]
+        },
+        {
+          "addr": ["robitza.ddns.net:8081"]
+        },
+        {
+          "addr": ["robitza.ddns.net:8082"]
+        },
+
+        {
+          "addr": ["webdollar.network:5000"]
+        },
+      ]
+    };
+
+    $.each(fallback.nodes, function(index, node) {
+      var url = 'https://' + node.addr[0];
+
+        $.getJSON(url, function(data) {
+            var port = url.split(':');
+            port = port[2];
+            port = port.substr(0, port.length - 1);
+
+            table.row.add([
+              '<a href="' + url + '" target="_blank">' + url + '</a>',
+              data.blocks.length
+            ]).draw(false);
+        });
+      });
+
+    $(document).ready(function() {
+      table = $('#nodes').DataTable();
+    });
+  </script>
+</body>
+
+</html>
