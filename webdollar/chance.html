@@ -1,0 +1,90 @@
+<html>
+
+<head>
+  <title>WebDollar Mining Chance</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src=" https://unpkg.com/simple-statistics@6.0.0/dist/simple-statistics.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">WebDollar Mining Chance</h1>
+      <p class="lead">Find out how many blocks per day you can mine with your hash power.</p>
+      <hr class="my-4">
+      <p>
+        Your Power
+        <div class="input-group">
+          <input type="text" class="form-control" value="600" placeholder="0" id="power_input" />
+          <div class="input-group-append">
+            <span class="input-group-text">hashes/s</span>
+          </div>
+        </div>
+      </p>
+      <p>
+        *Global Power
+        <div class="input-group">
+          <input type="text" class="form-control" value="1300" placeholder="0" id="global_power_input" />
+          <div class="input-group-append">
+            <span class="input-group-text">Kh/s</span>
+          </div>
+        </div>
+      </p>
+      <p><i>*Manualy update the Global Power displayed on <a href="https://webdollar.io" target="_blank">webdollar.io</a>. 1 Mh/s = 1024 Kh/s</i></p>
+
+      <p class="lead">
+        <a class="btn btn-primary btn-lg" href="#" role="button">Compute</a>
+      </p>
+
+      <div class="alert alert-secondary" role="alert">
+        Chance: <strong><span id="dominance">0</span>%</strong> | Block Time: <strong><span id="block_time">0</span> s</strong> | Block Reward: <strong><span id="block_reward">0</span></strong>
+      </div>
+
+      <i>Chance</i> Means probability to get reward at each block. It also indicates how much of the network's processing power you are representing.</p>
+
+      <p>Projections:
+        <ul>
+          <li>24 hour reward: <strong><span id="reward_24">0</span></strong> WEBD *</li>
+          <li>24 hour blocks: <strong><span id="reward_24_blocks">0</span></strong></li>
+          <li>Mining a block every:
+            <strong><span id="block_mining_time_seconds">0</span> s</strong> /
+            <strong><span id="block_mining_time_minutes">0</span> m</strong> /
+            <strong><span id="block_mining_time_hours">0</span> h</strong>
+          </li>
+        </ul>
+
+        <i>* You need to round up to the nearest multiple of 6000. You can only mine in chunks of 6000.</i>
+      </p>
+    </div>
+  </div>
+
+  <p>
+    <center>&copy2018 <a href="http://hostero.eu">Hostero</a></center>
+  </p>
+
+  <script type="text/javascript">
+    var global_power = parseInt($('#global_power_input').val());
+    var power = parseInt($('#power_input').val());
+    var block_time = 20;
+    var block_reward = 6000;
+    var dominance = power / global_power / 1024 * 100;
+    var reward_24 = block_reward * 60 * 60 * 24 / 20 * dominance / 100;
+    var block_mining_time = 100 / dominance * 20;
+
+    $('#power').html(numeral(power).format('0,0'));
+    $('#global_power').html(numeral(global_power).format('0,0'));
+    $('#dominance').html(dominance);
+    $('#block_time').html(block_time);
+    $('#reward_24').html(numeral(reward_24).format('0,0'));
+    $('#reward_24_blocks').html(numeral(reward_24/6000).format('0,0'));
+    $('#block_mining_time_seconds').html(numeral(block_mining_time).format('0,0'));
+    $('#block_mining_time_minutes').html(numeral(block_mining_time/60).format('0,0'));
+    $('#block_mining_time_hours').html(numeral(block_mining_time/60/60).format('0,0'));
+    $('#block_reward').html(block_reward);
+  </script>
+</body>
+
+</html>
