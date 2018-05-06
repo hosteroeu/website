@@ -1,0 +1,170 @@
+<html>
+
+<head>
+  <title>WebDollar Nodes</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/async/2.6.0/async.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/rg-1.0.2/rr-1.2.3/datatables.min.css" />
+  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/rg-1.0.2/rr-1.2.3/datatables.min.js"></script>
+  <script type="text/javascript" src=" https://unpkg.com/simple-statistics@6.0.0/dist/simple-statistics.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+    <br />
+    <div class="alert alert-secondary" role="alert">
+      SUM: <strong><span id="sum">0</span> WEBD</strong> | MEAN: <strong><span id="mean">0</span> WEBD</strong> | MEDIAN: <strong><span id="median">0</span> WEBD</strong> | ~POWER: <strong><span id="power">0</span> Kh/s</strong> | *GLOBAL: <strong><span id="global_power">0</span> Kh/s</strong>      | Chance/Dominance: <strong><span id="dominance">0</span>%</strong> | Block Time: <strong><span id="block_time">0</span> s</strong> | ~Block Mining Time: <strong><span id="block_mining_time">0</span> s / <span id="block_mining_time_minutes">0</span> m</strong> | Current Time: <strong><span id="current_time">00:00</span></strong>
+    </div>
+
+    <p><i>*</i> Means hardcoded values. <i>~</i> Means estimated values. <i>Chance</i> Means probability to get reward at each block.</p>
+
+    <p>Projections:
+      <ul>
+        <li>24 hour reward <strong><span id="reward_24">0</span></strong> WEBD / <strong><span id="reward_24_usd">0</span></strong> USD</li>
+        <li>24 hour cost <strong><span id="cost_24_usd">0</span></strong> USD</li>
+        <li>24 hour ROI <strong><span id="roi_24">0</span></strong>%</li>
+      </ul>
+    </p>
+
+    <p>
+      <table id="nodes" class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>Server</th>
+            <th>Amount</th>
+            <th>Block</th>
+          </tr>
+        </thead>
+      </table>
+    </p>
+
+    <p><textarea id="wallets" cols="100" rows="10"></textarea></p>
+  </div>
+
+  <script type="text/javascript">
+    var nodes = "[\"http://167.99.88.239:58669\",\"http://46.101.75.208:58034\",\"http://46.101.75.208:62377\",\"http://46.101.75.208:55625\",\"http://159.65.95.213:49947\",\"http://159.65.95.213:62606\",\"http://159.65.95.213:54395\",\"http://159.65.95.213:49547\",\"http://159.65.87.76:51953\",\"http://159.65.87.76:56934\",\"http://159.65.87.76:59301\",\"http://167.99.88.239:54275\",\"http://159.65.87.76:57491\",\"http://167.99.80.35:54427\",\"http://167.99.80.35:64380\",\"http://167.99.80.35:50324\",\"http://167.99.80.35:53588\",\"http://167.99.88.111:61265\",\"http://167.99.88.111:59755\",\"http://167.99.88.111:52562\",\"http://167.99.88.111:52591\",\"http://159.65.93.219:56247\",\"http://167.99.88.239:50589\",\"http://159.65.93.219:60184\",\"http://159.65.93.219:51964\",\"http://159.65.93.219:52046\",\"http://46.101.87.17:50866\",\"http://46.101.87.17:61930\",\"http://46.101.87.17:60429\",\"http://46.101.87.17:54083\",\"http://46.101.73.204:64612\",\"http://46.101.73.204:59186\",\"http://46.101.73.204:57955\",\"http://167.99.88.239:53060\",\"http://46.101.73.204:62696\",\"http://139.59.188.51:49216\",\"http://139.59.188.51:64149\",\"http://139.59.188.51:58092\",\"http://139.59.188.51:61787\",\"http://139.59.184.251:51810\",\"http://139.59.184.251:49663\",\"http://139.59.184.251:62588\",\"http://139.59.184.251:54018\",\"http://139.59.186.151:51390\",\"http://167.99.86.2:62813\",\"http://139.59.186.151:51115\",\"http://139.59.186.151:53927\",\"http://139.59.186.151:49291\",\"http://139.59.181.9:62655\",\"http://139.59.181.9:49430\",\"http://139.59.181.9:51207\",\"http://139.59.181.9:51373\",\"http://139.59.165.140:64037\",\"http://139.59.165.140:65212\",\"http://139.59.165.140:59314\",\"http://167.99.86.2:64234\",\"http://139.59.165.140:54491\",\"http://46.101.86.57:63702\",\"http://46.101.86.57:54928\",\"http://46.101.86.57:64804\",\"http://46.101.86.57:55253\",\"http://139.59.180.45:55600\",\"http://139.59.180.45:53445\",\"http://139.59.180.45:53002\",\"http://139.59.180.45:58632\",\"http://139.59.173.24:56846\",\"http://167.99.86.2:62069\",\"http://139.59.173.24:64320\",\"http://139.59.173.24:55062\",\"http://139.59.173.24:50204\",\"http://139.59.171.3:63422\",\"http://139.59.171.3:60864\",\"http://139.59.171.3:52860\",\"http://139.59.171.3:49919\",\"http://139.59.184.184:55042\",\"http://139.59.184.184:59098\",\"http://139.59.184.184:56999\",\"http://167.99.86.2:52919\",\"http://139.59.184.184:53166\",\"http://46.101.75.208:60676\",\"http://93.174.166.250:64545\",\"http://93.174.166.250:62949\",\"http://93.174.166.250:53982\",\"http://93.174.166.250:65051\",\"http://93.174.166.250:64668\",\"http://93.174.166.250:63093\",\"http://93.174.166.250:50421\",\"http://93.174.166.250:59269\",\"http://93.174.166.250:60171\",\"http://93.174.166.250:60988\",\"http://93.174.166.250:63254\",\"http://93.174.166.250:61625\",\"http://188.241.118.9:58786\",\"http://188.241.118.9:62786\",\"http://188.241.118.9:63440\",\"http://188.241.118.9:57626\",\"http://188.241.118.23:54779\",\"http://178.62.31.207:61199\"]";
+
+
+        nodes = JSON.parse(nodes);
+
+        var amounts = [];
+        var wallets = [];
+
+
+    $('#wallets').hide();
+
+    function printwallets() {
+      $('#wallets').val(JSON.stringify(wallets));
+      $('#wallets').show();
+    }
+
+    function getwallets() {
+      $.each(nodes, function(index, node) {
+          var wallet = node + '/wallet';
+
+          $.getJSON(wallet, (function(link) {
+            return function(data) {
+              // Older versions use a different format
+              if (data.data) {
+                data = data.data;
+              }
+
+              wallets.push(data);
+            }
+          })(node));
+      });
+    }
+
+    function getbalances() {
+      $.each(nodes, function(index, node) {
+          var wallet = node + '/balance';
+
+          $.getJSON(wallet, (function(link) {
+            return function(data) {
+              amounts.push(data);
+            }
+          })(node));
+      });
+    }
+
+
+    function getbalances2() {
+      var calls = [];
+
+      $.each(nodes, function(index, node) {
+        var balance = node + '/balance';
+
+        calls.push(function(callback) {
+          $.getJSON(balance, function(data) {
+            callback(null, {
+              node: node,
+              data: data
+            });
+          });
+        });
+      });
+
+      async.parallel(calls, function(err, results) {
+        $.each(results, function(index, result) {
+          amounts.push(result.data);
+
+          $.getJSON(result.node, (function(data) {
+            return function(data2) {
+              var port = result.node.split(':');
+              port = port[2];
+              port = port.substr(0, port.length - 1);
+
+              table.row.add([
+                '<a href="' + result.node + '" target="_blank">' + result.node + '</a>',
+                '<a href="' + result.node + 'balance" target="_blank">' + numeral(data).format('0,0') + '</a>',
+                data2.blocks.length
+              ]).draw(false);
+            }
+          })(result.data));
+        });
+
+        var global_power = 1400;
+        var power = amounts.length * 700 / 1000;
+        var block_time = 40;
+        var reward_block = 6000;
+        var dominance = power / global_power * 100;
+        var reward_24 = reward_block * 60 * 60 * 24 / block_time * dominance / 100;
+        var reward_24_usd = reward_24 * 0.001;
+        var cost_24_usd = 0.119 * 24 * 20;
+        var roi_24 = reward_24_usd / cost_24_usd * 100;
+        var block_mining_time = 100 / dominance * block_time;
+        var current_time = new Date();
+        current_time = current_time.getHours() + ':' + current_time.getMinutes();
+
+        $('#sum').html(numeral(ss.sum(amounts)).format('0,0'));
+        $('#mean').html(numeral(ss.mean(amounts)).format('0,0'));
+        $('#median').html(numeral(ss.medianSorted(amounts)).format('0,0'));
+        // Hardcoded for now. Expressed in Kh/s
+        $('#power').html(numeral(power).format('0,0'));
+        // Hardcoded for now
+        $('#global_power').html(numeral(global_power).format('0,0'));
+        $('#dominance').html(parseInt(dominance));
+        // Hardcoded for now
+        $('#block_time').html(block_time);
+        $('#reward_24').html(numeral(reward_24).format('0,0'));
+        $('#reward_24_usd').html(numeral(reward_24_usd).format('0,0'));
+        $('#roi_24').html(numeral(roi_24).format('0,0'));
+        $('#cost_24_usd').html(numeral(cost_24_usd).format('0,0'));
+        $('#block_mining_time').html(numeral(block_mining_time).format('0,0'));
+        $('#block_mining_time_minutes').html(numeral(block_mining_time/60).format('0,0'));
+        $('#current_time').html(current_time);
+      });
+    }
+
+    $(document).ready(function() {
+      table = $('#nodes').DataTable({
+        'pageLength': 100
+      });
+      getbalances2();
+    });
+  </script>
+</body>
+
+</html>
