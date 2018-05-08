@@ -31,7 +31,7 @@
 
       <br />
       <strong>
-        <label for="global_power_input">*Global Hash rate</label>
+        <label for="global_power_input">Global Hash rate</label>
       </strong>
       <div class="input-group">
         <input type="text" class="form-control" value="1300" placeholder="0" id="global_power_input" />
@@ -42,7 +42,7 @@
 
       <p>
         <small class="form-text text-muted">
-          <i>* You need to manually update the <strong>Global Hash rate</strong> <span class="badge badge-info" data-toggle="tooltip" data-html="true" title="<img src='webdollar-global-hash.png' width='400' />">i</span> displayed on <a href="https://webdollar.io" target="_blank">webdollar.io</a></i>.
+          <i>You can manually update the <strong>Global Hash rate</strong> <span class="badge badge-info" data-toggle="tooltip" data-html="true" title="<img src='webdollar-global-hash.png' width='400' />">i</span> displayed on <a href="https://webdollar.io" target="_blank">webdollar.io</a></i>.
         </small>
       </p>
 
@@ -101,6 +101,10 @@
   </p>
 
   <script type="text/javascript">
+    $.getJSON('http://139.59.165.140:65212/power', function(data) {
+      $('#global_power_input').val(parseInt(data.global / 1000));
+    });
+
     function compute() {
       var global_power = parseInt($('#global_power_input').val());
       var power = parseInt($('#power_input').val());
