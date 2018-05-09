@@ -3,11 +3,8 @@
 
 <head>
   <title>WebDollar Fallback Nodes</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/rg-1.0.2/rr-1.2.3/datatables.min.css" />
-  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/rg-1.0.2/rr-1.2.3/datatables.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/rg-1.0.2/rr-1.2.3/datatables.min.css" />
 </head>
 
 <body>
@@ -36,6 +33,9 @@
     <center><small class="form-text text-muted">&copy;2018 <a href="http://hostero.eu">Hostero.eu</a>. Donate: WEBD$gCpn9xPgcSkBNuUAwV7oENGStzhAdc1fRz$</small></center>
   </p>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/rg-1.0.2/rr-1.2.3/datatables.min.js"></script>
   <script type="text/javascript">
     var fallback = {
       "protocol": "WebDollar",
@@ -118,46 +118,49 @@
         {
           "addr": ["webdollar.network:5000"]
         },
+        {
+          "addr": ["webd.5q.ro:3333"]
+        },
       ]
     };
     var last_block = 0;
 
-    $.each(fallback.nodes, function(index, node) {
-      var url = 'https://' + node.addr[0];
-      var timer = Date.now();
-      var callback = (function(timer) {
-        return function(data) {
-          table.row.add([
-            '<a href="' + url + '" target="_blank">' + url + '</a>',
-            numeral(data.blocks.length).format('0,0'),
-            Date.now() - timer
-          ]).draw(false);
-
-          if (data.blocks.length > last_block) {
-            last_block = data.blocks.length;
-          }
-
-          $('#last_block').html(numeral(last_block).format('0,0'));
-        }
-      })(timer);
-
-      $.ajax({
-        dataType: 'json',
-        url: url,
-        success: callback,
-        timeout: 10000
-      }).fail(function(xhr, status) {
-        table.row.add([
-          '<a href="' + url + '" target="_blank">' + url + '</a>',
-          '-',
-          status
-        ]).draw(false);
-      });
-    });
-
     $(document).ready(function() {
       table = $('#nodes').DataTable({
         'pageLength': 100
+      });
+
+      $.each(fallback.nodes, function(index, node) {
+        var url = 'https://' + node.addr[0];
+        var timer = Date.now();
+        var callback = (function(timer) {
+          return function(data) {
+            table.row.add([
+              '<a href="' + url + '" target="_blank">' + url + '</a>',
+              numeral(data.blocks.length).format('0,0'),
+              Date.now() - timer
+            ]).draw(false);
+
+            if (data.blocks.length > last_block) {
+              last_block = data.blocks.length;
+            }
+
+            $('#last_block').html(numeral(last_block).format('0,0'));
+          }
+        })(timer);
+
+        $.ajax({
+          dataType: 'json',
+          url: url,
+          success: callback,
+          timeout: 10000
+        }).fail(function(xhr, status) {
+          table.row.add([
+            '<a href="' + url + '" target="_blank">' + url + '</a>',
+            '-',
+            status
+          ]).draw(false);
+        });
       });
     });
   </script>
