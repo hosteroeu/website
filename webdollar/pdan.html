@@ -1,0 +1,165 @@
+<html>
+
+<head>
+  <title>Hostero - WebDollar Nodes</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/async/2.6.0/async.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/rg-1.0.2/rr-1.2.3/datatables.min.css" />
+  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/rg-1.0.2/rr-1.2.3/datatables.min.js"></script>
+  <script type="text/javascript" src=" https://unpkg.com/simple-statistics@6.0.0/dist/simple-statistics.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+    <br />
+    <div class="alert alert-secondary" role="alert">
+      SUM: <strong><span id="sum">0</span> WEBD</strong> | MEAN: <strong><span id="mean">0</span> WEBD</strong> | MEDIAN: <strong><span id="median">0</span> WEBD</strong> | ~POWER: <strong><span id="power">0</span> Kh/s</strong> | GLOBAL: <strong><span id="global_power">0</span> Kh/s</strong>      | Chance/Dominance: <strong><span id="dominance">0</span>%</strong> | ~Block Mining Time: <strong><span id="block_mining_time">0</span> s / <span id="block_mining_time_minutes">0</span> m</strong>   | Current Time: <strong><span id="current_time">00:00</span></strong> | Nodes Available: <strong><span id="nodes_available">0</span></strong> | Nodes Healthy: <strong><span id="nodes_healthy">0</span></strong> | Block: <strong><span id="x">0</span></strong>
+    </div>
+
+    <p><i>*</i> Means hardcoded values. <i>~</i> Means estimated values.</p>
+
+    <p>Projections:
+      <ul>
+        <li>24 hour reward <strong><span id="reward_24">0</span></strong> WEBD / <strong><span id="reward_24_usd">0</span></strong> USD</li>
+      </ul>
+    </p>
+
+    <p>
+      <table id="nodes" class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>Hostname</th>
+            <th>URL</th>
+            <th>Amount</th>
+            <th>Block</th>
+            <th>Power</th>
+          </tr>
+        </thead>
+      </table>
+    </p>
+  </div>
+
+  <script type="text/javascript">
+    var nodes = [{"dns":"1h477.hoste.ro:40260","ip":"18.191.28.197","port":40260,"hostname":"ip-172-31-2-156.us-east-2.compute.internal"},{"dns":"1h477.hoste.ro:40261","ip":"18.191.28.197","port":40261,"hostname":"ip-172-31-2-156.us-east-2.compute.internal"},{"dns":"1h477.hoste.ro:40262","ip":"18.191.28.197","port":40262,"hostname":"ip-172-31-2-156.us-east-2.compute.internal"},{"dns":"1h477.hoste.ro:40263","ip":"18.191.28.197","port":40263,"hostname":"ip-172-31-2-156.us-east-2.compute.internal"},{"dns":"1h477.hoste.ro:40264","ip":"18.191.28.197","port":40264,"hostname":"ip-172-31-2-156.us-east-2.compute.internal"},{"dns":"1h477.hoste.ro:40265","ip":"18.191.28.197","port":40265,"hostname":"ip-172-31-2-156.us-east-2.compute.internal"},{"dns":"1h477.hoste.ro:40266","ip":"18.191.28.197","port":40266,"hostname":"ip-172-31-2-156.us-east-2.compute.internal"},{"dns":"1h477.hoste.ro:40267","ip":"18.191.28.197","port":40267,"hostname":"ip-172-31-2-156.us-east-2.compute.internal"},{"dns":"1h477.hoste.ro:40268","ip":"18.191.28.197","port":40268,"hostname":"ip-172-31-2-156.us-east-2.compute.internal"},{"dns":"1h477.hoste.ro:40269","ip":"18.191.28.197","port":40269,"hostname":"ip-172-31-2-156.us-east-2.compute.internal"},{"dns":"1h477.hoste.ro:40270","ip":"18.191.28.197","port":40270,"hostname":"ip-172-31-2-156.us-east-2.compute.internal"},{"dns":"1h477.hoste.ro:40271","ip":"18.191.28.197","port":40271,"hostname":"ip-172-31-2-156.us-east-2.compute.internal"},{"dns":"1h477.hoste.ro:40272","ip":"18.191.28.197","port":40272,"hostname":"ip-172-31-2-156.us-east-2.compute.internal"},{"dns":"1h477.hoste.ro:40273","ip":"18.191.28.197","port":40273,"hostname":"ip-172-31-2-156.us-east-2.compute.internal"},{"dns":"1h477.hoste.ro:40274","ip":"18.191.28.197","port":40274,"hostname":"ip-172-31-2-156.us-east-2.compute.internal"},{"dns":"1h477.hoste.ro:40275","ip":"18.191.28.197","port":40275,"hostname":"ip-172-31-2-156.us-east-2.compute.internal"},{"dns":"1h478.hoste.ro:40270","ip":"18.217.132.234","port":40270,"hostname":"ip-172-31-8-75.us-east-2.compute.internal"},{"dns":"1h478.hoste.ro:40271","ip":"18.217.132.234","port":40271,"hostname":"ip-172-31-8-75.us-east-2.compute.internal"},{"dns":"1h478.hoste.ro:40272","ip":"18.217.132.234","port":40272,"hostname":"ip-172-31-8-75.us-east-2.compute.internal"},{"dns":"1h478.hoste.ro:40273","ip":"18.217.132.234","port":40273,"hostname":"ip-172-31-8-75.us-east-2.compute.internal"},{"dns":"1h478.hoste.ro:40275","ip":"18.217.132.234","port":40275,"hostname":"ip-172-31-8-75.us-east-2.compute.internal"},{"dns":"1h478.hoste.ro:40274","ip":"18.217.132.234","port":40274,"hostname":"ip-172-31-8-75.us-east-2.compute.internal"},{"dns":"1h478.hoste.ro:40276","ip":"18.217.132.234","port":40276,"hostname":"ip-172-31-8-75.us-east-2.compute.internal"},{"dns":"1h478.hoste.ro:40277","ip":"18.217.132.234","port":40277,"hostname":"ip-172-31-8-75.us-east-2.compute.internal"},{"dns":"1h478.hoste.ro:40278","ip":"18.217.132.234","port":40278,"hostname":"ip-172-31-8-75.us-east-2.compute.internal"},{"dns":"1h478.hoste.ro:40279","ip":"18.217.132.234","port":40279,"hostname":"ip-172-31-8-75.us-east-2.compute.internal"},{"dns":"1h478.hoste.ro:40280","ip":"18.217.132.234","port":40280,"hostname":"ip-172-31-8-75.us-east-2.compute.internal"},{"dns":"1h478.hoste.ro:40281","ip":"18.217.132.234","port":40281,"hostname":"ip-172-31-8-75.us-east-2.compute.internal"},{"dns":"1h478.hoste.ro:40282","ip":"18.217.132.234","port":40282,"hostname":"ip-172-31-8-75.us-east-2.compute.internal"},{"dns":"1h478.hoste.ro:40284","ip":"18.217.132.234","port":40284,"hostname":"ip-172-31-8-75.us-east-2.compute.internal"},{"dns":"1h478.hoste.ro:40283","ip":"18.217.132.234","port":40283,"hostname":"ip-172-31-8-75.us-east-2.compute.internal"},{"dns":"1h478.hoste.ro:40285","ip":"18.217.132.234","port":40285,"hostname":"ip-172-31-8-75.us-east-2.compute.internal"},{"dns":"1h479.hoste.ro:40280","ip":"18.219.224.206","port":40280,"hostname":"ip-172-31-6-60.us-east-2.compute.internal"},{"dns":"1h479.hoste.ro:40281","ip":"18.219.224.206","port":40281,"hostname":"ip-172-31-6-60.us-east-2.compute.internal"},{"dns":"1h479.hoste.ro:40282","ip":"18.219.224.206","port":40282,"hostname":"ip-172-31-6-60.us-east-2.compute.internal"},{"dns":"1h479.hoste.ro:40283","ip":"18.219.224.206","port":40283,"hostname":"ip-172-31-6-60.us-east-2.compute.internal"},{"dns":"1h479.hoste.ro:40284","ip":"18.219.224.206","port":40284,"hostname":"ip-172-31-6-60.us-east-2.compute.internal"},{"dns":"1h479.hoste.ro:40285","ip":"18.219.224.206","port":40285,"hostname":"ip-172-31-6-60.us-east-2.compute.internal"},{"dns":"1h479.hoste.ro:40286","ip":"18.219.224.206","port":40286,"hostname":"ip-172-31-6-60.us-east-2.compute.internal"},{"dns":"1h479.hoste.ro:40287","ip":"18.219.224.206","port":40287,"hostname":"ip-172-31-6-60.us-east-2.compute.internal"},{"dns":"1h479.hoste.ro:40288","ip":"18.219.224.206","port":40288,"hostname":"ip-172-31-6-60.us-east-2.compute.internal"},{"dns":"1h479.hoste.ro:40289","ip":"18.219.224.206","port":40289,"hostname":"ip-172-31-6-60.us-east-2.compute.internal"},{"dns":"1h479.hoste.ro:40290","ip":"18.219.224.206","port":40290,"hostname":"ip-172-31-6-60.us-east-2.compute.internal"},{"dns":"1h479.hoste.ro:40291","ip":"18.219.224.206","port":40291,"hostname":"ip-172-31-6-60.us-east-2.compute.internal"},{"dns":"1h479.hoste.ro:40292","ip":"18.219.224.206","port":40292,"hostname":"ip-172-31-6-60.us-east-2.compute.internal"},{"dns":"1h479.hoste.ro:40293","ip":"18.219.224.206","port":40293,"hostname":"ip-172-31-6-60.us-east-2.compute.internal"},{"dns":"1h479.hoste.ro:40294","ip":"18.219.224.206","port":40294,"hostname":"ip-172-31-6-60.us-east-2.compute.internal"},{"dns":"1h479.hoste.ro:40295","ip":"18.219.224.206","port":40295,"hostname":"ip-172-31-6-60.us-east-2.compute.internal"},{"dns":"1h480.hoste.ro:40290","ip":"52.14.95.63","port":40290,"hostname":"ip-172-31-1-110.us-east-2.compute.internal"},{"dns":"1h480.hoste.ro:40291","ip":"52.14.95.63","port":40291,"hostname":"ip-172-31-1-110.us-east-2.compute.internal"},{"dns":"1h480.hoste.ro:40292","ip":"52.14.95.63","port":40292,"hostname":"ip-172-31-1-110.us-east-2.compute.internal"},{"dns":"1h480.hoste.ro:40293","ip":"52.14.95.63","port":40293,"hostname":"ip-172-31-1-110.us-east-2.compute.internal"},{"dns":"1h480.hoste.ro:40294","ip":"52.14.95.63","port":40294,"hostname":"ip-172-31-1-110.us-east-2.compute.internal"},{"dns":"1h480.hoste.ro:40295","ip":"52.14.95.63","port":40295,"hostname":"ip-172-31-1-110.us-east-2.compute.internal"},{"dns":"1h480.hoste.ro:40296","ip":"52.14.95.63","port":40296,"hostname":"ip-172-31-1-110.us-east-2.compute.internal"},{"dns":"1h480.hoste.ro:40297","ip":"52.14.95.63","port":40297,"hostname":"ip-172-31-1-110.us-east-2.compute.internal"},{"dns":"1h480.hoste.ro:40298","ip":"52.14.95.63","port":40298,"hostname":"ip-172-31-1-110.us-east-2.compute.internal"},{"dns":"1h480.hoste.ro:40299","ip":"52.14.95.63","port":40299,"hostname":"ip-172-31-1-110.us-east-2.compute.internal"},{"dns":"1h480.hoste.ro:40300","ip":"52.14.95.63","port":40300,"hostname":"ip-172-31-1-110.us-east-2.compute.internal"},{"dns":"1h480.hoste.ro:40301","ip":"52.14.95.63","port":40301,"hostname":"ip-172-31-1-110.us-east-2.compute.internal"},{"dns":"1h480.hoste.ro:40302","ip":"52.14.95.63","port":40302,"hostname":"ip-172-31-1-110.us-east-2.compute.internal"},{"dns":"1h480.hoste.ro:40303","ip":"52.14.95.63","port":40303,"hostname":"ip-172-31-1-110.us-east-2.compute.internal"},{"dns":"1h480.hoste.ro:40304","ip":"52.14.95.63","port":40304,"hostname":"ip-172-31-1-110.us-east-2.compute.internal"},{"dns":"1h480.hoste.ro:40305","ip":"52.14.95.63","port":40305,"hostname":"ip-172-31-1-110.us-east-2.compute.internal"},{"dns":"1h481.hoste.ro:40300","ip":"18.221.16.252","port":40300,"hostname":"ip-172-31-11-56.us-east-2.compute.internal"},{"dns":"1h481.hoste.ro:40301","ip":"18.221.16.252","port":40301,"hostname":"ip-172-31-11-56.us-east-2.compute.internal"},{"dns":"1h481.hoste.ro:40302","ip":"18.221.16.252","port":40302,"hostname":"ip-172-31-11-56.us-east-2.compute.internal"},{"dns":"1h481.hoste.ro:40303","ip":"18.221.16.252","port":40303,"hostname":"ip-172-31-11-56.us-east-2.compute.internal"},{"dns":"1h481.hoste.ro:40304","ip":"18.221.16.252","port":40304,"hostname":"ip-172-31-11-56.us-east-2.compute.internal"},{"dns":"1h481.hoste.ro:40305","ip":"18.221.16.252","port":40305,"hostname":"ip-172-31-11-56.us-east-2.compute.internal"},{"dns":"1h481.hoste.ro:40306","ip":"18.221.16.252","port":40306,"hostname":"ip-172-31-11-56.us-east-2.compute.internal"},{"dns":"1h481.hoste.ro:40307","ip":"18.221.16.252","port":40307,"hostname":"ip-172-31-11-56.us-east-2.compute.internal"},{"dns":"1h481.hoste.ro:40308","ip":"18.221.16.252","port":40308,"hostname":"ip-172-31-11-56.us-east-2.compute.internal"},{"dns":"1h481.hoste.ro:40309","ip":"18.221.16.252","port":40309,"hostname":"ip-172-31-11-56.us-east-2.compute.internal"},{"dns":"1h481.hoste.ro:40310","ip":"18.221.16.252","port":40310,"hostname":"ip-172-31-11-56.us-east-2.compute.internal"},{"dns":"1h481.hoste.ro:40311","ip":"18.221.16.252","port":40311,"hostname":"ip-172-31-11-56.us-east-2.compute.internal"},{"dns":"1h481.hoste.ro:40312","ip":"18.221.16.252","port":40312,"hostname":"ip-172-31-11-56.us-east-2.compute.internal"},{"dns":"1h481.hoste.ro:40313","ip":"18.221.16.252","port":40313,"hostname":"ip-172-31-11-56.us-east-2.compute.internal"},{"dns":"1h481.hoste.ro:40314","ip":"18.221.16.252","port":40314,"hostname":"ip-172-31-11-56.us-east-2.compute.internal"},{"dns":"1h481.hoste.ro:40315","ip":"18.221.16.252","port":40315,"hostname":"ip-172-31-11-56.us-east-2.compute.internal"},{"dns":"1h482.hoste.ro:40310","ip":"18.217.47.245","port":40310,"hostname":"ip-172-31-2-119.us-east-2.compute.internal"},{"dns":"1h482.hoste.ro:40311","ip":"18.217.47.245","port":40311,"hostname":"ip-172-31-2-119.us-east-2.compute.internal"},{"dns":"1h482.hoste.ro:40312","ip":"18.217.47.245","port":40312,"hostname":"ip-172-31-2-119.us-east-2.compute.internal"},{"dns":"1h482.hoste.ro:40313","ip":"18.217.47.245","port":40313,"hostname":"ip-172-31-2-119.us-east-2.compute.internal"},{"dns":"1h482.hoste.ro:40314","ip":"18.217.47.245","port":40314,"hostname":"ip-172-31-2-119.us-east-2.compute.internal"},{"dns":"1h482.hoste.ro:40315","ip":"18.217.47.245","port":40315,"hostname":"ip-172-31-2-119.us-east-2.compute.internal"},{"dns":"1h482.hoste.ro:40316","ip":"18.217.47.245","port":40316,"hostname":"ip-172-31-2-119.us-east-2.compute.internal"},{"dns":"1h482.hoste.ro:40317","ip":"18.217.47.245","port":40317,"hostname":"ip-172-31-2-119.us-east-2.compute.internal"},{"dns":"1h482.hoste.ro:40318","ip":"18.217.47.245","port":40318,"hostname":"ip-172-31-2-119.us-east-2.compute.internal"},{"dns":"1h482.hoste.ro:40319","ip":"18.217.47.245","port":40319,"hostname":"ip-172-31-2-119.us-east-2.compute.internal"},{"dns":"1h482.hoste.ro:40320","ip":"18.217.47.245","port":40320,"hostname":"ip-172-31-2-119.us-east-2.compute.internal"},{"dns":"1h482.hoste.ro:40321","ip":"18.217.47.245","port":40321,"hostname":"ip-172-31-2-119.us-east-2.compute.internal"},{"dns":"1h482.hoste.ro:40322","ip":"18.217.47.245","port":40322,"hostname":"ip-172-31-2-119.us-east-2.compute.internal"},{"dns":"1h482.hoste.ro:40323","ip":"18.217.47.245","port":40323,"hostname":"ip-172-31-2-119.us-east-2.compute.internal"},{"dns":"1h482.hoste.ro:40324","ip":"18.217.47.245","port":40324,"hostname":"ip-172-31-2-119.us-east-2.compute.internal"},{"dns":"1h482.hoste.ro:40325","ip":"18.217.47.245","port":40325,"hostname":"ip-172-31-2-119.us-east-2.compute.internal"},{"dns":"1h483.hoste.ro:40320","ip":"18.220.49.190","port":40320,"hostname":"ip-172-31-14-254.us-east-2.compute.internal"},{"dns":"1h483.hoste.ro:40321","ip":"18.220.49.190","port":40321,"hostname":"ip-172-31-14-254.us-east-2.compute.internal"},{"dns":"1h483.hoste.ro:40322","ip":"18.220.49.190","port":40322,"hostname":"ip-172-31-14-254.us-east-2.compute.internal"},{"dns":"1h483.hoste.ro:40323","ip":"18.220.49.190","port":40323,"hostname":"ip-172-31-14-254.us-east-2.compute.internal"},{"dns":"1h483.hoste.ro:40324","ip":"18.220.49.190","port":40324,"hostname":"ip-172-31-14-254.us-east-2.compute.internal"},{"dns":"1h483.hoste.ro:40325","ip":"18.220.49.190","port":40325,"hostname":"ip-172-31-14-254.us-east-2.compute.internal"},{"dns":"1h483.hoste.ro:40326","ip":"18.220.49.190","port":40326,"hostname":"ip-172-31-14-254.us-east-2.compute.internal"},{"dns":"1h483.hoste.ro:40328","ip":"18.220.49.190","port":40328,"hostname":"ip-172-31-14-254.us-east-2.compute.internal"},{"dns":"1h483.hoste.ro:40327","ip":"18.220.49.190","port":40327,"hostname":"ip-172-31-14-254.us-east-2.compute.internal"},{"dns":"1h483.hoste.ro:40329","ip":"18.220.49.190","port":40329,"hostname":"ip-172-31-14-254.us-east-2.compute.internal"},{"dns":"1h483.hoste.ro:40330","ip":"18.220.49.190","port":40330,"hostname":"ip-172-31-14-254.us-east-2.compute.internal"},{"dns":"1h483.hoste.ro:40331","ip":"18.220.49.190","port":40331,"hostname":"ip-172-31-14-254.us-east-2.compute.internal"},{"dns":"1h483.hoste.ro:40332","ip":"18.220.49.190","port":40332,"hostname":"ip-172-31-14-254.us-east-2.compute.internal"},{"dns":"1h483.hoste.ro:40333","ip":"18.220.49.190","port":40333,"hostname":"ip-172-31-14-254.us-east-2.compute.internal"},{"dns":"1h483.hoste.ro:40334","ip":"18.220.49.190","port":40334,"hostname":"ip-172-31-14-254.us-east-2.compute.internal"},{"dns":"1h483.hoste.ro:40335","ip":"18.220.49.190","port":40335,"hostname":"ip-172-31-14-254.us-east-2.compute.internal"},{"dns":"1h484.hoste.ro:40330","ip":"18.191.65.55","port":40330,"hostname":"ip-172-31-6-234.us-east-2.compute.internal"},{"dns":"1h484.hoste.ro:40331","ip":"18.191.65.55","port":40331,"hostname":"ip-172-31-6-234.us-east-2.compute.internal"},{"dns":"1h484.hoste.ro:40332","ip":"18.191.65.55","port":40332,"hostname":"ip-172-31-6-234.us-east-2.compute.internal"},{"dns":"1h484.hoste.ro:40333","ip":"18.191.65.55","port":40333,"hostname":"ip-172-31-6-234.us-east-2.compute.internal"},{"dns":"1h484.hoste.ro:40334","ip":"18.191.65.55","port":40334,"hostname":"ip-172-31-6-234.us-east-2.compute.internal"},{"dns":"1h484.hoste.ro:40335","ip":"18.191.65.55","port":40335,"hostname":"ip-172-31-6-234.us-east-2.compute.internal"},{"dns":"1h484.hoste.ro:40336","ip":"18.191.65.55","port":40336,"hostname":"ip-172-31-6-234.us-east-2.compute.internal"},{"dns":"1h484.hoste.ro:40337","ip":"18.191.65.55","port":40337,"hostname":"ip-172-31-6-234.us-east-2.compute.internal"},{"dns":"1h484.hoste.ro:40338","ip":"18.191.65.55","port":40338,"hostname":"ip-172-31-6-234.us-east-2.compute.internal"},{"dns":"1h484.hoste.ro:40339","ip":"18.191.65.55","port":40339,"hostname":"ip-172-31-6-234.us-east-2.compute.internal"},{"dns":"1h484.hoste.ro:40340","ip":"18.191.65.55","port":40340,"hostname":"ip-172-31-6-234.us-east-2.compute.internal"},{"dns":"1h484.hoste.ro:40341","ip":"18.191.65.55","port":40341,"hostname":"ip-172-31-6-234.us-east-2.compute.internal"},{"dns":"1h484.hoste.ro:40342","ip":"18.191.65.55","port":40342,"hostname":"ip-172-31-6-234.us-east-2.compute.internal"},{"dns":"1h484.hoste.ro:40344","ip":"18.191.65.55","port":40344,"hostname":"ip-172-31-6-234.us-east-2.compute.internal"},{"dns":"1h484.hoste.ro:40343","ip":"18.191.65.55","port":40343,"hostname":"ip-172-31-6-234.us-east-2.compute.internal"},{"dns":"1h484.hoste.ro:40345","ip":"18.191.65.55","port":40345,"hostname":"ip-172-31-6-234.us-east-2.compute.internal"}];
+    var amounts = [];
+    var blocks = [];
+
+    function getbalances() {
+      $.each(nodes, function(index, node) {
+        /*
+        var balance = 'https://' + node.ip + ':' + node.port + '/balance';
+        var main = 'https://' + node.ip + ':' + node.port;
+        var power = 'https://' + node.ip + ':' + node.port + '/power';
+        */
+
+        var balance = 'https://' + node.dns + '/balance';
+        var main = 'https://' + node.dns;
+        var power = 'https://' + node.dns + '/power';
+
+        $.ajax({
+          dataType: 'json',
+          url: balance,
+          success: (function(_node, _main, _power) {
+            return function(data) {
+              amounts.push(data);
+
+              var nodes_healthy = parseInt($('#nodes_healthy').text());
+              $('#nodes_healthy').text(nodes_healthy+1);
+
+              $('#sum').html(numeral(ss.sum(amounts)).format('0,0'));
+              $('#mean').html(numeral(ss.mean(amounts)).format('0,0'));
+              $('#median').html(numeral(ss.medianSorted(amounts)).format('0,0'));
+
+              //$.getJSON(_power, function(data1) {
+                $.getJSON(_main, function(data2) {
+                  blocks.push(data2.blocks.length);
+
+                  $('#x').html(numeral(ss.max(blocks)).format('0,0'));
+
+                  table.row.add([
+                    node.hostname,
+                    '<a href="' + _main + '" target="_blank">' + _main + '</a>',
+                    numeral(data).format('0,0'),
+                    numeral(data2.blocks.length).format('0,0'),
+                    0,//numeral(data1.node).format('0,0'),
+                  ]).draw(false);
+                });
+              //});
+            }
+          })(node, main, power),
+          timeout: 10000
+        })
+        .fail((function(_node, _main) {
+          return function(xhr, status) {
+            console.error(_node, _main);
+
+            table.row.add([
+              node.hostname,
+              '<a href="' + _main + '" target="_blank">' + _main + '</a>',
+              'error',
+              'error',
+              'error'
+            ]).draw(false);
+          }
+        })(node, main));
+      });
+    }
+
+    $(document).ready(function() {
+      table = $('#nodes').DataTable({
+        'pageLength': 100
+      });
+
+      $.getJSON('https://wd2.hoste.ro:65279/power', function(data) {
+        var global_power = parseInt(data.global) / 1000;
+        var nodes_available = nodes.length;
+        var power = nodes_available * 600 / 1000;
+        var block_time = 40;
+        var reward_block = 6000;
+        var dominance = power / global_power * 100;
+        var reward_24 = reward_block * 60 * 60 * 24 / block_time * dominance / 100;
+        var reward_24_usd = reward_24 * 0.001;
+        var cost_24_usd = 0;
+        /*
+        cost_24_usd += 0.238 * 10 * 24; // do
+        cost_24_usd += 0.119 * 20 * 24; // do
+        cost_24_usd += 0.808 * 1 * 24; // aws
+        cost_24_usd += 0.06 * 20 * 24; // vps
+        */
+
+        var roi_24 = reward_24_usd / cost_24_usd * 100;
+        var block_mining_time = 100 / dominance * block_time;
+        var current_time = new Date();
+        current_time = current_time.getHours() + ':' + current_time.getMinutes();
+
+        var real_time = 0;
+
+        /*
+        setInterval(function() {
+          real_time += reward_24 / (3500 * 24) / 1;
+          $('#real_time').html(numeral(real_time).format('0,0'));
+        }, 1000);
+        */
+
+        $('#power').html(numeral(power).format('0,0'));
+        $('#global_power').html(numeral(global_power).format('0,0'));
+        $('#dominance').html(parseInt(dominance));
+        $('#block_time').html(block_time);
+        $('#reward_24').html(numeral(reward_24).format('0,0'));
+        $('#reward_24_usd').html(numeral(reward_24_usd).format('0,0'));
+        $('#roi_24').html(numeral(roi_24).format('0,0'));
+        $('#cost_24_usd').html(numeral(cost_24_usd).format('0,0'));
+        $('#block_mining_time').html(numeral(block_mining_time).format('0,0'));
+        $('#block_mining_time_minutes').html(numeral(block_mining_time / 60).format('0,0'));
+        $('#current_time').html(current_time);
+        $('#nodes_available').html(numeral(nodes_available).format('0,0'));
+
+        getbalances();
+      });
+    });
+  </script>
+</body>
+
+</html>
