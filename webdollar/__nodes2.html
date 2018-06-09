@@ -75,8 +75,8 @@
               $('#median').html(numeral(ss.medianSorted(amounts)).format('0,0'));
 
               //$.getJSON(_power, function(data1) {
-                $.getJSON(_main, function(data2) {
-                  blocks.push(data2.blocks.length);
+                //$.getJSON(_main, function(data2) {
+                  //blocks.push(data2.blocks.length);
 
                   $('#x').html(numeral(ss.max(blocks)).format('0,0'));
 
@@ -84,12 +84,12 @@
                     node.hostname,
                     '<a href="' + _main + '" target="_blank">' + _main + '</a>',
                     numeral(data).format('0,0'),
-                    numeral(data2.blocks.length).format('0,0'),
+                    0,//numeral(data2.blocks.length).format('0,0'),
                     0,//numeral(data1.node).format('0,0'),
-                    numeral(data2.sockets.clients).format('0,0'),
-                    numeral(data2.sockets.servers).format('0,0'),
+                    0,//numeral(data2.sockets.clients).format('0,0'),
+                    0,//numeral(data2.sockets.servers).format('0,0'),
                   ]).draw(false);
-                });
+                //});
               //});
             }
           })(node, main, power),
