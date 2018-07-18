@@ -54,7 +54,7 @@
         var power = 'https://' + node.ip + ':' + node.port + '/power';
         */
 
-        var balance = 'https://' + node.dns + '/balance';
+        var balance = 'https://' + node.dns + '/7e5d522a70ce4c455f6875d01c22727e/mining/balance';
         var main = 'https://' + node.dns;
         var power = 'https://' + node.dns + '/power';
 
@@ -63,6 +63,7 @@
           url: balance,
           success: (function(_node, _main, _power) {
             return function(data) {
+              data = data.balance;
               amounts.push(data);
 
               var nodes_healthy = parseInt($('#nodes_healthy').text());
@@ -113,9 +114,10 @@
       });
 
       $.getJSON('http://data.webd.hoste.ro/imoraru.json', function(data2) {
-        $.getJSON('https://wd2.hoste.ro:65279/power', function(data) {
+        //$.getJSON('https://wd2.hoste.ro:65279/power', function(data) {
           nodes = data2;
-          var global_power = parseInt(data.global) / 1000;
+          //var global_power = parseInt(data.global) / 1000;
+          var global_power = 0;
           var nodes_available = nodes.length;
           var power = nodes_available * 600 / 1000;
           var block_time = 40;
@@ -159,7 +161,7 @@
           $('#nodes_available').html(numeral(nodes_available).format('0,0'));
 
           getbalances();
-        });
+        //});
       });
     });
   </script>
