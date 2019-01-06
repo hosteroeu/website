@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Hostero - {{title}}</title>
+  <title>{{title}} - Hostero</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Hostero is the perfect solution for running your mining nodes">
   <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,400i,500" rel="stylesheet">
@@ -16,14 +16,103 @@
   {{> partials/header }}
 
   <div class="main-container">
-    <ul>
-      {{#coins}}
-        <li>{{name}}</li>
-      {{/coins}}
-    </ul>
+    <nav aria-label="breadcrumb" role="navigation" class="bg-primary text-white">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/">Home</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">CPU Minable Coins</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </nav>
 
-    {{> partials/announcement }}
-    {{> partials/footer }}
+    <section>
+      <div class="container">
+        <div class="row justify-content-center align-items-center">
+          <div class="col">
+            <div class="media align-items-center">
+              <a href="#" class="mr-4">
+                <img alt="Image" src="assets/img/hostero_logo_black.png" class="avatar avatar-lg avatar-square" />
+              </a>
+              <div class="media-body">
+                <div class="mb-3">
+                  <h1 class="h2 mb-2">CPU Minable Coins</h1>
+                  <span>Directory with crypto-currencies that can be mined using CPUs.</span>
+                </div>
+                <div>
+                  <ul class="list-inline text-small d-inline-block">
+                    <li class="list-inline-item"><i class="icon-link"></i> <a href="https://api.hostero.eu/v1/coins" target="_blank">https://api.hostero.eu/v1/coins</a>
+                    </li>
+                    <li class="list-inline-item"><i class="icon-message"></i> 3</li>
+                    <!--<li class="list-inline-item"><i class="icon-message"></i> 6</li>-->
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto">
+            <a class="btn btn-primary" href="https://goo.gl/forms/BnKLLU00rir6mCvF3" target="_blank"><i class="icon-add-user mr-1"></i> Submit Coin</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="flush-with-above">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <table class="table table-hover align-items-center table-borderless">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Released</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#coins}}
+                <tr class="bg-white">
+                  <th scope="row">
+                    <div class="media align-items-center">
+                      <!--<img alt="Image" src="assets/img/avatar-male-3.jpg" class="avatar" />-->
+                      <div class="media-body">
+                        <span class="h6 mb-0">{{name}}</span>
+                        <span class="text-muted">{{algorithm}}</span>
+                      </div>
+                    </div>
+                  </th>
+                  <td>{{description}}</td>
+                  <td>{{released_date}}</td>
+                  <td>
+                    <div class="dropdown">
+                      <button class="btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow" type="button" id="dropdownMenuButton-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="icon-dots-three-horizontal"></i>
+                        </button>
+                      <div class="dropdown-menu dropdown-menu-sm" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="{{website_url}}" target="_blank">Website</a>
+                        <a class="dropdown-item" href="{{explorer_url}}" target="_blank">Explorer</a>
+                        <a class="dropdown-item" href="{{exchange_url}}" target="_blank">Exchange</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="https://dashboard.hostero.eu">Start Mining</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="table-divider"></tr>
+                {{/coins}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {{> partials/announcement }} {{> partials/footer }}
   </div>
 
   {{> partials/scripts }}

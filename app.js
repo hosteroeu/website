@@ -40,7 +40,7 @@ app.get('/purchase-webdollar', function(req, res) {
   });
 });
 
-app.get('/coins', function(req, res) {
+app.get('/cpu-minable-coins', function(req, res) {
   request('https://api.hostero.eu/v1/coins', function (error, response, body) {
     console.log('error:', error);
     console.log('status code:', response && response.statusCode);
