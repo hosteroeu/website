@@ -29,28 +29,32 @@ app.all(/.*/, function(req, res, next) {
 app.get('/', function(req, res) {
   res.render('index', {
     title: 'Run your Miners, easy as &pi;',
-    message: 'Hello there!'
+    description: 'Mining software for running your mining nodes',
+    link: 'https://www.hostero.eu/'
   });
 });
 
 app.get('/getting-started', function(req, res) {
   res.render('getting-started', {
     title: 'Getting Started',
-    message: 'Hello there!'
+    description: 'Learn how to deploy the software to your mining nodes',
+    link: 'https://www.hostero.eu/getting-started'
   });
 });
 
 app.get('/changelog', function(req, res) {
   res.render('changelog', {
     title: 'Changelog',
-    message: 'Hello there!'
+    description: 'Find out what new features we implemented',
+    link: 'https://www.hostero.eu/changelog'
   });
 });
 
 app.get('/purchase-webdollar', function(req, res) {
   res.render('purchase-webdollar', {
     title: 'Purchase WebDollar',
-    message: 'Hello there!'
+    description: 'Tutorial on how to purchase WebDollar coins from multiple sources',
+    link: 'https://www.hostero.eu/purchase-webdollar'
   });
 });
 
@@ -62,7 +66,8 @@ app.get('/cpu-minable-coins', function(req, res) {
 
     res.render('coins', {
       title: 'CPU Minable Coins',
-      message: 'Hello there!',
+      description: 'Directory with CPU minable coins that are integrated with our mining software',
+      link: 'https://www.hostero.eu/cpu-minable-coins',
       coins: JSON.parse(body)
     });
   });
