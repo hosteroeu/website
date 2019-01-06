@@ -12,4 +12,5 @@ ADD . /usr/src/app
 RUN npm install
 #RUN bower install --allow-root
 
-CMD [ "node", "node_modules/static-server/bin/static-server.js", "-p", "80" ]
+#CMD [ "node", "node_modules/static-server/bin/static-server.js", "-p", "80" ]
+CMD [ "node", "app.js" ]

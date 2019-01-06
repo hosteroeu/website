@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Hostero - Run your Miners, easy as &pi;</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hostero is the perfect solution for running your mining nodes">
+  <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,400i,500" rel="stylesheet">
+  <link href="assets/css/socicon.css" rel="stylesheet" type="text/css" media="all" />
+  <link href="assets/css/entypo.css" rel="stylesheet" type="text/css" media="all" />
+  <link href="assets/css/theme.css" rel="stylesheet" type="text/css" media="all" />
+</head>
+
+<body>
+  {{> partials/header }}
+
+  <div class="main-container">
+    <nav aria-label="breadcrumb" role="navigation" class="text-white position-absolute">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/">Home</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">Getting Started</li>
+            </ol>
+          </div>
+          <!--end of col-->
+        </div>
+        <!--end of row-->
+      </div>
+      <!--end of container-->
+    </nav>
+    <section class="bg-primary text-light p-0">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <div class="space-lg pb-0">
+              <h1 class="display-4">Getting Started</h1>
+              <span class="lead">
+                A brief guide to working with Hostero.
+              </span>
+            </div>
+          </div>
+          <!--end of col-->
+        </div>
+        <!--end of row-->
+      </div>
+      <!--end of container-->
+      <svg class="decorative-divider" preserveAspectRatio="none" viewbox="0 0 100 100">
+                    <polygon fill="#F8F9FB" points="0 100 100 100 100 0"></polygon>
+                </svg>
+    </section>
+    <!--end of section-->
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-2 mb-5">
+            <nav class="nav flex-md-column">
+              <a href="changelog" class="nav-link">Changelog <span class="badge badge-secondary">v1</span></a>
+            </nav>
+            <hr class="short">
+            <nav class="nav flex-md-column mb-2">
+
+              <a href="getting-started" class="active nav-link">Getting Started</a>
+              <a href="purchase-webdollar" class="nav-link">Purchase WebDollar</a>
+
+            </nav>
+
+          </div>
+          <!--end of col-->
+          <div class="col-12 col-md-8">
+
+            <article id="components">
+              <h3>
+                                    <p>Requirements for Host</p>
+                                </h3>
+              <div>
+
+                <ul>
+                  <li>Internet connectivity</li>
+                  <li>Linux (we recommend Ubuntu 16.04)</li>
+                  <li><a target="_blank" href="https://docker.com" data-toggle="tooltip" data-placement="top" title="Open in new tab">Docker <i class="icon-popup"></i></a></li>
+                  <li>1 GiB RAM</li>
+                  <li>1 GiB Storage</li>
+                </ul>
+
+              </div>
+            </article>
+
+            <article id="setting-up-dev-tools">
+              <h3>Installation instructions</h3>
+              <div>
+                <p>You first need to install <a target="_blank" href="https://docker.com" data-toggle="tooltip" data-placement="top" title="Open in new tab">Docker <i class="icon-popup"></i></a>. We recommand to install Docker using our instructions, but you can install it using alternative ways as well.</p>
+
+                <div class="alert alert-primary" role="alert">
+                  Before you follow these steps, make sure you have a Hostero account. Create one <a href="http://dashboard.hostero.eu/#!/install" target="_blank">here</a>.
+                </div>
+
+                <h2>1. Install Docker</h2>
+                <p>Run this command to install it:</p>
+                <pre><code class="lang-bash">curl https://releases.rancher.com/install-docker/18.06.sh | sh</code></pre>
+                <br />
+                <div class="alert alert-info" role="alert">
+                  You need to have curl installed. If it's not installed, run: <code>apt install curl</code>
+                </div>
+
+                <h2>2. Install Hostero</h2>
+                <p>Run this command to install it:</p>
+
+                <pre><code class="lang-bash">sudo docker run -e CATTLE_HOST_LABELS='account=ACCOUNT_ID' --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.2.9 http://infra.hostero.eu:8080/v1/scripts/2E28C27EE87F5E1A6B7F:1514678400000:ShibdGaXFOlmN3QGGHj1UFuP1lU</code></pre>
+                <br />
+                <div class="alert alert-info" role="alert">
+                  Replace <code>ACCOUNT_ID</code> with the <strong>Account ID</strong> from your <a href="http://dashboard.hostero.eu/#!/account" target="_blank">account</a>.
+                </div>
+
+                <h3>3. Log-in to Hostero</h3>
+                <p>Go to the <a href="http://dashboard.hostero.eu">Dashboard</a> and manage your miners.</p>
+
+
+                <h3>View the tutorial</h3>
+                <iframe width="100%" height="400" src="https://www.youtube.com/embed/W41TYFvzpoY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </article>
+
+            <article id="feedback">
+              <h3>
+                                    <p>Giving Feedback</p>
+                                </h3>
+              <div>
+                <p>We strive to improve our products and we rely on feedback from our users.</p>
+                <p>Please feel free to share any feedback about Hostero via twitter <a href="https://twitter.com/morion4000">@morion4000</a> or hosteroeu(at)gmail.com.</p>
+
+              </div>
+            </article>
+
+          </div>
+          <div class="col">
+            <nav id="nav-components" class="nav flex-md-column" data-sticky="below-nav">
+
+              <a data-smooth-scroll href="mailto:hosteroeu@gmail.com" class="nav-link text-small">Support</a>
+
+            </nav>
+          </div>
+        </div>
+        <!--end of row-->
+      </div>
+      <!--end of container-->
+    </section>
+
+    <section class="bg-gradient p-0 text-white">
+      <svg class="decorative-divider" preserveAspectRatio="none" viewbox=" 0 0 100 100">
+                  <polygon fill="#F8F9FB" points="0 0 100 0 100 100"></polygon>
+              </svg>
+      <div class="container space-lg">
+        <div class="row text-center">
+          <div class="col">
+            <h3 class="h1">Start managing your Miners</h3>
+            <a href="http://dashboard.hostero.eu" class="btn btn-lg btn-light">Dashboard</a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    {{> partials/announcement }}
+    {{> partials/footer }}
+  </div>
+
+  {{> partials/scripts }}
+</body>
+
+</html>

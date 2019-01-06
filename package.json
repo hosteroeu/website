@@ -5,7 +5,9 @@
   "author": "morion4000",
   "dependencies": {
     "bower": "^1.8.4",
+    "express": "^4.16.4",
     "http-server": "^0.11.1",
+    "mustache-express": "^1.2.8",
     "static-server": "^2.2.1"
   }
 }
