@@ -22,15 +22,21 @@ app.all(/.*/, function(req, res, next) {
   if (host.match(/^www\..*/i) || host.match(/^localhost*/i)) {
     next();
   } else {
-    res.redirect(301, "https://www." + host);
+    res.redirect(301, 'https://www.' + host);
   }
+});
+
+app.get('/robots.txt', function (req, res) {
+    res.type('text/plain');
+    res.send("User-agent: *\nDisallow: /");
 });
 
 app.get('/', function(req, res) {
   res.render('index', {
     title: 'Run your Miners, easy as &pi;',
     description: 'Mining software for running your mining nodes',
-    link: 'https://www.hostero.eu/'
+    link: 'https://www.hostero.eu/',
+    keywords: ''
   });
 });
 
@@ -38,7 +44,8 @@ app.get('/getting-started', function(req, res) {
   res.render('getting-started', {
     title: 'Getting Started',
     description: 'Learn how to deploy the software to your mining nodes',
-    link: 'https://www.hostero.eu/getting-started'
+    link: 'https://www.hostero.eu/getting-started',
+    keywords: ''
   });
 });
 
@@ -46,7 +53,8 @@ app.get('/changelog', function(req, res) {
   res.render('changelog', {
     title: 'Changelog',
     description: 'Find out what new features we implemented',
-    link: 'https://www.hostero.eu/changelog'
+    link: 'https://www.hostero.eu/changelog',
+    keywords: ''
   });
 });
 
@@ -54,7 +62,8 @@ app.get('/purchase-webdollar', function(req, res) {
   res.render('purchase-webdollar', {
     title: 'Purchase WebDollar',
     description: 'Tutorial on how to purchase WebDollar coins from multiple sources',
-    link: 'https://www.hostero.eu/purchase-webdollar'
+    link: 'https://www.hostero.eu/purchase-webdollar',
+    keywords: ''
   });
 });
 
@@ -68,6 +77,7 @@ app.get('/cpu-minable-coins', function(req, res) {
       title: 'CPU Minable Coins',
       description: 'Directory with CPU minable coins that are integrated with our mining software',
       link: 'https://www.hostero.eu/cpu-minable-coins',
+      keywords: '',
       coins: JSON.parse(body)
     });
   });
