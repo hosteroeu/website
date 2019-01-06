@@ -13,28 +13,28 @@ app.set('views', __dirname + '/views');
 
 app.get('/', function(req, res) {
   res.render('index', {
-    title: 'Hey',
+    title: 'Run your Miners, easy as &pi;',
     message: 'Hello there!'
   });
 });
 
 app.get('/getting-started', function(req, res) {
   res.render('getting-started', {
-    title: 'Hey',
+    title: 'Getting Started',
     message: 'Hello there!'
   });
 });
 
 app.get('/changelog', function(req, res) {
   res.render('changelog', {
-    title: 'Hey',
+    title: 'Changelog',
     message: 'Hello there!'
   });
 });
 
 app.get('/purchase-webdollar', function(req, res) {
   res.render('purchase-webdollar', {
-    title: 'Hey',
+    title: 'Purchase WebDollar',
     message: 'Hello there!'
   });
 });
