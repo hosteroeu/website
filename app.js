@@ -1,4 +1,5 @@
 var express = require('express');
+var request = require('request');
 var mustacheExpress = require('mustache-express');
 var app = express();
 var port = 80;
@@ -36,6 +37,19 @@ app.get('/purchase-webdollar', function(req, res) {
   res.render('purchase-webdollar', {
     title: 'Purchase WebDollar',
     message: 'Hello there!'
+  });
+});
+
+app.get('/coins', function(req, res) {
+  request('https://api.hostero.eu/v1/coins', function (error, response, body) {
+    console.log('error:', error);
+    console.log('status code:', response && response.statusCode);
+
+    res.render('coins', {
+      title: 'CPU Minable Coins',
+      message: 'Hello there!',
+      coins: JSON.parse(body)
+    });
   });
 });
 

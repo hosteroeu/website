@@ -8,6 +8,7 @@
     "express": "^4.16.4",
     "http-server": "^0.11.1",
     "mustache-express": "^1.2.8",
+    "request": "^2.88.0",
     "static-server": "^2.2.1"
   }
 }
