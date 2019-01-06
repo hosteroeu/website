@@ -12,6 +12,16 @@ app.use('/assets', express.static('assets'));
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
 
+app.all(/.*/, function(req, res, next) {
+  var host = req.header('host');
+
+  if (host.match(/^www\..*/i) || host.match(/^localhost*/i)) {
+    next();
+  } else {
+    res.redirect(301, "http://www." + host);
+  }
+});
+
 app.get('/', function(req, res) {
   res.render('index', {
     title: 'Run your Miners, easy as &pi;',
@@ -41,7 +51,7 @@ app.get('/purchase-webdollar', function(req, res) {
 });
 
 app.get('/cpu-minable-coins', function(req, res) {
-  request('https://api.hostero.eu/v1/coins', function (error, response, body) {
+  request('https://api.hostero.eu/v1/coins', function(error, response, body) {
     console.log('error:', error);
     console.log('status code:', response && response.statusCode);
 
