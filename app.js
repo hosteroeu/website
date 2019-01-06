@@ -10,7 +10,7 @@ app.engine('html', mustacheExpress());
 
 app.use(compression());
 app.use(cacheControl());
-app.use('/webdollar', express.static('webdollar'));
+//app.use('/webdollar', express.static('webdollar'));
 app.use('/assets', express.static('assets'));
 
 app.set('view engine', 'html');
@@ -26,9 +26,9 @@ app.all(/.*/, function(req, res, next) {
   }
 });
 
-app.get('/robots.txt', function (req, res) {
-    res.type('text/plain');
-    res.send("User-agent: *\nDisallow: /");
+app.get('/robots.txt', function(req, res) {
+  res.type('text/plain');
+  res.send("User-agent: *\nDisallow: /");
 });
 
 app.get('/', function(req, res) {
@@ -63,6 +63,15 @@ app.get('/purchase-webdollar', function(req, res) {
     title: 'Purchase WebDollar',
     description: 'Tutorial on how to purchase WebDollar coins from multiple sources',
     link: 'https://www.hostero.eu/purchase-webdollar',
+    keywords: ''
+  });
+});
+
+app.get('/webdollar', function(req, res) {
+  res.render('webdollar', {
+    title: 'Tools and Services developed for WebDollar',
+    description: 'List of tools and services developed for the WebDollar community',
+    link: 'https://www.hostero.eu/webdollar',
     keywords: ''
   });
 });
