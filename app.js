@@ -1,11 +1,15 @@
 var express = require('express');
 var request = require('request');
+var compression = require('compression');
+var cacheControl = require('express-cache-controller');
 var mustacheExpress = require('mustache-express');
 var app = express();
 var port = 80;
 
 app.engine('html', mustacheExpress());
 
+app.use(compression());
+app.use(cacheControl());
 app.use('/webdollar', express.static('webdollar'));
 app.use('/assets', express.static('assets'));
 
@@ -18,7 +22,7 @@ app.all(/.*/, function(req, res, next) {
   if (host.match(/^www\..*/i) || host.match(/^localhost*/i)) {
     next();
   } else {
-    res.redirect(301, "http://www." + host);
+    res.redirect(301, "https://www." + host);
   }
 });
 
@@ -51,6 +55,7 @@ app.get('/purchase-webdollar', function(req, res) {
 });
 
 app.get('/cpu-minable-coins', function(req, res) {
+  // TODO: Implement cache
   request('https://api.hostero.eu/v1/coins', function(error, response, body) {
     console.log('error:', error);
     console.log('status code:', response && response.statusCode);
