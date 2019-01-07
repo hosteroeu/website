@@ -81,8 +81,8 @@ app.get('/webdollar', function(req, res) {
 app.get('/cpu-mineable-coins', function(req, res) {
   // TODO: Implement cache
   request('https://api.hostero.eu/v1/coins', function(error, response, body) {
-    console.log('error:', error);
-    console.log('status code:', response && response.statusCode);
+    //console.log('error:', error);
+    //console.log('status code:', response && response.statusCode);
 
     res.render('coins', {
       title: 'List with CPU mineable cryptocurrencies',
@@ -95,7 +95,7 @@ app.get('/cpu-mineable-coins', function(req, res) {
 });
 
 app.get('*', function(req, res){
-  res.render('404', {
+  res.status(404).render('404', {
     title: 'Page not found',
     description: 'The page you requested couldn\'t be found.',
     link: 'https://www.hostero.eu/',
