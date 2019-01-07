@@ -1,3 +1,0 @@
-#!/bin/bash
-curl https://releases.rancher.com/install-docker/17.12.sh | sh
-docker run --rm --privileged -e CATTLE_HOST_LABELS='provider=provider&purpose=webdollar&generation=1' -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.2.10 http://infra.hostero.eu/v1/scripts/52BB0654EC848A3CDA36:1514678400000:Ko0bNdKEnyk9qcFtXQ1mHWJ0lHE
