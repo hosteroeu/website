@@ -34,7 +34,7 @@ app.get('/robots.txt', function(req, res) {
 app.get('/', function(req, res) {
   res.render('index', {
     title: 'Run your Miners, easy as &pi;',
-    description: 'Mining software for running your mining nodes',
+    description: 'Mining software for CPU minable coins',
     link: 'https://www.hostero.eu/',
     keywords: ''
   });
