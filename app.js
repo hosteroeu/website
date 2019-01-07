@@ -33,7 +33,7 @@ app.get('/robots.txt', function(req, res) {
 
 app.get('/', function(req, res) {
   res.render('index', {
-    title: 'Run your Miners, easy as &pi;',
+    title: 'Mining software for CPU cryptocurrencies',
     description: 'Mining software for CPU minable cryptocurrencies. Start mining cryptocurrency in a few minutes. Mine the most profitable coins and unlock the full potential of your mining rigs.',
     link: 'https://www.hostero.eu/',
     keywords: 'mining, software, crypto, cpu, statistics, miner, universal cpu miner, cpu miner, webdollar, nerva, webchain'
@@ -42,7 +42,7 @@ app.get('/', function(req, res) {
 
 app.get('/getting-started', function(req, res) {
   res.render('getting-started', {
-    title: 'Getting Started',
+    title: 'Getting Started with the CPU Miner',
     description: 'Learn how to deploy the Universal CPU Miner on your mining rigs. Follow our tutorial to install the CPU miner on your hardware. Mine WebDollar, Nerva, WebChain, and many others.',
     link: 'https://www.hostero.eu/getting-started',
     keywords: 'get started, tutorial, mining, software, hardware, crypto, cpu, miner, universal cpu miner, cpu miner'
@@ -51,7 +51,7 @@ app.get('/getting-started', function(req, res) {
 
 app.get('/changelog', function(req, res) {
   res.render('changelog', {
-    title: 'Changelog',
+    title: 'Changelog for our Mining Software',
     description: 'Find out what new features we have released. We are constatly working on improving the mining software, and make your miners profitable.',
     link: 'https://www.hostero.eu/changelog',
     keywords: 'changelog, chance log, improvements, features, mining, software, crypto, cpu, statistics, miner, universal cpu miner, cpu miner'
@@ -60,7 +60,7 @@ app.get('/changelog', function(req, res) {
 
 app.get('/purchase-webdollar', function(req, res) {
   res.render('purchase-webdollar', {
-    title: 'Purchase WebDollar',
+    title: 'Purchase WebDollar, only use Escrow',
     description: 'Tutorial on how to purchase WebDollar coins from multiple sources. Use WebDollar to pay for the platform services. Purchase only with escrow.',
     link: 'https://www.hostero.eu/purchase-webdollar',
     keywords: 'purchase, webdollar, tutorial, crypto, cryptocurrencies, coins, escrow, cpu, cpu miner'
@@ -83,7 +83,7 @@ app.get('/cpu-minable-coins', function(req, res) {
     console.log('status code:', response && response.statusCode);
 
     res.render('coins', {
-      title: 'CPU Minable Coins',
+      title: 'List with CPU minable cryptocurrencies',
       description: 'Directory with CPU minable cryptocurrencies that are integrated with our mining software. See our list with the most profitable CPU minable coins. Multicurrency mining software with easy-to-use CPU miner.',
       link: 'https://www.hostero.eu/cpu-minable-coins',
       keywords: 'directory, cpu, cpu miner, profitable, crypto, cryptocurrencies, mining software, multicurrency, list',
