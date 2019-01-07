@@ -21,6 +21,8 @@ app.set('views', __dirname + '/views');
 app.all(/.*/, function(req, res, next) {
   var host = req.header('host');
 
+  console.log(req.method, req.url);
+
   if (host.match(/^www\..*/i) || host.match(/^localhost*/i)) {
     next();
   } else {
@@ -104,5 +106,5 @@ app.get('*', function(req, res){
 });
 
 app.listen(port, function() {
-  console.log(`Hostero site listening on port ${port}!`);
+  console.log('Hostero site listening on port', port);
 });
