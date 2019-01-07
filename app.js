@@ -94,6 +94,15 @@ app.get('/cpu-mineable-coins', function(req, res) {
   });
 });
 
+app.get('*', function(req, res){
+  res.render('404', {
+    title: 'Page not found',
+    description: 'The page you requested couldn\'t be found.',
+    link: 'https://www.hostero.eu/',
+    keywords: 'mining, software, crypto, cpu, statistics, miner, universal cpu miner, cpu miner, webdollar, nerva, webchain'
+  });
+});
+
 app.listen(port, function() {
-  console.log(`Example app listening on port ${port}!`);
+  console.log(`Hostero site listening on port ${port}!`);
 });
