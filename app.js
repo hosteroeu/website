@@ -34,7 +34,7 @@ app.get('/robots.txt', function(req, res) {
 app.get('/', function(req, res) {
   res.render('index', {
     title: 'Run your Miners, easy as &pi;',
-    description: 'Mining software for CPU minable crypto-currencies. Start mining cryptocurrency in a few minutes. Mine the most profitable coins and unlock the full potential of your mining rigs.',
+    description: 'Mining software for CPU minable cryptocurrencies. Start mining cryptocurrency in a few minutes. Mine the most profitable coins and unlock the full potential of your mining rigs.',
     link: 'https://www.hostero.eu/',
     keywords: 'mining, software, crypto, cpu, statistics, miner, universal cpu miner, cpu miner, webdollar, nerva, webchain'
   });
@@ -63,7 +63,7 @@ app.get('/purchase-webdollar', function(req, res) {
     title: 'Purchase WebDollar',
     description: 'Tutorial on how to purchase WebDollar coins from multiple sources. Use WebDollar to pay for the platform services. Purchase only with escrow.',
     link: 'https://www.hostero.eu/purchase-webdollar',
-    keywords: 'purchase, webdollar, tutorial, crypto, crypto-currencies, coins, escrow, cpu, cpu miner'
+    keywords: 'purchase, webdollar, tutorial, crypto, cryptocurrencies, coins, escrow, cpu, cpu miner'
   });
 });
 
@@ -84,9 +84,9 @@ app.get('/cpu-minable-coins', function(req, res) {
 
     res.render('coins', {
       title: 'CPU Minable Coins',
-      description: 'Directory with CPU minable crypto-currencies that are integrated with our mining software. See our list with the most profitable CPU minable coins. Multicurrency mining software with easy-to-use CPU miner.',
+      description: 'Directory with CPU minable cryptocurrencies that are integrated with our mining software. See our list with the most profitable CPU minable coins. Multicurrency mining software with easy-to-use CPU miner.',
       link: 'https://www.hostero.eu/cpu-minable-coins',
-      keywords: 'directory, cpu, cpu miner, profitable, crypto, crypto-currencies, mining software, multicurrency, list',
+      keywords: 'directory, cpu, cpu miner, profitable, crypto, cryptocurrencies, mining software, multicurrency, list',
       coins: JSON.parse(body)
     });
   });
