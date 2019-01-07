@@ -28,7 +28,7 @@ app.all(/.*/, function(req, res, next) {
 
 app.get('/robots.txt', function(req, res) {
   res.type('text/plain');
-  res.send("User-agent: *\nDisallow: /");
+  res.send("User-agent: *\nDisallow:");
 });
 
 app.get('/', function(req, res) {
@@ -43,7 +43,7 @@ app.get('/', function(req, res) {
 app.get('/getting-started', function(req, res) {
   res.render('getting-started', {
     title: 'Getting Started',
-    description: 'Learn how to deploy the software to your mining nodes',
+    description: 'Learn how to deploy the Universal CPU Miner on your mining nodes',
     link: 'https://www.hostero.eu/getting-started',
     keywords: ''
   });
@@ -52,7 +52,7 @@ app.get('/getting-started', function(req, res) {
 app.get('/changelog', function(req, res) {
   res.render('changelog', {
     title: 'Changelog',
-    description: 'Find out what new features we implemented',
+    description: 'Find out what new features we have implemented',
     link: 'https://www.hostero.eu/changelog',
     keywords: ''
   });
