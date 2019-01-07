@@ -9,7 +9,9 @@ var port = 80;
 app.engine('html', mustacheExpress());
 
 app.use(compression());
-app.use(cacheControl());
+app.use(cacheControl({
+  maxAge: 5
+}));
 //app.use('/webdollar', express.static('webdollar'));
 app.use('/assets', express.static('assets'));
 
