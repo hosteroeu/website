@@ -36,7 +36,7 @@ app.get('/robots.txt', function(req, res) {
 app.get('/', function(req, res) {
   res.render('index', {
     title: 'Mining software for CPU cryptocurrencies',
-    description: 'Mining software for CPU minable cryptocurrencies. Start mining cryptocurrency in a few minutes. Mine the most profitable coins and unlock the full potential of your mining rigs.',
+    description: 'Mining software for CPU mineable cryptocurrencies. Start mining cryptocurrency in a few minutes. Mine the most profitable coins and unlock the full potential of your mining rigs.',
     link: 'https://www.hostero.eu/',
     keywords: 'mining, software, crypto, cpu, statistics, miner, universal cpu miner, cpu miner, webdollar, nerva, webchain'
   });
@@ -78,16 +78,16 @@ app.get('/webdollar', function(req, res) {
   });
 });
 
-app.get('/cpu-minable-coins', function(req, res) {
+app.get('/cpu-mineable-coins', function(req, res) {
   // TODO: Implement cache
   request('https://api.hostero.eu/v1/coins', function(error, response, body) {
     console.log('error:', error);
     console.log('status code:', response && response.statusCode);
 
     res.render('coins', {
-      title: 'List with CPU minable cryptocurrencies',
-      description: 'Directory with CPU minable cryptocurrencies that are integrated with our mining software. See our list with the most profitable CPU minable coins. Multicurrency mining software with easy-to-use CPU miner.',
-      link: 'https://www.hostero.eu/cpu-minable-coins',
+      title: 'List with CPU mineable cryptocurrencies',
+      description: 'Directory with CPU mineable cryptocurrencies that are integrated with our mining software. See our list with the most profitable CPU mineable coins. Multicurrency mining software with easy-to-use CPU miner.',
+      link: 'https://www.hostero.eu/cpu-mineable-coins',
       keywords: 'directory, cpu, cpu miner, profitable, crypto, cryptocurrencies, mining software, multicurrency, list',
       coins: JSON.parse(body)
     });
