@@ -4,7 +4,7 @@ var compression = require('compression');
 var cacheControl = require('express-cache-controller');
 var mustacheExpress = require('mustache-express');
 var app = express();
-var port = 80;
+var port = process.env.PORT || 3000;
 
 app.engine('html', mustacheExpress());
 
