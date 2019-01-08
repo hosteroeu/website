@@ -26,7 +26,9 @@ app.all(/.*/, function(req, res, next) {
   if (host.match(/^www\..*/i) || host.match(/^localhost*/i)) {
     next();
   } else {
-    res.redirect(301, 'https://www.' + host);
+    var url = req.url || '';
+
+    res.redirect(301, 'https://www.' + host + url);
   }
 });
 
