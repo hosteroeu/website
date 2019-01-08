@@ -1,7 +1,6 @@
 var express = require('express');
 var request = require('request');
 var compression = require('compression');
-var cacheControl = require('express-cache-controller');
 var mustacheExpress = require('mustache-express');
 var app = express();
 var port = process.env.PORT || 3000;
@@ -9,10 +8,16 @@ var port = process.env.PORT || 3000;
 app.engine('html', mustacheExpress());
 
 app.use(compression());
-app.use(cacheControl({
-  maxAge: 5
-}));
-//app.use('/webdollar', express.static('webdollar'));
+
+app.get('/*', function(req, res, next) {
+  if (req.url.indexOf('/assets/') === 0) {
+    res.setHeader('Cache-Control', 'public, max-age=2592000');
+    res.setHeader('Expires', new Date(Date.now() + 2592000000).toUTCString());
+  }
+
+  next();
+});
+
 app.use('/assets', express.static('assets'));
 
 app.set('view engine', 'html');
@@ -98,7 +103,7 @@ app.get('/cpu-mineable-coins', function(req, res) {
   });
 });
 
-app.get('*', function(req, res){
+app.get('*', function(req, res) {
   res.status(404).render('404', {
     title: 'Page not found',
     description: 'The page you requested couldn\'t be found.',
