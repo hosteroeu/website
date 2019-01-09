@@ -63,7 +63,7 @@ app.get('/getting-started', function(req, res) {
 app.get('/changelog', function(req, res) {
   res.render('changelog', {
     title: 'Changelog for our Mining Software',
-    description: 'Find out what new features we have released. We are constatly working on improving the mining software, and make your miners profitable.',
+    description: 'Find out what new features we have released. We are constantly working on improving the mining software, and make your miners profitable.',
     link: 'https://www.hostero.eu/changelog',
     keywords: 'changelog, chance log, improvements, features, mining, software, crypto, cpu, statistics, miner, universal cpu miner, cpu miner'
   });
