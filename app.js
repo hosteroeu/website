@@ -92,13 +92,15 @@ app.get('/cpu-mineable-coins', function(req, res) {
   request('https://api.hostero.eu/v1/coins', function(error, response, body) {
     //console.log('error:', error);
     //console.log('status code:', response && response.statusCode);
+    var coins = JSON.parse(body);
 
     res.render('coins', {
       title: 'List with CPU mineable cryptocurrencies',
       description: 'Directory with CPU mineable cryptocurrencies that are integrated with our mining software. See our list with the most profitable CPU mineable coins. Multicurrency mining software with easy-to-use CPU miner.',
       link: 'https://www.hostero.eu/cpu-mineable-coins',
       keywords: 'directory, cpu, cpu miner, profitable, crypto, cryptocurrencies, mining software, multicurrency, list',
-      coins: JSON.parse(body)
+      coins: coins,
+      coins_no: coins.length
     });
   });
 });
