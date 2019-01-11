@@ -63,7 +63,7 @@
                   <th scope="col">Description</th>
                   <th scope="col">Released</th>
                   <th scope="col">On Hostero</th>
-                  <th scope="col"></th>
+                  <th scope="col">&nbsp;</th>
                 </tr>
               </thead>
               <tbody>
@@ -71,15 +71,15 @@
                 <tr class="bg-white">
                   <th scope="row">
                     <div class="media align-items-center">
-                      <img alt="Image" src="{{logo_url}}" class="avatar" />
+                      <img alt="Logo" src="{{logo_url}}" class="avatar" />
                       <div class="media-body">
                         <span class="h6 mb-0"><strong>{{name}}</strong> ({{short_name}})</span>
                         <span class="badge badge-light">{{algorithm}}</span>
                         {{#cpu_only}}
-                        <span class="badge badge-success">CPU Only</span>
+                        <span class="badge badge-light">CPU Only</span>
                         {{/cpu_only}}
                         {{#fixed_supply}}
-                        <span class="badge badge-info">Fixed Supply</span>
+                        <span class="badge badge-light">Fixed Supply</span>
                         {{/fixed_supply}}
                       </div>
                     </div>
@@ -88,7 +88,8 @@
                   <td>{{released_date}}</td>
                   <td>
                     {{#on_hostero}}
-                      <a class="btn btn-primary" href="https://dashboard.hostero.eu">Start Mining</a> {{/on_hostero}}
+                      <a class="btn btn-primary" href="https://dashboard.hostero.eu">Start Mining</a>
+                    {{/on_hostero}}
                     {{^on_hostero}} Coming Soon {{/on_hostero}}
                   </td>
                   <td>
