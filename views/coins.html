@@ -28,17 +28,17 @@
         <div class="row justify-content-center align-items-center">
           <div class="col">
             <div class="media align-items-center">
-              <img alt="Hostero Logo" src="assets/img/cpu_icon.png" class="avatar avatar-lg avatar-square" />
+              <img alt="CPU Icon" src="assets/img/cpu_icon.png" class="avatar avatar-lg avatar-square opacity-40" />
               <div class="media-body">
                 <div class="mb-3">
-                  <h1 class="h2 mb-2">CPU Mineable Coins</h1>
-                  <span>The coins on this directory are eventually all going to be added on Hostero. We are gradually adding new coins and always looking for coins that are launched recently.</span>
+                  <h1 class="h2 mb-2">Directory with CPU Mineable Coins</h1>
+                  <span>The coins on the directory are eventually all going to be available on the platform. Hostero is gradually adding new coins and always looking for coins that are launched recently.</span>
                 </div>
                 <div>
                   <ul class="list-inline text-small d-inline-block">
                     <li class="list-inline-item"><i class="icon-link"></i> <a href="https://api.hostero.eu/v1/coins" target="_blank">https://api.hostero.eu/v1/coins</a>
                     </li>
-                    <li class="list-inline-item"><i class="icon-message"></i> {{coins_no}}</li>
+                    <li class="list-inline-item"><i class="icon-folder"></i> {{coins_no}}</li>
                     <!--<li class="list-inline-item"><i class="icon-message"></i> 6</li>-->
                   </ul>
                 </div>
@@ -46,7 +46,7 @@
             </div>
           </div>
           <div class="col-auto">
-            <a class="btn btn-primary" href="https://goo.gl/forms/BnKLLU00rir6mCvF3" target="_blank"><i class="icon-add-user mr-1"></i> Submit Coin</a>
+            <a class="btn btn-primary" href="https://goo.gl/forms/BnKLLU00rir6mCvF3" target="_blank"><i class="icon-circle-with-plus mr-1"></i> Submit Coin</a>
           </div>
         </div>
       </div>
@@ -61,7 +61,7 @@
                 <tr>
                   <th scope="col">Name</th>
                   <th scope="col">Description</th>
-                  <th scope="col">On Hostero</th>
+                  <th scope="col">Availability</th>
                   <th scope="col">&nbsp;</th>
                 </tr>
               </thead>
@@ -70,23 +70,25 @@
                 <tr class="bg-white">
                   <th scope="row">
                     <div class="media align-items-center">
-                      <img alt="Logo" src="{{logo_url}}" class="avatar" />
+                      <img alt="Logo" src="{{logo_url}}" class="avatar opacity-80" />
                       <div class="media-body">
                         <span class="h6 mb-0"><strong>{{name}}</strong> ({{short_name}})</span>
-                        <span class="badge badge-light">{{algorithm}}</span>
+                        <span class="small">
                         {{#cpu_only}}
-                        <span class="badge badge-light">CPU Only</span>
+                        CPU Only,
                         {{/cpu_only}}
                         {{#fixed_supply}}
-                        <span class="badge badge-light">Fixed Supply</span>
+                        Fixed Supply,
                         {{/fixed_supply}}
+                        {{algorithm}}
+                        </span>
                       </div>
                     </div>
                   </th>
                   <td>{{description}}</td>
                   <td>
                     {{#on_hostero}}
-                      <a class="btn btn-primary" href="https://dashboard.hostero.eu">Start Mining</a>
+                      <a class="btn btn-outline-secondary" href="https://dashboard.hostero.eu">Start Mining</a>
                     {{/on_hostero}}
                     {{^on_hostero}} Coming Soon {{/on_hostero}}
                   </td>
