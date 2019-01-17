@@ -6,6 +6,10 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://www.hostero.eu/pricing</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://www.hostero.eu/webdollar</loc>
     <changefreq>monthly</changefreq>
   </url>
