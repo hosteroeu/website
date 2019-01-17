@@ -116,6 +116,19 @@ app.get('/cpu-mineable-coins', function(req, res) {
 
 // The file is also accessible via /assets/install.sh
 app.get('/install', function(req, res) {
+  var account_id;
+
+  if (req.query && req.query.a) {
+    account_id = req.query.a;
+  }
+
+  res.set('Content-Type', 'text/plain');
+
+  res.render('install', {
+    account_id: req.query.a
+  });
+
+  /*
   res.sendFile('install.sh', {
     root: __dirname + '/assets/',
     dotfiles: 'deny',
@@ -124,6 +137,7 @@ app.get('/install', function(req, res) {
       'x-sent': true
     }
   });
+  */
 });
 
 // The file is also accessible via /assets/sitemap.xml
