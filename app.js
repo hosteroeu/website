@@ -114,6 +114,30 @@ app.get('/cpu-mineable-coins', function(req, res) {
   });
 });
 
+// The file is also accessible via /assets/install.sh
+app.get('/install', function(req, res) {
+  res.sendFile('install.sh', {
+    root: __dirname + '/assets/',
+    dotfiles: 'deny',
+    headers: {
+      'x-timestamp': Date.now(),
+      'x-sent': true
+    }
+  });
+});
+
+// The file is also accessible via /assets/sitemap.xml
+app.get('/sitemap.xml', function(req, res) {
+  res.sendFile('sitemap.xml', {
+    root: __dirname + '/assets/',
+    dotfiles: 'deny',
+    headers: {
+      'x-timestamp': Date.now(),
+      'x-sent': true
+    }
+  });
+});
+
 app.get('*', function(req, res) {
   res.status(404).render('404', {
     title: 'Page not found',
