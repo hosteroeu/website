@@ -72,16 +72,20 @@
                     <div class="media align-items-center">
                       <img alt="Logo" src="{{logo_url}}" class="avatar opacity-80" />
                       <div class="media-body">
-                        <span class="h6 mb-0"><strong>{{name}}</strong> ({{short_name}})</span>
-                        <span class="small">
+                        <span class="h6 mb-0"><strong>{{name}}</strong>
+                          {{#cmc_url}}
+                          (<a href="{{cmc_url}}" target="_blank">{{short_name}}</a>)
+                          {{/cmc_url}}
+                          {{^cmc_url}}({{short_name}}){{/cmc_url}}
+                        </span>
+
+                        <p><span class="small">Algo(s): {{algorithm}}</span></p>
                         {{#cpu_only}}
-                        CPU Only,
+                        <span class="badge badge-secondary">CPU Only</span>
                         {{/cpu_only}}
                         {{#fixed_supply}}
-                        Fixed Supply,
+                        <span class="badge badge-info">Fixed Supply</span>
                         {{/fixed_supply}}
-                        {{algorithm}}
-                        </span>
                       </div>
                     </div>
                   </th>
@@ -102,9 +106,6 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{explorer_url}}" target="_blank">Explorer</a>
                         <a class="dropdown-item" href="{{exchange_url}}" target="_blank">Exchange</a>
-                        {{#cmc_url}}
-                        <a class="dropdown-item" href="{{cmc_url}}" target="_blank">CoinMarketCap</a>
-                        {{/cmc_url}}
                         {{#statistics_url}}
                         <a class="dropdown-item" href="{{statistics_url}}" target="_blank">Statistics</a>
                         {{/statistics_url}}
