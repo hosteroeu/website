@@ -112,10 +112,6 @@ app.get('/cpu-mineable-coins', function(req, res) {
   });
 });
 
-app.get('/cpu-minable-coins', function(req, res) {
-  res.redirect(301, 'https://www.hostero.eu/cpu-mineable-coins');
-});
-
 // The file is also accessible via /assets/install.sh
 app.get('/install', function(req, res) {
   var account_id;
@@ -152,6 +148,18 @@ app.get('/sitemap.xml', function(req, res) {
       'x-sent': true
     }
   });
+});
+
+app.get('/cpu-minable-coins', function(req, res) {
+  res.redirect(301, 'https://www.hostero.eu/cpu-mineable-coins');
+});
+
+app.get('/webdollar/chance.html', function(req, res) {
+  res.redirect(301, 'https://calculator.wd.hostero.eu');
+});
+
+app.get('/webdollar/fallback.html', function(req, res) {
+  res.redirect(301, 'http://nodes.wd.hostero.eu');
 });
 
 app.get('*', function(req, res) {
