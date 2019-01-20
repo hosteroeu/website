@@ -99,8 +99,6 @@ app.get('/webdollar', function(req, res) {
 app.get('/cpu-mineable-coins', function(req, res) {
   // TODO: Implement cache
   request('https://api.hostero.eu/v1/coins', function(error, response, body) {
-    //console.log('error:', error);
-    //console.log('status code:', response && response.statusCode);
     var coins = JSON.parse(body);
 
     res.render('coins', {
@@ -112,6 +110,10 @@ app.get('/cpu-mineable-coins', function(req, res) {
       coins_no: coins.length
     });
   });
+});
+
+app.get('/cpu-minable-coins', function(req, res) {
+  res.redirect(301, 'https://www.hostero.eu/cpu-mineable-coins');
 });
 
 // The file is also accessible via /assets/install.sh
