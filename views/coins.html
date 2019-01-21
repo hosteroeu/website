@@ -94,7 +94,7 @@
                     {{#on_hostero}}
                       <a class="btn btn-outline-secondary" href="https://dashboard.hostero.eu">Start Mining</a>
                     {{/on_hostero}}
-                    {{^on_hostero}} Coming Soon {{/on_hostero}}
+                    {{^on_hostero}} To Be Added {{/on_hostero}}
                   </td>
                   <td>
                     <div class="dropdown">
@@ -104,8 +104,12 @@
                       <div class="dropdown-menu dropdown-menu-sm" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="{{website_url}}" target="_blank">Website</a>
                         <div class="dropdown-divider"></div>
+                        {{#explorer_url}}
                         <a class="dropdown-item" href="{{explorer_url}}" target="_blank">Explorer</a>
+                        {{/explorer_url}}
+                        {{#exchange_url}}
                         <a class="dropdown-item" href="{{exchange_url}}" target="_blank">Exchange</a>
+                        {{/exchange_url}}
                         {{#statistics_url}}
                         <a class="dropdown-item" href="{{statistics_url}}" target="_blank">Statistics</a>
                         {{/statistics_url}}
