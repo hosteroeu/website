@@ -55,53 +55,14 @@
             </nav>
           </div>
           <div class="col-12 col-md-8">
-            <article id="components">
-              <h3>
-                  <p>Requirements for Host</p>
-              </h3>
-              <div>
-                <ul>
-                  <li>Internet connectivity</li>
-                  <li>Linux (we recommend Ubuntu 16.04)</li>
-                  <li><a target="_blank" href="https://docker.com" data-toggle="tooltip" data-placement="top" title="Open in new tab">Docker <i class="icon-popup"></i></a></li>
-                  <li>1 GiB RAM</li>
-                  <li>1 GiB Storage</li>
-                </ul>
-              </div>
+            <article id="install">
+              <h3>Installation</h3>
+              You can view the install instructions <a href="https://dashboard.hostero.eu/#!/install">here</a>.
             </article>
 
-            <article id="setting-up-dev-tools">
-              <h3>Installation instructions</h3>
-              <div>
-                <p>You first need to install <a target="_blank" href="https://docker.com" data-toggle="tooltip" data-placement="top" title="Open in new tab">Docker <i class="icon-popup"></i></a>. We recommand to install Docker using our instructions, but you can install it using alternative ways as well.</p>
-
-                <div class="alert alert-primary" role="alert">
-                  Before you follow these steps, make sure you have a Hostero account. Create one <a href="http://dashboard.hostero.eu/#!/install" target="_blank">here</a>.
-                </div>
-
-                <h2>1. Install Docker</h2>
-                <p>Run this command to install it:</p>
-                <pre><code class="lang-bash">curl https://releases.rancher.com/install-docker/17.12.sh | sh</code></pre>
-                <br />
-                <div class="alert alert-info" role="alert">
-                  You need to have curl installed. If it's not installed, run: <code>apt install curl</code>
-                </div>
-
-                <h2>2. Install Hostero</h2>
-                <p>Run this command to install it:</p>
-
-                <pre><code class="lang-bash">sudo docker run -e CATTLE_HOST_LABELS='account=ACCOUNT_ID' --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.2.9 http://infra.hostero.eu:8080/v1/scripts/2E28C27EE87F5E1A6B7F:1514678400000:ShibdGaXFOlmN3QGGHj1UFuP1lU</code></pre>
-                <br />
-                <div class="alert alert-info" role="alert">
-                  Replace <code>ACCOUNT_ID</code> with the <strong>Account ID</strong> from your <a href="http://dashboard.hostero.eu/#!/account" target="_blank">account</a>.
-                </div>
-
-                <h3>3. Log-in to Hostero</h3>
-                <p>Go to the <a href="http://dashboard.hostero.eu">Dashboard</a> and manage your miners.</p>
-
-                <h3>View the tutorial</h3>
-                <iframe width="100%" height="400" src="https://www.youtube.com/embed/W41TYFvzpoY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </div>
+            <article id="video">
+              <h3>View the tutorial</h3>
+              <iframe width="100%" height="400" src="https://www.youtube.com/embed/W41TYFvzpoY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </article>
 
             <article id="feedback">
@@ -113,13 +74,10 @@
                 <p>Please feel free to share any feedback about Hostero via twitter <a href="https://twitter.com/hosteroeu">@hosteroeu</a> or hosteroeu@gmail.com.</p>
               </div>
             </article>
-
           </div>
           <div class="col">
             <nav id="nav-components" class="nav flex-md-column" data-sticky="below-nav">
-
               <a data-smooth-scroll href="mailto:hosteroeu@gmail.com" class="nav-link text-small">Support</a>
-
             </nav>
           </div>
         </div>
