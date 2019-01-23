@@ -70,11 +70,11 @@
                 <tr class="bg-white">
                   <th scope="row">
                     <div class="media align-items-center">
-                      <img alt="Logo" src="{{logo_url}}" class="avatar opacity-80" />
+                      <img alt="Logo" src="{{{logo_url}}}" class="avatar opacity-80" />
                       <div class="media-body">
                         <span class="h6 mb-0"><strong>{{name}}</strong>
                           {{#cmc_url}}
-                          (<a href="{{cmc_url}}" target="_blank">{{short_name}}</a>)
+                          (<a href="{{{cmc_url}}}" target="_blank">{{short_name}}</a>)
                           {{/cmc_url}}
                           {{^cmc_url}}({{short_name}}){{/cmc_url}}
                         </span>
@@ -102,22 +102,22 @@
                           <i class="icon-dots-three-horizontal"></i>
                         </button>
                       <div class="dropdown-menu dropdown-menu-sm" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="{{website_url}}" target="_blank">Website</a>
+                        <a class="dropdown-item" href="{{{website_url}}}" target="_blank">Website</a>
                         <div class="dropdown-divider"></div>
                         {{#explorer_url}}
-                        <a class="dropdown-item" href="{{explorer_url}}" target="_blank">Explorer</a>
+                        <a class="dropdown-item" href="{{{explorer_url}}}" target="_blank">Explorer</a>
                         {{/explorer_url}}
                         {{#exchange_url}}
-                        <a class="dropdown-item" href="{{exchange_url}}" target="_blank">Exchange</a>
+                        <a class="dropdown-item" href="{{{exchange_url}}}" target="_blank">Exchange</a>
                         {{/exchange_url}}
                         {{#statistics_url}}
-                        <a class="dropdown-item" href="{{statistics_url}}" target="_blank">Statistics</a>
+                        <a class="dropdown-item" href="{{{statistics_url}}}" target="_blank">Statistics</a>
                         {{/statistics_url}}
                         {{#calculator_url}}
-                        <a class="dropdown-item" href="{{calculator_url}}" target="_blank">Calculator</a>
+                        <a class="dropdown-item" href="{{{calculator_url}}}" target="_blank">Calculator</a>
                         {{/calculator_url}}
                         {{#mining_pools_url}}
-                        <a class="dropdown-item" href="{{mining_pools_url}}" target="_blank">Mining Pools</a>
+                        <a class="dropdown-item" href="{{{mining_pools_url}}}" target="_blank">Mining Pools</a>
                         {{/mining_pools_url}}
                       </div>
                     </div>
