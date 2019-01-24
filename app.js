@@ -1,9 +1,43 @@
 var express = require('express');
 var request = require('request');
+var crequest = require('cached-request')(request);
 var compression = require('compression');
 var mustacheExpress = require('mustache-express');
 var app = express();
 var port = process.env.PORT || 3000;
+
+crequest.setCacheDirectory('tmp');
+
+function render_404(req, res) {
+  res.status(404).render('404', {
+    title: 'Page not found',
+    description: 'The page you requested couldn\'t be found.',
+    link: 'https://www.hostero.eu/',
+    keywords: 'mining, software, crypto, cpu, statistics, miner, universal cpu miner, cpu miner, webdollar, nerva, webchain'
+  });
+}
+
+function get_coins(callback) {
+  crequest({
+    url: 'https://api.hostero.eu/v1/coins',
+    ttl: 3600 * 1000 // 1h
+  }, function(error, response, body) {
+    var coins = JSON.parse(body);
+
+    callback(error, coins);
+  });
+}
+
+function get_benchmarks(callback, coin) {
+  crequest({
+    url: 'https://api.hostero.eu/v1/benchmarks?coin=' + coin,
+    ttl: 3600 * 1000 // 1h
+  }, function(error, response, body) {
+    var benchmarks = JSON.parse(body);
+
+    callback(error, benchmarks);
+  });
+}
 
 app.engine('html', mustacheExpress());
 
@@ -97,10 +131,7 @@ app.get('/webdollar', function(req, res) {
 });
 
 app.get('/cpu-mineable-coins', function(req, res) {
-  // TODO: Implement cache
-  request('https://api.hostero.eu/v1/coins', function(error, response, body) {
-    var coins = JSON.parse(body);
-
+  get_coins(function(error, coins) {
     res.render('coins', {
       title: 'List with CPU mineable cryptocurrencies',
       description: 'Directory with CPU mineable cryptocurrencies that are integrated with our mining software. See our list with the most profitable CPU mineable coins.',
@@ -109,6 +140,38 @@ app.get('/cpu-mineable-coins', function(req, res) {
       coins: coins,
       coins_no: coins.length
     });
+  });
+});
+
+app.get('/coins/:coin', function(req, res) {
+  if (!req.params.coin) {
+    return render_404(req, res);
+  }
+
+  get_coins(function(error, coins) {
+    var coin;
+
+    for (var i = 0, l = coins.length; i < l; i++) {
+      if (coins[i].internal_name === req.params.coin) {
+        coin = coins[i];
+        break;
+      }
+    }
+
+    if (!coin) {
+      return render_404(req, res);
+    }
+
+    get_benchmarks(function(error, benchmarks) {
+      res.render('coin', {
+        title: 'List with CPU mineable cryptocurrencies',
+        description: 'Directory with CPU mineable cryptocurrencies that are integrated with our mining software. See our list with the most profitable CPU mineable coins.',
+        link: 'https://www.hostero.eu/cpu-mineable-coins',
+        keywords: 'directory, cpu, cpu miner, profitable, crypto, cryptocurrencies, mining software, multicurrency, list',
+        coin: coin,
+        benchmarks: benchmarks
+      });
+    }, coin.internal_name);
   });
 });
 
@@ -162,14 +225,7 @@ app.get('/webdollar/fallback.html', function(req, res) {
   res.redirect(301, 'http://nodes.wd.hostero.eu');
 });
 
-app.get('*', function(req, res) {
-  res.status(404).render('404', {
-    title: 'Page not found',
-    description: 'The page you requested couldn\'t be found.',
-    link: 'https://www.hostero.eu/',
-    keywords: 'mining, software, crypto, cpu, statistics, miner, universal cpu miner, cpu miner, webdollar, nerva, webchain'
-  });
-});
+app.get('*', render_404);
 
 app.listen(port, function() {
   console.log('Hostero site listening on port', port);

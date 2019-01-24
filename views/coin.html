@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  {{> partials/head }}
+</head>
+
+<body>
+  {{> partials/header }}
+
+  <div class="main-container">
+    <nav aria-label="breadcrumb" role="navigation" class="bg-primary text-white">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="/">Home</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                <a href="/cpu-mineable-coins">Coins</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">{{coin.name}}</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="flush-with-above">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <table class="table table-hover align-items-center table-borderless">
+              <thead>
+                <tr>
+                  <th scope="col">CPU Model</th>
+                  <th scope="col">CPU Cores</th>
+                  <th scope="col">Threads</th>
+                  <th scope="col">Hashrate (H/s)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#benchmarks}}
+                <tr class="bg-white">
+                  <td>{{cpu_model}}</td>
+                  <td>{{cpu_count}}</td>
+                  <td>{{threads}}</td>
+                  <td>{{power}}</td>
+                </tr>
+                <tr class="table-divider"></tr>
+                {{/benchmarks}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {{> partials/subscribe }}
+    {{> partials/footer }}
+  </div>
+
+  {{> partials/scripts }}
+</body>
+
+</html>
