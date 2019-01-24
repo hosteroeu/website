@@ -143,7 +143,7 @@ app.get('/cpu-mineable-coins', function(req, res) {
   });
 });
 
-app.get('/coins/:coin', function(req, res) {
+app.get('/coin/:coin', function(req, res) {
   if (!req.params.coin) {
     return render_404(req, res);
   }
@@ -164,10 +164,10 @@ app.get('/coins/:coin', function(req, res) {
 
     get_benchmarks(function(error, benchmarks) {
       res.render('coin', {
-        title: 'List with CPU mineable cryptocurrencies',
-        description: 'Directory with CPU mineable cryptocurrencies that are integrated with our mining software. See our list with the most profitable CPU mineable coins.',
-        link: 'https://www.hostero.eu/cpu-mineable-coins',
-        keywords: 'directory, cpu, cpu miner, profitable, crypto, cryptocurrencies, mining software, multicurrency, list',
+        title: 'Mine ' + coin.name + ' on Hostero',
+        description: coin.description + '. Directory with CPU mineable cryptocurrencies that are integrated with our mining software. See our list with the most profitable CPU mineable coins.',
+        link: 'https://www.hostero.eu/coin/' + coin.internal_name,
+        keywords: coin.name + ', coin, directory, cpu, cpu miner, profitable, crypto, cryptocurrencies, mining software, multicurrency, list',
         coin: coin,
         benchmarks: benchmarks
       });

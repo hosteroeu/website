@@ -29,6 +29,70 @@
     <loc>https://www.hostero.eu/cpu-mineable-coins</loc>
     <changefreq>daily</changefreq>
   </url>
+  <url>
+    <loc>https://www.hostero.eu/coin/webdollar</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.hostero.eu/coin/nerva</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.hostero.eu/coin/webchain</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.hostero.eu/coin/veruscoin</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.hostero.eu/coin/credits</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.hostero.eu/coin/ravencoin</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.hostero.eu/coin/myriad</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.hostero.eu/coin/yenten</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.hostero.eu/coin/globalboost</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.hostero.eu/coin/aywa</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.hostero.eu/coin/zumy</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.hostero.eu/coin/dynamic</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.hostero.eu/coin/sequence</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.hostero.eu/coin/unitus</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.hostero.eu/coin/uplexa</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.hostero.eu/coin/loki</loc>
+    <changefreq>weekly</changefreq>
+  </url>
 </urlset>
 <!--<guid value="d2f2ea52-d100-4bd5-9363-9c43c3716e21" />-->
 <!--Created using XmlSitemapGenerator.org - Free HTML, RSS and XML sitemap generator-->
