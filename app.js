@@ -20,7 +20,7 @@ function render_404(req, res) {
 function get_coins(callback) {
   crequest({
     url: 'https://api.hostero.eu/v1/coins',
-    ttl: 3600 * 1000 // 1h
+    ttl: 3600 * 1000 * 24 // 1d
   }, function(error, response, body) {
     var coins = JSON.parse(body);
 
@@ -31,7 +31,7 @@ function get_coins(callback) {
 function get_benchmarks(callback, coin) {
   crequest({
     url: 'https://api.hostero.eu/v1/benchmarks?coin=' + coin,
-    ttl: 3600 * 1000 // 1h
+    ttl: 3600 * 1000 * 24 // 1d
   }, function(error, response, body) {
     var benchmarks = JSON.parse(body);
 
@@ -167,7 +167,7 @@ app.get('/coins/:coin', function(req, res) {
         title: 'Mine ' + coin.name + ' on Hostero',
         description: coin.description + '. Directory with CPU mineable cryptocurrencies that are integrated with our mining software. See our list with the most profitable CPU mineable coins.',
         link: 'https://www.hostero.eu/coins/' + coin.internal_name,
-        keywords: coin.name + ', coin, directory, cpu, cpu miner, profitable, crypto, cryptocurrencies, mining software, multicurrency, list',
+        keywords: coin.name + ', coin, benchmarks, directory, cpu, cpu miner, crypto, cryptocurrencies, mining software, multicurrency, list',
         coin: coin,
         benchmarks: benchmarks
       });
