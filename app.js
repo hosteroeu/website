@@ -165,9 +165,9 @@ app.get('/coins/:coin', function(req, res) {
     get_benchmarks(function(error, benchmarks) {
       res.render('coin', {
         title: 'Mine ' + coin.name + ' on Hostero',
-        description: coin.description + '. Directory with CPU mineable cryptocurrencies that are integrated with our mining software. See our list with the most profitable CPU mineable coins.',
+        description: coin.description + '. Start mining ' + coin.name + ' in 1 minute.',
         link: 'https://www.hostero.eu/coins/' + coin.internal_name,
-        keywords: coin.name + ', coin, benchmarks, directory, cpu, cpu miner, crypto, cryptocurrencies, mining software, multicurrency, list',
+        keywords: coin.name + ', coin, benchmarks, directory, mine, cpu, cpu miner, crypto, cryptocurrencies, mining software, multicurrency, list',
         coin: coin,
         benchmarks: benchmarks
       });

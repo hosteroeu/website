@@ -94,7 +94,7 @@
             <div class="card card-lg text-center">
               <div class="card-body">
                 <i class="icon-add-to-list display-4 opacity-20"></i>
-                <h1 class="h5">{{coin.name}} is not yet integrated on Hostero</h1>
+                <h1 class="h5">{{coin.name}} is not yet integrated</h1>
                 <p>
                   Benchmarks are going to be available as soon as the coin is integrated.
                 </p>
@@ -147,6 +147,29 @@
         </div>
       </div>
     </section>
+    <section class="height-70">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-6 col-lg-5">
+            <div class="card card-lg text-center">
+              <div class="card-body">
+                <i class="icon-download display-4 opacity-20"></i>
+                <h1 class="h5">Mine {{coin.name}}</h1>
+                <p>
+                  Start mining {{coin.name}} in 1 minute.
+                </p>
+                <a href="https://dashboard.hostero.eu" class="btn btn-lg btn-primary">Go to Dashboard</a>
+              </div>
+            </div>
+          </div>
+          <!--end of col-->
+        </div>
+        <!--end of row-->
+      </div>
+      <!--end of container-->
+    </section>
+    <!--end of section-->
+
     {{/coin.on_hostero}} {{> partials/footer_small }}
   </div>
 
