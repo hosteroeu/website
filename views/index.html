@@ -53,6 +53,38 @@
       </div>
     </section>
 
+    <section class="space">
+      <div class="container">
+        <div class="row justify-content-center text-center section-intro">
+          <div class="col-12 col-md-9 col-lg-8">
+            <span class="title-decorative">Currencies on Hostero</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 text-center">
+            <ul class="list-inline list-inline-large">
+              {{#coins}}
+              {{#on_hostero}}
+                <li class="list-inline-item">
+                  <a href="/coins/{{internal_name}}" data-toggle="tooltip" data-placement="top" title="{{name}}">
+                    <img alt="{{name}}" class="logo logo-lg" src="{{{logo_url}}}" />
+                  </a>
+                </li>
+              {{/on_hostero}}
+              {{/coins}}
+            </ul>
+          </div>
+        </div>
+        <div class="row justify-content-center text-center section-outro">
+          <div class="col-lg-4 col-md-5">
+            <h6>WebDollar + many more</h6>
+            <p>We compiled a directory with cryptocurrencies that can be mined with CPU</p>
+            <a href="/cpu-mineable-coins">CPU Mineable Coins &rsaquo;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="bg-gradient text-white space-lg">
       <div class="container">
         <div class="row justify-content-center">
@@ -224,14 +256,6 @@
             </div>
           </div>
         </div>
-
-        <div class="row justify-content-center text-center section-outro">
-          <div class="col-lg-4 col-md-5">
-            <h6>WebDollar + many more</h6>
-            <p>We compiled a directory with cryptocurrencies that can be mined with CPU</p>
-            <a href="/cpu-mineable-coins">CPU Mineable Coins &rsaquo;</a>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -322,6 +346,11 @@
 
     <section class="space">
       <div class="container">
+        <div class="row justify-content-center text-center section-intro">
+          <div class="col-12 col-md-9 col-lg-8">
+            <span class="title-decorative">Partners</span>
+          </div>
+        </div>
         <div class="row">
           <div class="col-12 text-center">
             <ul class="list-inline list-inline-large">
