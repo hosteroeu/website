@@ -81,7 +81,7 @@ app.get('/', function(req, res) {
     res.render('index', {
       title: 'Mining software for CPU cryptocurrencies',
       description: 'Start mining cryptocurrency in a few minutes. Mine the most profitable coins and unlock the full potential of your mining rigs.',
-      link: 'https://www.hostero.eu/',
+      link: 'https://www.hostero.eu',
       keywords: 'mining, software, crypto, cpu, statistics, miner, universal cpu miner, cpu miner, webdollar, nerva, webchain',
       coins: coins
     });
