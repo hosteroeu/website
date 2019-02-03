@@ -53,38 +53,7 @@
       </div>
     </section>
 
-    <section class="space">
-      <div class="container">
-        <div class="row justify-content-center text-center section-intro">
-          <div class="col-12 col-md-9 col-lg-8">
-            <span class="title-decorative">Currencies on Hostero</span>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 text-center">
-            <ul class="list-inline list-inline-large">
-              {{#coins}}
-              {{#on_hostero}}
-                <li class="list-inline-item">
-                  <a href="/coins/{{internal_name}}" data-toggle="tooltip" data-placement="top" title="{{name}}">
-                    <img alt="{{name}}" class="logo logo-lg" src="{{{logo_url}}}" />
-                  </a>
-                </li>
-              {{/on_hostero}}
-              {{/coins}}
-            </ul>
-          </div>
-        </div>
-        <div class="row justify-content-center text-center section-outro">
-          <div class="col-lg-4 col-md-5">
-            <h6>WebDollar + many more</h6>
-            <p>We compiled a directory with cryptocurrencies that can be mined with CPU</p>
-            <a href="/cpu-mineable-coins">CPU Mineable Coins &rsaquo;</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
+    <!--
     <section class="bg-gradient text-white space-lg">
       <div class="container">
         <div class="row justify-content-center">
@@ -101,6 +70,9 @@
         </div>
       </div>
     </section>
+  -->
+
+    {{> partials/announcement }}
 
     <section>
       <div class="container">
@@ -115,7 +87,7 @@
         <ul class="row feature-list feature-list-sm">
           <li class="col-12 col-md-4">
             <a class="card">
-              <img alt="View the Miners" src="/assets/img/screenshots/4.png" class="img-fluid rounded" data-action="zoom" />
+              <img alt="View the Miners" src="/assets/img/screenshots/16.png" class="img-fluid rounded" data-action="zoom" />
             </a>
             <h5>View your Miners</h5>
             <p>
@@ -126,7 +98,7 @@
 
           <li class="col-12 col-md-4">
             <a class="card">
-              <img alt="Deploy your Hosts" src="/assets/img/screenshots/5.png" class="img-fluid rounded" data-action="zoom" />
+              <img alt="Deploy your Hosts" src="/assets/img/screenshots/14.png" class="img-fluid rounded" data-action="zoom" />
             </a>
             <h5>Deploy your Hosts</h5>
             <p>
@@ -137,7 +109,7 @@
 
           <li class="col-12 col-md-4">
             <a class="card">
-              <img alt="Settings" src="/assets/img/screenshots/3.png" class="img-fluid rounded" data-action="zoom" />
+              <img alt="Settings" src="/assets/img/screenshots/12.png" class="img-fluid rounded" data-action="zoom" />
             </a>
             <h5>Manage your Settings</h5>
             <p>
@@ -163,7 +135,7 @@
           </div>
 
           <div class="col-8 col-md-6 col-lg-4">
-            <img alt="Miner Statistics" src="/assets/img/screenshots/8.png" class="img-fluid box-shadow" data-action="zoom" />
+            <img alt="Miner Statistics" src="/assets/img/screenshots/15.png" class="img-fluid box-shadow" data-action="zoom" />
           </div>
         </div>
       </div>
@@ -183,7 +155,7 @@
 
           <div class="col-12 col-md-5 order-md-1">
             <div class="video-cover rounded">
-              <img alt="Get Started" src="/assets/img/screenshots/7.png" class="bg-image">
+              <img alt="Get Started" src="/assets/img/screenshots/21.png" class="bg-image">
               <div class="video-play-icon">
                 <i class="icon-controller-play"></i>
               </div>
@@ -245,13 +217,13 @@
           <div class="col-12 col-md-6 order-md-1">
             <div class="tab-content" id="myTabContent">
               <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="tab-1">
-                <img alt="Quick Installation" class="img-fluid box-shadow" src="/assets/img/screenshots/2.png" data-action="zoom" />
+                <img alt="Quick Installation" class="img-fluid box-shadow" src="/assets/img/screenshots/11.png" data-action="zoom" />
               </div>
               <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="tab-2">
-                <img alt="Easy Deployment" class="img-fluid box-shadow" src="/assets/img/screenshots/5.png" data-action="zoom" />
+                <img alt="Easy Deployment" class="img-fluid box-shadow" src="/assets/img/screenshots/20.png" data-action="zoom" />
               </div>
               <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="tab-3">
-                <img alt="Real-time Logs" class="img-fluid box-shadow" src="/assets/img/screenshots/9.png" data-action="zoom" />
+                <img alt="Real-time Logs" class="img-fluid box-shadow" src="/assets/img/screenshots/17.png" data-action="zoom" />
               </div>
             </div>
           </div>
@@ -344,6 +316,7 @@
       </div>
     </section>
 
+    <!--
     <section class="space">
       <div class="container">
         <div class="row justify-content-center text-center section-intro">
@@ -369,8 +342,41 @@
         </div>
       </div>
     </section>
+    -->
 
-    {{> partials/announcement }} {{> partials/footer }}
+    <section class="space">
+      <div class="container">
+        <div class="row justify-content-center text-center section-intro">
+          <div class="col-12 col-md-9 col-lg-8">
+            <span class="title-decorative">Currencies on Hostero</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 text-center">
+            <ul class="list-inline list-inline-large">
+              {{#coins}}
+              {{#on_hostero}}
+                <li class="list-inline-item">
+                  <a href="/coins/{{internal_name}}" data-toggle="tooltip" data-placement="top" title="{{name}}">
+                    <img alt="{{name}}" class="logo logo-lg" src="{{{logo_url}}}" />
+                  </a>
+                </li>
+              {{/on_hostero}}
+              {{/coins}}
+            </ul>
+          </div>
+        </div>
+        <div class="row justify-content-center text-center section-outro">
+          <div class="col-lg-4 col-md-5">
+            <h6>WebDollar + many more</h6>
+            <p>We compiled a directory with cryptocurrencies that can be mined with CPU</p>
+            <a href="/cpu-mineable-coins">CPU Mineable Coins &rsaquo;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+     {{> partials/footer }}
   </div>
 
   {{> partials/scripts }}
