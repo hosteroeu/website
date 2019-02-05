@@ -1,6 +1,12 @@
 #!/bin/bash
 
-# apt update && apt install curl -y
+if [ -n "$(command -v apt-get)" ]; then
+  apt-get update && apt-get install curl -y
+fi
+
+if [ -n "$(command -v yum)" ]; then
+  apt update && apt install curl
+fi
 
 curl https://releases.rancher.com/install-docker/17.12.sh | sh
 
