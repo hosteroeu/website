@@ -1,8 +1,30 @@
 #!/bin/bash
+
+# apt update && apt install curl -y
+
 curl https://releases.rancher.com/install-docker/17.12.sh | sh
+
+if [ "$?" -ne 0 ]; then
+  curl https://releases.rancher.com/install-docker/18.06.sh | sh
+fi
+
+if [ "$?" -ne 0 ]; then
+  echo "=== Docker could not be installed ==="
+  exit 1
+fi
+
+mkdir -p /etc/docker && echo '{"dns": ["8.8.8.8", "8.8.4.4"]}' > /etc/docker/daemon.json && service docker restart
+
 clear
 
-echo '=== Welcome to Hostero Universal Miner installation ==='
+echo ""
+echo "  _    _           _                   _    _       _                          _   __  __ _                 "
+echo " | |  | |         | |                 | |  | |     (_)                        | | |  \/  (_)                "
+echo " | |__| | ___  ___| |_ ___ _ __ ___   | |  | |_ __  ___   _____ _ __ ___  __ _| | | \  / |_ _ __   ___ _ __ "
+echo " |  __  |/ _ \/ __| __/ _ \ '__/ _ \  | |  | | '_ \| \ \ / / _ \ '__/ __|/ _' | | | |\/| | | '_ \ / _ \ '__|"
+echo " | |  | | (_) \__ \ ||  __/ | | (_) | | |__| | | | | |\ V /  __/ |  \__ \ (_| | | | |  | | | | | |  __/ |   "
+echo " |_|  |_|\___/|___/\__\___|_|  \___/   \____/|_| |_|_| \_/ \___|_|  |___/\__,_|_| |_|  |_|_|_| |_|\___|_|   "
+echo ""
 
 {{#account_id}}
 export account='{{account_id}}'
@@ -10,7 +32,7 @@ export account='{{account_id}}'
 
 if [[ ! $account ]]; then
   if [ -z $1 ]; then
-    echo 'Navigate to dashboard.hostero.eu and retrieve your ACCOUNT ID'
+    echo '=== Navigate to dashboard.hostero.eu and retrieve your ACCOUNT ID ==='
     echo ''
     echo -n 'Enter your ACCOUNT ID: '
     read account
@@ -21,9 +43,9 @@ if [[ ! $account ]]; then
 fi
 
 echo ''
-echo "Starting miner with ACCOUNT ID: $account"
+echo "=== Starting miner with ACCOUNT ID: $account ==="
 echo ''
 
 docker run -e CATTLE_HOST_LABELS="account=$account" --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.2.9 http://infra.hostero.eu:8080/v1/scripts/2E28C27EE87F5E1A6B7F:1514678400000:ShibdGaXFOlmN3QGGHj1UFuP1lU
 
-echo 'Go to dashboard.hostero.eu and start mining'
+echo '=== Go to dashboard.hostero.eu and start mining ==='
