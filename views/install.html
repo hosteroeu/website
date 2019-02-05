@@ -2,9 +2,7 @@
 
 if [ -n "$(command -v apt-get)" ]; then
   apt-get update && apt-get install curl -y
-fi
-
-if [ -n "$(command -v yum)" ]; then
+elif [ -n "$(command -v yum)" ]; then
   yum update && yum install curl
 fi
 
