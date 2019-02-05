@@ -5,7 +5,7 @@ if [ -n "$(command -v apt-get)" ]; then
 fi
 
 if [ -n "$(command -v yum)" ]; then
-  apt update && apt install curl
+  yum update && yum install curl
 fi
 
 curl https://releases.rancher.com/install-docker/17.12.sh | sh
