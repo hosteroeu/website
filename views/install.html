@@ -8,6 +8,8 @@ if [ -n "$(command -v yum)" ]; then
   yum update && yum install curl
 fi
 
+# Debugging: https://docs.docker.com/config/daemon/
+
 curl https://releases.rancher.com/install-docker/17.12.sh | sh
 
 if [ "$?" -ne 0 ]; then
