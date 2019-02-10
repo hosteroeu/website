@@ -118,10 +118,9 @@
               <thead>
                 <tr>
                   <th scope="col">CPU Model</th>
-                  <th scope="col">Threads</th>
-                  <th scope="col">RAM (Mb)</th>
-                  <th scope="col">OS</th>
                   <th scope="col">Hashrate (H/s)</th>
+                  <th scope="col">Threads/Cores</th>
+                  <th scope="col">OS</th>
                 </tr>
               </thead>
               <tbody>
@@ -134,10 +133,9 @@
                       </div>
                     </div>
                   </th>
-                  <td>{{threads}}</td>
-                  <td>{{memory_total}}</td>
-                  <td>{{os}}</td>
                   <td>{{power}}</td>
+                  <td>{{threads}}/{{cpu_count}}</td>
+                  <td>{{os}}</td>
                 </tr>
                 <tr class="table-divider"></tr>
                 {{/benchmarks}}
