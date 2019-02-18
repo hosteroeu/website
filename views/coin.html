@@ -121,6 +121,7 @@
                   <th scope="col">Hashrate (H/s)</th>
                   <th scope="col">Threads/Cores</th>
                   <th scope="col">OS</th>
+                  <th scope="col">Est. 24h Reward</th>
                 </tr>
               </thead>
               <tbody>
@@ -136,6 +137,12 @@
                   <td>{{power}}</td>
                   <td>{{threads}}/{{cpu_count}}</td>
                   <td>{{os}}</td>
+                  {{#reward_24h_eur}}
+                  <td>{{reward_24h_eur}} EUR</td>
+                  {{/reward_24h_eur}}
+                  {{^reward_24h_eur}}
+                  <td>-</td>
+                  {{/reward_24h_eur}}
                 </tr>
                 <tr class="table-divider"></tr>
                 {{/benchmarks}}

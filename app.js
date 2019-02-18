@@ -166,13 +166,40 @@ app.get('/coins/:coin', function(req, res) {
     }
 
     get_benchmarks(function(error, benchmarks) {
+      var benchmarks_with_profit = [];
+
+      if (coin.price_eur && coin.network_hashrate && coin.block_time && coin.block_reward) {
+        for (var i = 0; i < benchmarks.length; i++) {
+          var benchmark = benchmarks[i];
+
+          benchmark.reward_24h_eur = 0;
+
+          if (benchmark.power) {
+            var reward = 0;
+
+            // DOMINANCE = USER_HASHES / GLOBAL_HASHES / * 100
+            // REWARD_PER_DAY = BLOCK_REWARD * 3600 * 24 / BLOCK_TIME * DOMINANCE / 100
+            var dominance = benchmark.power / coin.network_hashrate / 100;
+            var reward_coins = coin.block_reward * 3600 * 24 / coin.block_time * dominance * 100;
+
+            reward = coin.price_eur * reward_coins;
+
+            benchmark.reward_24h_eur = reward.toFixed(5);
+          }
+
+          benchmarks_with_profit.push(benchmark);
+        }
+      } else {
+        benchmarks_with_profit = benchmarks;
+      }
+
       res.render('coin', {
         title: 'Mine ' + coin.name + ' on Hostero',
         description: coin.description + '. Start mining ' + coin.name + ' in 1 minute.',
         link: 'https://www.hostero.eu/coins/' + coin.internal_name,
         keywords: coin.name + ', coin, benchmarks, directory, mine, cpu, cpu miner, crypto, cryptocurrencies, mining software, multicurrency, list',
         coin: coin,
-        benchmarks: benchmarks
+        benchmarks: benchmarks_with_profit
       });
     }, coin.internal_name);
   });
