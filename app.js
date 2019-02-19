@@ -188,7 +188,7 @@ app.get('/coins/:coin', function(req, res) {
               reward = reward * coin.hybrid_percentage_pow / 100;
             }
 
-            benchmark.reward_24h_eur = reward.toFixed(3);
+            benchmark.reward_24h_eur = reward.toFixed(2);
           }
 
           benchmarks_with_profit.push(benchmark);
