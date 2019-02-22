@@ -31,7 +31,7 @@ function get_coins(callback) {
 function get_benchmarks(callback, coin) {
   crequest({
     url: 'https://api.hostero.eu/v1/benchmarks?coin=' + coin,
-    ttl: 3600 * 1000 * 24 // 1d
+    ttl: 3600 * 1000 // 1h
   }, function(error, response, body) {
     var benchmarks = JSON.parse(body);
 
