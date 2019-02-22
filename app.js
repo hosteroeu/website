@@ -17,10 +17,10 @@ function render_404(req, res) {
   });
 }
 
-function get_coins(callback) {
+function get_coins(callback, ttl) {
   crequest({
     url: 'https://api.hostero.eu/v1/coins',
-    ttl: 3600 * 1000 * 24 // 1d
+    ttl: ttl || (3600 * 1000 * 24) // 1d
   }, function(error, response, body) {
     var coins = JSON.parse(body);
 
@@ -28,10 +28,10 @@ function get_coins(callback) {
   });
 }
 
-function get_benchmarks(callback, coin) {
+function get_benchmarks(callback, coin, ttl) {
   crequest({
     url: 'https://api.hostero.eu/v1/benchmarks?coin=' + coin,
-    ttl: 3600 * 1000 // 1h
+    ttl: ttl || (3600 * 1000 * 24) // 1d
   }, function(error, response, body) {
     var benchmarks = JSON.parse(body);
 
@@ -206,7 +206,7 @@ app.get('/coins/:coin', function(req, res) {
         benchmarks: benchmarks_with_profit
       });
     }, coin.internal_name);
-  });
+  }, 3600 * 1000);
 });
 
 // The file is also accessible via /assets/install.sh
