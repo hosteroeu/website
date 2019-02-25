@@ -126,7 +126,7 @@ app.get('/purchase-webdollar', function(req, res) {
 
 app.get('/webdollar', function(req, res) {
   res.render('webdollar', {
-    title: 'Tools and Services developed for WebDollar',
+    title: 'Tools and Services for WebDollar',
     description: 'List of tools and services developed for the WebDollar community. Crypto third-party tools that allow anybody to join the crypto space.',
     link: 'https://www.hostero.eu/webdollar',
     keywords: 'tools, services, webdollar, community, list, cpu, cpu miner, crypto'
