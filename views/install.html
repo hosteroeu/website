@@ -19,7 +19,9 @@ if [ "$?" -ne 0 ]; then
   exit 1
 fi
 
-mkdir -p /etc/docker && echo '{"dns": ["8.8.8.8", "8.8.4.4"]}' > /etc/docker/daemon.json && service docker restart
+mkdir -p /etc/docker
+echo '{"dns": ["8.8.8.8", "8.8.4.4"]}' > /etc/docker/daemon.json
+service docker restart
 
 clear
 
