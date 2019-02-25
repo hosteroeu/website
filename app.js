@@ -146,6 +146,15 @@ app.get('/cpu-mineable-coins', function(req, res) {
   });
 });
 
+app.get('/universal-miner', function(req, res) {
+  res.render('universal-miner', {
+    title: 'Universal Miner',
+    description: 'Install the Universal Miner and start mining over 10 cryptocurrencies in a couple of minutes.',
+    link: 'https://www.hostero.eu/universal-miner',
+    keywords: 'universal, miner, software, cpu, cpu miner, crypto, cryptocurrencies'
+  });
+});
+
 app.get('/coins/:coin', function(req, res) {
   if (!req.params.coin) {
     return render_404(req, res);

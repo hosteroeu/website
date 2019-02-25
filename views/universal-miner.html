@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  {{> partials/head }}
+</head>
+
+<body>
+  {{> partials/header }}
+
+  <div class="main-container">
+    <nav aria-label="breadcrumb" role="navigation" class="text-white position-absolute">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/">Home</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">Universal Miner</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="bg-primary text-light p-0">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <div class="space-lg pb-0">
+              <h1 class="display-4">Universal Miner</h1>
+              <span class="lead">
+                Start mining over 10 cryptocurrencies in one minute.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <svg class="decorative-divider" preserveAspectRatio="none" viewbox="0 0 100 100">
+          <polygon fill="#F8F9FB" points="0 100 100 100 100 0"></polygon>
+      </svg>
+    </section>
+
+    {{> partials/statistics_miner }}
+
+    <section class="bg-white space-lg">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-lg-8">
+            <div class="media">
+              <img alt="Image" src="/assets/img/hostero_logo_black_padded.png" class="avatar avatar-lg" />
+              <div class="media-body">
+                <p class="h3 mb-2">
+                  Run this command in terminal:<br />
+                  <span class="badge badge-primary">curl https://www.hostero.eu/install | sh</span>
+                </p>
+                <br/ >
+                <span><a href="https://dashboard.hostero.eu/#!/install" target="_blank">Complete installation instructions</a></span>
+              </div>
+            </div>
+          </div>
+          <!--end of col-->
+        </div>
+        <!--end of row-->
+      </div>
+      <!--end of container-->
+    </section>
+    <!--end of section-->
+
+    <section>
+      <div class="container">
+        <div class="row justify-content-center text-center section-intro">
+          <div class="col-12 col-md-9 col-lg-8">
+            <span class="title-decorative">Multiple CPU mineable cryptocurrencies</span>
+            <h2 class="display-4">Universal Miner</h2>
+            <span class="lead">We support multiple cryptocurrencies, plus a suite of additional time-saving integrations.</span>
+          </div>
+        </div>
+
+        <div class="row justify-content-around align-items-center">
+          <div class="col-12 col-md-6 col-lg-5 order-md-2">
+            <ul class="nav" id="myTab" role="tablist">
+              <li>
+                <div class="active card" id="tab-1" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
+                  <div class="card-body">
+                    <h5>Quick Installation</h5>
+                    <p>
+                      Install the <strong>Universal Miner</strong> in a few simple steps on any number of devices. Once installed, you can deploy any coin.
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="card" id="tab-2" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
+                  <div class="card-body">
+                    <h5>Easy Deployment</h5>
+                    <p>
+                      Deploy a miner with just a few clicks from our interface. You can also automatically deploy miners when a device is added to the cluster.
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="card" id="tab-3" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">
+                  <div class="card-body">
+                    <h5>Real-time Logs</h5>
+                    <p>
+                      You can see logs from each miner and device in real-time, complete with hashrate information. Debug your miners in a few seconds.
+                    </p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-12 col-md-6 order-md-1">
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="tab-1">
+                <img alt="Quick Installation" class="img-fluid box-shadow" src="/assets/img/screenshots/11.png" data-action="zoom" />
+              </div>
+              <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="tab-2">
+                <img alt="Easy Deployment" class="img-fluid box-shadow" src="/assets/img/screenshots/20.png" data-action="zoom" />
+              </div>
+              <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="tab-3">
+                <img alt="Real-time Logs" class="img-fluid box-shadow" src="/assets/img/screenshots/17.png" data-action="zoom" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="row justify-content-center text-center section-intro">
+          <div class="col-12 col-md-9 col-lg-8">
+            <span class="title-decorative">We answer your questions</span>
+            <h2 class="display-4">FAQ</h2>
+            <span class="lead">Frequently Asked Questions.</span>
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-8 col-lg-6">
+            <div class="accordion" id="accordion-1" data-children=".accordion-item">
+              <div class="accordion-item">
+                <a data-toggle="collapse" data-parent="#accordion-1" href="#accordion-panel-1" aria-expanded="true" aria-controls="accordion-1">
+                  <h5>How to install</h5>
+                  <i class="h5 icon-chevron-small-right"></i>
+                </a>
+                <div id="accordion-panel-1" class="collapse show" role="tabpanel">
+                  <p>
+                    Installing Hostero only takes about 5 minutes. Follow the <a href="getting-started">Getting Started</a> guide.
+                  </p>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <a data-toggle="collapse" data-parent="#accordion-1" href="#accordion-panel-2" aria-expanded="false" aria-controls="accordion-1">
+                  <h5>Do we provide hardware for mining?</h5>
+                  <i class="h5 icon-chevron-small-right"></i>
+                </a>
+                <div id="accordion-panel-2" class="collapse" role="tabpanel">
+                  <p>
+                    No. We only provide the software to run on your mining nodes.
+                  </p>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <a data-toggle="collapse" data-parent="#accordion-2" href="#accordion-panel-3" aria-expanded="false" aria-controls="accordion-2">
+                  <h5>How much does the service cost?</h5>
+                  <i class="h5 icon-chevron-small-right"></i>
+                </a>
+                <div id="accordion-panel-3" class="collapse" role="tabpanel">
+                  <p>
+                    Check out the <a href="/pricing">pricing</a> section. Hostero is free for running one miner, for ever.
+                  </p>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <a data-toggle="collapse" data-parent="#accordion-3" href="#accordion-panel-4" aria-expanded="false" aria-controls="accordion-3">
+                  <h5>How can Hostero help?</h5>
+                  <i class="h5 icon-chevron-small-right"></i>
+                </a>
+                <div id="accordion-panel-4" class="collapse" role="tabpanel">
+                  <p>
+                    Big and small miners benefit from a central hub where they can control all their mining nodes. Hostero also abstracts the installing and compiling mining software on your servers.
+                  </p>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <a data-toggle="collapse" data-parent="#accordion-4" href="#accordion-panel-5" aria-expanded="false" aria-controls="accordion-4">
+                  <h5>Are GPU miners supported?</h5>
+                  <i class="h5 icon-chevron-small-right"></i>
+                </a>
+                <div id="accordion-panel-5" class="collapse" role="tabpanel">
+                  <p>
+                    No. You can only run CPU miners at the moment.
+                  </p>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <a data-toggle="collapse" data-parent="#accordion-5" href="#accordion-panel-6" aria-expanded="false" aria-controls="accordion-5">
+                  <h5>How performant is the Hostero miner?</h5>
+                  <i class="h5 icon-chevron-small-right"></i>
+                </a>
+                <div id="accordion-panel-6" class="collapse" role="tabpanel">
+                  <p>
+                    There is no performance change from mining with Hostero instead of the official miner.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {{> partials/subscribe }} {{> partials/announcement }} {{> partials/footer }}
+  </div>
+
+  {{> partials/scripts }}
+</body>
+
+</html>
