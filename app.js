@@ -115,7 +115,7 @@ app.get('/changelog', function(req, res) {
   });
 });
 
-app.get('/purchase-webdollar', function(req, res) {
+app.get('/docs/purchase-webdollar', function(req, res) {
   res.render('purchase-webdollar', {
     title: 'Purchase WebDollar, only use Escrow',
     description: 'Tutorial on how to purchase WebDollar coins from multiple sources. Use WebDollar to pay for the platform services. Purchase only with escrow.',
@@ -149,9 +149,36 @@ app.get('/cpu-mineable-coins', function(req, res) {
 app.get('/universal-miner', function(req, res) {
   res.render('universal-miner', {
     title: 'Universal Miner',
-    description: 'Install the Universal Miner and start mining over 10 cryptocurrencies in a couple of minutes.',
+    description: 'Install the Universal Miner and start mining over 10 cryptocurrencies in under a minute.',
     link: 'https://www.hostero.eu/universal-miner',
     keywords: 'universal, miner, software, cpu, cpu miner, crypto, cryptocurrencies'
+  });
+});
+
+app.get('/docs/install-on-ubuntu', function(req, res) {
+  res.render('install-on-ubuntu', {
+    title: 'Install Hostero on Ubuntu',
+    description: 'Install the Hostero Universal Miner on Ubuntu',
+    link: 'https://www.hostero.eu/docs/install-on-ubuntu',
+    keywords: 'universal, miner, software, cpu, cpu miner, crypto, cryptocurrencies, install, guide, ubuntu'
+  });
+});
+
+app.get('/docs/install-on-windows', function(req, res) {
+  res.render('install-on-windows', {
+    title: 'Install Hostero on Windows',
+    description: 'Install the Hostero Universal Miner on Windows',
+    link: 'https://www.hostero.eu/docs/install-on-windows',
+    keywords: 'universal, miner, software, cpu, cpu miner, crypto, cryptocurrencies, install, guide, windows'
+  });
+});
+
+app.get('/docs/install-on-macos', function(req, res) {
+  res.render('install-on-macos', {
+    title: 'Install Hostero on MacOS',
+    description: 'Install the Hostero Universal Miner on MacOS',
+    link: 'https://www.hostero.eu/docs/install-on-macos',
+    keywords: 'universal, miner, software, cpu, cpu miner, crypto, cryptocurrencies, install, guide, macos'
   });
 });
 
@@ -254,6 +281,10 @@ app.get('/sitemap.xml', function(req, res) {
       'x-sent': true
     }
   });
+});
+
+app.get('/purchase-webdollar', function(req, res) {
+  res.redirect(301, 'https://www.hostero.eu/docs/purchase-webdollar');
 });
 
 app.get('/cpu-minable-coins', function(req, res) {

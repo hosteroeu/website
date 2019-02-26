@@ -22,16 +22,28 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://www.hostero.eu/purchase-webdollar</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://www.hostero.eu/changelog</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://www.hostero.eu/cpu-mineable-coins</loc>
     <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://www.hostero.eu/docs/purchase-webdollar</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.hostero.eu/docs/install-on-ubuntu</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.hostero.eu/docs/install-on-windows</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.hostero.eu/docs/install-on-macos</loc>
+    <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://www.hostero.eu/coins/webdollar</loc>

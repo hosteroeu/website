@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  {{> partials/head }}
+</head>
+
+<body>
+  {{> partials/header }}
+
+  <div class="main-container">
+    <nav aria-label="breadcrumb" role="navigation" class="text-white position-absolute">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item">Docs</li>
+              <li class="breadcrumb-item active" aria-current="page">Install on Windows</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="bg-primary text-light p-0">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <div class="space-lg pb-0">
+              <h1 class="display-4">Install on Windows</h1>
+              <span class="lead">
+                Guide for installing the Universal Miner on Windows.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <svg class="decorative-divider" preserveAspectRatio="none" viewbox="0 0 100 100">
+        <polygon fill="#F8F9FB" points="0 100 100 100 100 0"></polygon>
+      </svg>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-2 mb-5">
+            <nav class="nav flex-md-column">
+              <a href="/changelog" class="nav-link">Changelog <span class="badge badge-secondary">v1</span></a>
+              <a href="/getting-started" class="nav-link">Getting Started</a>
+            </nav>
+            <hr class="short">
+            <nav class="nav flex-md-column mb-2">
+              <a href="/docs/install-on-ubuntu" class="nav-link">Install on Ubuntu</a>
+              <a href="/docs/install-on-windows" class="active nav-link">Install on Windows</a>
+              <a href="/docs/install-on-macos" class="nav-link">Install on MacOS</a>
+              <a href="/docs/purchase-webdollar" class="nav-link">Purchase WebDollar</a>
+            </nav>
+          </div>
+          <div class="col-12 col-md-8">
+            <article id="requirements">
+              <h3>Requirements</h3>
+              <p>Please make sure your device meets all the following requirements:</p>
+              <ul>
+                <li>Internet connection</li>
+                <li>Windows 10 64bit (Pro, Enterprise or Education)</li>
+                <li>Docker 17.06</li>
+                <li>4 GB Storage</li>
+                <li>4 GB RAM</li>
+              </ul>
+            </article>
+
+            <hr />
+
+            <article id="instructions">
+              <h3>Instructions</h3>
+              <p>Hostero requires Docker to work. We recommend to install Docker via our link, but you can install it using alternative ways as well (<a href="https://rancher.com/docs/rancher/v1.6/en/hosts/#supported-docker-versions" target="_blank">supported versions</a>).</p>
+
+              <h4>1. Install Docker</h4>
+              <p>Download the installer and proceed to install Docker as any other software. You can find further instructions on the <a href="https://docs.docker.com/docker-for-windows/install/#start-docker-desktop-for-windows" target="_blank">official Docker website</a>.</p>
+              <p>
+                <center><a href="https://download.docker.com/win/stable/13194/Docker%20for%20Windows%20Installer.exe" target="_blank" class="btn btn-primary">Get Docker Community Edition 17.06.2-ce-win27 2017-09-06</a></center>
+              </p>
+
+              <h4>2. Install Hostero</h4>
+              <div class="card bg-secondary">
+                <div class="card-body">
+                  <h6 class="title-decorative">Run this command in PowerShell:</h6>
+                  <dl class="row justfiy-content-between">
+                    <code>docker run -e CATTLE_HOST_LABELS="account=<strong>ACCOUNT_ID</strong>" --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.2.9 http://infra.hostero.eu:8080/v1/scripts/2E28C27EE87F5E1A6B7F:1514678400000:ShibdGaXFOlmN3QGGHj1UFuP1lU</code>
+                  </dl>
+                </div>
+              </div>
+
+              <p><i>Important</i>: Replace <strong>ACCOUNT_ID</strong> with yours. You need to <a href="https://dashboard.hostero.eu" target="_blank">Login</a>.</p>
+            </article>
+
+            <hr />
+
+            <article id="video-tutorial">
+              <h3>Video Tutorial (Deprecated)</h3>
+              <iframe width="100%" height="400" src="https://www.youtube.com/embed/irjUsqWdPQE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </article>
+          </div>
+          <div class="col">
+            <nav id="nav-components" class="nav flex-md-column" data-sticky="below-nav">
+              <a data-smooth-scroll href="#requirements" class="nav-link text-small">Requirements</a>
+              <a data-smooth-scroll href="#instructions" class="nav-link text-small">Instructions</a>
+              <a data-smooth-scroll href="#video-tutorial" class="nav-link text-small">Video Tutorial</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {{> partials/subscribe }} {{> partials/footer }}
+  </div>
+
+  {{> partials/scripts }}
+</body>
+
+</html>

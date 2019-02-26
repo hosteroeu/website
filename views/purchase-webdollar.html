@@ -14,9 +14,9 @@
         <div class="row justify-content-center">
           <div class="col">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="/">Home</a>
-              </li>
-              <li class="breadcrumb-item active" aria-current="page">Getting Started</li>
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item">Docs</li>
+              <li class="breadcrumb-item active" aria-current="page">Purchase WebDollar</li>
             </ol>
           </div>
         </div>
@@ -47,54 +47,54 @@
           <div class="col-12 col-md-2 mb-5">
             <nav class="nav flex-md-column">
               <a href="/changelog" class="nav-link">Changelog <span class="badge badge-secondary">v1</span></a>
+              <a href="/getting-started" class="nav-link">Getting Started</a>
             </nav>
             <hr class="short">
             <nav class="nav flex-md-column mb-2">
-              <a href="/getting-started" class="nav-link">Getting Started</a>
-              <a href="/purchase-webdollar" class="active nav-link">Purchase WebDollar</a>
+              <a href="/docs/install-on-ubuntu" class="nav-link">Install on Ubuntu</a>
+              <a href="/docs/install-on-windows" class="nav-link">Install on Windows</a>
+              <a href="/docs/install-on-macos" class="nav-link">Install on MacOS</a>
+              <a href="/docs/purchase-webdollar" class="active nav-link">Purchase WebDollar</a>
             </nav>
-
           </div>
           <div class="col-12 col-md-8">
             <article id="setting-up-dev-tools">
-              <h3>
-                <p>Purchasing instructions</p>
-              </h3>
+              <h3>Purchasing Instructions</h3>
               <div>
                 <p>You first need to create a wallet in order to store the WEBD coins you buy. There are multiple methods of buying WebDollar.</p>
 
+                <br />
                 <div class="alert alert-primary" role="alert">
                   Please be careful when using any of the methods described in this article. Hostero does not take responsability for possible issues. Always use an escrow.
                 </div>
+                <br />
 
                 <h2>1. Create a wallet</h2>
                 <p>Go to <a target="_blank" href="https://webdollar.io" data-toggle="tooltip" data-placement="top" title="Open in new tab">WebDollar.io <i class="icon-popup"></i></a> and use the wallet generated.</p>
 
+                <br />
                 <h3>2. Buy from Exchanges</h3>
-                <p>
+                <ul>
                   <li>
                     <a target="_blank" href="https://gymbase.io/exchange/?market=WEBD_ETH" data-toggle="tooltip" data-placement="top" title="Open in new tab">https://gymbase.io <i class="icon-popup"></i></a>
                   </li>
-                </p>
+                </ul>
 
+                <br />
                 <h3>3. Buy from Telegram users</h3>
-                <p>
+                <ul>
                   <li>
                     <a target="_blank" href="https://t.me/WebDollarExchange" data-toggle="tooltip" data-placement="top" title="Open in new tab">@WebDollarExchange <i class="icon-popup"></i></a>
                   </li>
-                </p>
-
+                </ul>
               </div>
             </article>
 
             <article id="feedback">
-              <h3>
-                                    <p>Giving Feedback</p>
-                                </h3>
+              <h3>Giving Feedback</h3>
               <div>
                 <p>We strive to improve our products and we rely on feedback from our users.</p>
                 <p>Please feel free to share any feedback about Hostero via twitter <a href="https://twitter.com/hosteroeu">@hosteroeu</a> or hosteroeu@gmail.com.</p>
-
               </div>
             </article>
           </div>
@@ -107,9 +107,7 @@
       </div>
     </section>
 
-    {{> partials/start_mining }}
-    {{> partials/subscribe }}
-    {{> partials/footer }}
+    {{> partials/start_mining }} {{> partials/subscribe }} {{> partials/footer }}
   </div>
 
   {{> partials/scripts }}
