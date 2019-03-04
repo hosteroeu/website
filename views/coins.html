@@ -60,7 +60,7 @@
               <thead>
                 <tr>
                   <th scope="col">Name</th>
-                  <th scope="col">Description</th>
+                  <th scope="col">Information</th>
                   <th scope="col">Availability</th>
                   <th scope="col">&nbsp;</th>
                 </tr>
@@ -89,7 +89,32 @@
                       </div>
                     </div>
                   </th>
-                  <td>{{description}}</td>
+                  <td>
+                    {{#price_eur}}
+                    <span class="small">Price: {{price_eur}} &euro;</span><br />
+                    {{/price_eur}}
+                    {{^price_eur}}
+                    <span class="small">Price: -</span><br />
+                    {{/price_eur}}
+                    {{#network_hashrate}}
+                    <span class="small">Network Hashrate: {{network_hashrate}} MH/s</span><br />
+                    {{/network_hashrate}}
+                    {{^network_hashrate}}
+                    <span class="small">Network Hashrate: -</span><br />
+                    {{/network_hashrate}}
+                    {{#block_time}}
+                    <span class="small">Block Time: {{block_time}} s</span><br />
+                    {{/block_time}}
+                    {{^block_time}}
+                    <span class="small">Block Time: -</span><br />
+                    {{/block_time}}
+                    {{#block_reward}}
+                    <span class="small">Block Reward: {{block_reward}} {{short_name}}</span><br />
+                    {{/block_reward}}
+                    {{^block_reward}}
+                    <span class="small">Block Reward: -</span><br />
+                    {{/block_reward}}
+                  </td>
                   <td>
                     {{#on_hostero}}
                       <a class="btn btn-outline-secondary" href="https://dashboard.hostero.eu">Start Mining</a>

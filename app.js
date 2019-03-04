@@ -177,6 +177,31 @@ app.get('/cpu-mineable-coins', function(req, res) {
   var name = get_name(req);
 
   get_coins(function(error, coins) {
+    for (var i=0; i<coins.length; i++) {
+      var coin = coins[i];
+
+      if (coin.network_hashrate == 0) {
+        coin.network_hashrate = null;
+      } else {
+        coin.network_hashrate = coin.network_hashrate / 1000 / 1000;
+        coin.network_hashrate = coin.network_hashrate.toFixed(2);
+      }
+
+      if (coin.price_eur == 0) {
+        coin.price_eur = null;
+      } else {
+        coin.price_eur = coin.price_eur.toFixed(5);
+      }
+
+      if (coin.block_time == 0) {
+        coin.block_time = null;
+      }
+
+      if (coin.block_reward == 0) {
+        coin.block_reward = null;
+      }
+    }
+
     res.render('coins', {
       title: 'List with CPU mineable cryptocurrencies',
       description: 'Directory with CPU mineable cryptocurrencies that are integrated with our mining software. See our list with the most profitable CPU mineable coins.',
