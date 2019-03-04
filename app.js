@@ -3,10 +3,9 @@ var request = require('request');
 var crequest = require('cached-request')(request);
 var compression = require('compression');
 var mustacheExpress = require('mustache-express');
+var cookieParser = require('cookie-parser');
 var app = express();
 var port = process.env.PORT || 3000;
-
-crequest.setCacheDirectory('tmp');
 
 function render_404(req, res) {
   res.status(404).render('404', {
@@ -39,9 +38,33 @@ function get_benchmarks(callback, coin, ttl) {
   });
 }
 
+function get_name(req) {
+  var profile = req.cookies.profile || null;
+  var name = null;
+
+  if (profile) {
+    try {
+      var parsed = JSON.parse(profile);
+
+      if (parsed.first_name && parsed.last_name) {
+        name = parsed.first_name + ' ' + parsed.last_name;
+      } else {
+        name = parsed.email;
+      }
+    } catch(e) {
+      console.error(e);
+    }
+  }
+
+  return name;
+}
+
+crequest.setCacheDirectory('tmp');
+
 app.engine('html', mustacheExpress());
 
 app.use(compression());
+app.use(cookieParser());
 
 app.get('/*', function(req, res, next) {
   if (req.url.indexOf('/assets/') === 0) {
@@ -77,36 +100,47 @@ app.get('/robots.txt', function(req, res) {
 });
 
 app.get('/', function(req, res) {
+  var name = get_name(req);
+
   get_coins(function(error, coins) {
     res.render('index', {
       title: 'Mining software for CPU cryptocurrencies',
       description: 'Start mining cryptocurrency in a few minutes. Mine the most profitable coins and unlock the full potential of your mining rigs.',
       link: 'https://www.hostero.eu',
       keywords: 'mining, software, crypto, cpu, statistics, miner, universal cpu miner, cpu miner, webdollar, nerva, webchain',
-      coins: coins
+      coins: coins,
+      name: name
     });
   });
 });
 
 app.get('/pricing', function(req, res) {
+  var name = get_name(req);
+
   res.render('pricing', {
     title: 'Subscription plans for Hostero',
     description: 'Choose your subscription based on the required number of miners. We have a wide range of subscriptions available and a free plan.',
     link: 'https://www.hostero.eu/pricing',
-    keywords: 'plans, subscriptions, prices, mining, software, hardware, crypto, cpu, miner, universal cpu miner, cpu miner'
+    keywords: 'plans, subscriptions, prices, mining, software, hardware, crypto, cpu, miner, universal cpu miner, cpu miner',
+    name: name,
   });
 });
 
 app.get('/getting-started', function(req, res) {
+  var name = get_name(req);
+
   res.render('getting-started', {
     title: 'Getting Started with the CPU Miner',
     description: 'Learn how to deploy the Universal CPU Miner on your mining rigs. Follow our tutorial to install the CPU miner on your hardware.',
     link: 'https://www.hostero.eu/getting-started',
-    keywords: 'get started, tutorial, mining, software, hardware, crypto, cpu, miner, universal cpu miner, cpu miner'
+    keywords: 'get started, tutorial, mining, software, hardware, crypto, cpu, miner, universal cpu miner, cpu miner',
+    name: name,
   });
 });
 
 app.get('/changelog', function(req, res) {
+  var name = get_name(req);
+
   res.render('changelog', {
     title: 'Changelog for our Mining Software',
     description: 'Find out what new features we have released. We are constantly working on improving the mining software, and make your miners profitable.',
@@ -116,24 +150,32 @@ app.get('/changelog', function(req, res) {
 });
 
 app.get('/docs/purchase-webdollar', function(req, res) {
+  var name = get_name(req);
+
   res.render('purchase-webdollar', {
     title: 'Purchase WebDollar, only use Escrow',
     description: 'Tutorial on how to purchase WebDollar coins from multiple sources. Use WebDollar to pay for the platform services. Purchase only with escrow.',
     link: 'https://www.hostero.eu/purchase-webdollar',
-    keywords: 'purchase, webdollar, tutorial, crypto, cryptocurrencies, coins, escrow, cpu, cpu miner'
+    keywords: 'purchase, webdollar, tutorial, crypto, cryptocurrencies, coins, escrow, cpu, cpu miner',
+    name: name,
   });
 });
 
 app.get('/webdollar', function(req, res) {
+  var name = get_name(req);
+
   res.render('webdollar', {
     title: 'Tools and Services for WebDollar',
     description: 'List of tools and services developed for the WebDollar community. Crypto third-party tools that allow anybody to join the crypto space.',
     link: 'https://www.hostero.eu/webdollar',
-    keywords: 'tools, services, webdollar, community, list, cpu, cpu miner, crypto'
+    keywords: 'tools, services, webdollar, community, list, cpu, cpu miner, crypto',
+    name: name,
   });
 });
 
 app.get('/cpu-mineable-coins', function(req, res) {
+  var name = get_name(req);
+
   get_coins(function(error, coins) {
     res.render('coins', {
       title: 'List with CPU mineable cryptocurrencies',
@@ -141,44 +183,65 @@ app.get('/cpu-mineable-coins', function(req, res) {
       link: 'https://www.hostero.eu/cpu-mineable-coins',
       keywords: 'directory, cpu, cpu miner, profitable, crypto, cryptocurrencies, mining software, multicurrency, list',
       coins: coins,
-      coins_no: coins.length
+      coins_no: coins.length,
+      name: name,
     });
   });
 });
 
 app.get('/universal-miner', function(req, res) {
+  var account_id = req.cookies.ACCOUNT_ID || null;
+  var name = get_name(req);
+
   res.render('universal-miner', {
     title: 'Universal Miner',
     description: 'Install the Universal Miner and start mining over 10 cryptocurrencies in under a minute.',
     link: 'https://www.hostero.eu/universal-miner',
-    keywords: 'universal, miner, software, cpu, cpu miner, crypto, cryptocurrencies'
+    keywords: 'universal, miner, software, cpu, cpu miner, crypto, cryptocurrencies',
+    account_id: account_id,
+    name: name,
   });
 });
 
 app.get('/docs/install-on-ubuntu', function(req, res) {
+  var account_id = req.cookies.ACCOUNT_ID || null;
+  var name = get_name(req);
+
   res.render('install-on-ubuntu', {
     title: 'Install Hostero on Ubuntu',
     description: 'Install the Hostero Universal Miner on Ubuntu',
     link: 'https://www.hostero.eu/docs/install-on-ubuntu',
-    keywords: 'universal, miner, software, cpu, cpu miner, crypto, cryptocurrencies, install, guide, ubuntu'
+    keywords: 'universal, miner, software, cpu, cpu miner, crypto, cryptocurrencies, install, guide, ubuntu',
+    account_id: account_id,
+    name: name,
   });
 });
 
 app.get('/docs/install-on-windows', function(req, res) {
+  var account_id = req.cookies.ACCOUNT_ID || null;
+  var name = get_name(req);
+
   res.render('install-on-windows', {
     title: 'Install Hostero on Windows',
     description: 'Install the Hostero Universal Miner on Windows',
     link: 'https://www.hostero.eu/docs/install-on-windows',
-    keywords: 'universal, miner, software, cpu, cpu miner, crypto, cryptocurrencies, install, guide, windows'
+    keywords: 'universal, miner, software, cpu, cpu miner, crypto, cryptocurrencies, install, guide, windows',
+    account_id: account_id,
+    name: name,
   });
 });
 
 app.get('/docs/install-on-macos', function(req, res) {
+  var account_id = req.cookies.ACCOUNT_ID || null;
+  var name = get_name(req);
+
   res.render('install-on-macos', {
     title: 'Install Hostero on MacOS',
     description: 'Install the Hostero Universal Miner on MacOS',
     link: 'https://www.hostero.eu/docs/install-on-macos',
-    keywords: 'universal, miner, software, cpu, cpu miner, crypto, cryptocurrencies, install, guide, macos'
+    keywords: 'universal, miner, software, cpu, cpu miner, crypto, cryptocurrencies, install, guide, macos',
+    account_id: account_id,
+    name: name,
   });
 });
 
@@ -186,6 +249,8 @@ app.get('/coins/:coin', function(req, res) {
   if (!req.params.coin) {
     return render_404(req, res);
   }
+
+  var name = get_name(req);
 
   get_coins(function(error, coins) {
     var coin;
@@ -239,7 +304,8 @@ app.get('/coins/:coin', function(req, res) {
         link: 'https://www.hostero.eu/coins/' + coin.internal_name,
         keywords: coin.name + ', coin, benchmarks, directory, mine, cpu, cpu miner, crypto, cryptocurrencies, mining software, multicurrency, list',
         coin: coin,
-        benchmarks: benchmarks_with_profit
+        benchmarks: benchmarks_with_profit,
+        name: name,
       });
     }, coin.internal_name);
   }, 3600 * 1000);

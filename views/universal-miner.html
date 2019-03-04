@@ -52,10 +52,16 @@
               <div class="media-body">
                 <p class="h3 mb-2">
                   Run this command in the Terminal:<br />
+                  {{#account_id}}
+                  <span class="badge badge-info">curl https://www.hostero.eu/install?a={{account_id}} | sh</span>
+                  <small><strong>Note:</strong> This command is specific to your account, do not share it with others.</small>
+                  {{/account_id}}
+                  {{^account_id}}
                   <span class="badge badge-info">curl https://www.hostero.eu/install | sh</span>
+                  {{/account_id}}
                 </p>
                 <br/ >
-                <small>Ubuntu 16.04 and 18.04 supported only. For more check out the <a href="/getting-started">Getting Started Guide</a>.</small>
+                <small>Ubuntu 16.04 and 18.04 supported only. For more, check out <a href="/getting-started">Getting Started</a>.</small>
               </div>
             </div>
           </div>

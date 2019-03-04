@@ -58,6 +58,18 @@
             </nav>
           </div>
           <div class="col-12 col-md-8">
+            {{^account_id}}
+              <article id="login">
+                <div class="alert alert-warning" role="alert">
+                  <h4 class="alert-heading">You are not logged in</h4>
+                  <p>If you log in, the commands in this tutorial are specific to your account, otherwise you might have to take additional steps to install the Universal Miner.</p>
+                  <hr />
+                  <p class="mb-0">Go to <a href="https://dashboard.hostero.eu" target="_blank">Login</a> to get commands specific to your account.</p>
+                </div>
+              </article>
+              <hr />
+            {{/account_id}}
+
             <article id="requirements">
               <h3>Requirements</h3>
               <p>Please make sure your device meets all the following requirements:</p>
@@ -87,12 +99,19 @@
                 <div class="card-body">
                   <h6 class="title-decorative">Run this command in the Terminal:</h6>
                   <dl class="row justfiy-content-between">
+                    {{#account_id}}
+                    <code>docker run -e CATTLE_HOST_LABELS="account={{account_id}}" --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.2.9 http://infra.hostero.eu:8080/v1/scripts/2E28C27EE87F5E1A6B7F:1514678400000:ShibdGaXFOlmN3QGGHj1UFuP1lU</code>
+                    {{/account_id}}
+                    {{^account_id}}
                     <code>docker run -e CATTLE_HOST_LABELS="account=<strong>ACCOUNT_ID</strong>" --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.2.9 http://infra.hostero.eu:8080/v1/scripts/2E28C27EE87F5E1A6B7F:1514678400000:ShibdGaXFOlmN3QGGHj1UFuP1lU</code>
+                    {{/account_id}}
                   </dl>
                 </div>
               </div>
 
+              {{^account_id}}
               <p><i>Important</i>: Replace <strong>ACCOUNT_ID</strong> with yours. You need to <a href="https://dashboard.hostero.eu" target="_blank">Login</a>.</p>
+              {{/account_id}}
             </article>
           </div>
           <div class="col">
