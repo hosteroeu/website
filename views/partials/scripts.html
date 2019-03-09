@@ -33,3 +33,22 @@
     ]
   }
 </script>
+
+<script type="text/javascript">
+  $(function() {
+    var clipboard = new ClipboardJS('.btn');
+
+    toastr.options = {
+      "progressBar": true,
+      "positionClass": "toast-bottom-right",
+    }
+
+    clipboard.on('success', function(e) {
+      toastr.success('Copied to clipboard')
+    });
+
+    clipboard.on('error', function(e) {
+      toastr.error('Error copying to clipboard')
+    });
+  });
+</script>
