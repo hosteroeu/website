@@ -90,14 +90,18 @@
               <div class="card bg-secondary">
                 <div class="card-body">
                   <h6 class="title-decorative">Run this command in the Terminal:</h6>
+                  {{#account_id}}
                   <dl class="row justfiy-content-between">
-                    {{#account_id}}
                     <code>curl https://www.hostero.eu/install?a=<strong>{{account_id}}</strong> | sh</code>
-                    {{/account_id}}
-                    {{^account_id}}
-                    <code>curl https://www.hostero.eu/install | sh</code>
-                    {{/account_id}}
                   </dl>
+                  <button class="btn btn-outline-secondary btn-sm" data-clipboard-text="curl https://www.hostero.eu/install?a={{account_id}}">Copy to clipboard</button>
+                  {{/account_id}}
+                  {{^account_id}}
+                  <dl class="row justfiy-content-between">
+                    <code>curl https://www.hostero.eu/install | sh</code>
+                  </dl>
+                  <button class="btn btn-outline-secondary btn-sm" data-clipboard-text="curl https://www.hostero.eu/install | sh">Copy to clipboard</button>
+                  {{/account_id}}
                 </div>
               </div>
             </article>
@@ -115,6 +119,7 @@
                   <dl class="row justfiy-content-between">
                     <code>curl https://releases.rancher.com/install-docker/17.12.sh | sh</code>
                   </dl>
+                  <button class="btn btn-outline-secondary btn-sm" data-clipboard-text="curl https://releases.rancher.com/install-docker/17.12.sh | sh">Copy to clipboard</button>
                 </div>
               </div>
 
@@ -125,6 +130,7 @@
                   <dl class="row justfiy-content-between">
                     <code>curl https://releases.rancher.com/install-docker/18.06.sh | sh</code>
                   </dl>
+                  <button class="btn btn-outline-secondary btn-sm" data-clipboard-text="curl https://releases.rancher.com/install-docker/18.06.sh | sh">Copy to clipboard</button>
                 </div>
               </div>
               <div class="card bg-secondary">
@@ -140,13 +146,18 @@
               <div class="card bg-secondary">
                 <div class="card-body">
                   <h6 class="title-decorative">Run this command in the Terminal:</h6>
+                  {{#account_id}}
                   <dl class="row justfiy-content-between">
-                    {{#account_id}}
                     <code>docker run -e CATTLE_HOST_LABELS="account=<strong>{{account_id}}</strong>" --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.2.9 http://infra.hostero.eu:8080/v1/scripts/2E28C27EE87F5E1A6B7F:1514678400000:ShibdGaXFOlmN3QGGHj1UFuP1lU</code>
-                    {{/account_id}}
-                    {{^account_id}}
+                  </dl>
+                  <button class="btn btn-outline-secondary btn-sm" data-clipboard-text='docker run -e CATTLE_HOST_LABELS="account={{account_id}}" --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.2.9 http://infra.hostero.eu:8080/v1/scripts/2E28C27EE87F5E1A6B7F:1514678400000:ShibdGaXFOlmN3QGGHj1UFuP1lU'>Copy to clipboard</button>
+                  {{/account_id}}
+                  {{^account_id}}
+                  <dl class="row justfiy-content-between">
                     <code>docker run -e CATTLE_HOST_LABELS="account=<strong>ACCOUNT_ID</strong>" --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.2.9 http://infra.hostero.eu:8080/v1/scripts/2E28C27EE87F5E1A6B7F:1514678400000:ShibdGaXFOlmN3QGGHj1UFuP1lU</code>
-                    {{/account_id}}
+                  </dl>
+                  <button class="btn btn-outline-secondary btn-sm" data-clipboard-text='docker run -e CATTLE_HOST_LABELS="account=ACCOUNT_ID" --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.2.9 http://infra.hostero.eu:8080/v1/scripts/2E28C27EE87F5E1A6B7F:1514678400000:ShibdGaXFOlmN3QGGHj1UFuP1lU'>Copy to clipboard</button>
+                  {{/account_id}}
                   </dl>
                 </div>
               </div>
@@ -163,14 +174,21 @@
               <p>Cloud providers have an option to set a startup script. The script will execute after the VPS is created, so you don't have to manually install it.</p>
               <div class="card bg-secondary">
                 <div class="card-body">
-                  <h6 class="title-decorative">Run this command in the Terminal:</h6>
+                  <h6 class="title-decorative">Add this to the startup script:</h6>
+                  {{#account_id}}
                   <dl class="row justfiy-content-between">
-                    {{#account_id}}
-                    <code>curl https://www.hostero.eu/install?a=<strong>{{account_id}}</strong> | sh</code>
-                    {{/account_id}}
-                    {{^account_id}}
-                    <code>curl https://www.hostero.eu/install?a=<strong>ACCOUNT_ID</strong> | sh</code>
-                    {{/account_id}}
+                    <code>#!/bin/bash<br />curl https://www.hostero.eu/install?a=<strong>{{account_id}}</strong> | sh</code>
+                  </dl>
+                  <button class="btn btn-outline-secondary btn-sm" data-clipboard-text='#!/bin/bash
+curl https://www.hostero.eu/install?a={{account_id}} | sh'>Copy to clipboard</button>
+                  {{/account_id}}
+                  {{^account_id}}
+                  <dl class="row justfiy-content-between">
+                    <code>#!/bin/bash<br />curl https://www.hostero.eu/install?a=<strong>ACCOUNT_ID</strong> | sh</code>
+                  </dl>
+                  <button class="btn btn-outline-secondary btn-sm" data-clipboard-text='#!/bin/bash
+curl https://www.hostero.eu/install?a=ACCOUNT_ID | sh'>Copy to clipboard</button>
+                  {{/account_id}}
                   </dl>
                 </div>
               </div>
