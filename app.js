@@ -270,6 +270,20 @@ app.get('/docs/install-on-macos', function(req, res) {
   });
 });
 
+app.get('/docs/webdollar-pos-mining', function(req, res) {
+  var account_id = req.cookies.ACCOUNT_ID || null;
+  var name = get_name(req);
+
+  res.render('webdollar-pos-mining', {
+    title: 'Mine Proof-Of-Stake with WebDollar',
+    description: 'How to configure the POS miner for WebDollar',
+    link: 'https://www.hostero.eu/docs/webdollar-pos-mining',
+    keywords: 'universal, miner, webdollar, pos, software, cpu, cpu miner, crypto, cryptocurrencies',
+    account_id: account_id,
+    name: name,
+  });
+});
+
 app.get('/coins/:coin', function(req, res) {
   if (!req.params.coin) {
     return render_404(req, res);

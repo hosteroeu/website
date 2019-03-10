@@ -15,7 +15,8 @@
           <div class="col">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="/">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Getting Started</li>
+              <li class="breadcrumb-item">Docs</li>
+              <li class="breadcrumb-item active" aria-current="page">WebDollar POS Mining</li>
             </ol>
           </div>
         </div>
@@ -27,16 +28,16 @@
         <div class="row">
           <div class="col-12 col-md-6">
             <div class="space-lg pb-0">
-              <h1 class="display-4">Getting Started</h1>
+              <h1 class="display-4">WebDollar POS Mining</h1>
               <span class="lead">
-                A brief guide to working with Hostero.
+                Guide for configuring the Proof-of-Stake miner for WebDollar.
               </span>
             </div>
           </div>
         </div>
       </div>
       <svg class="decorative-divider" preserveAspectRatio="none" viewbox="0 0 100 100">
-          <polygon fill="#F8F9FB" points="0 100 100 100 100 0"></polygon>
+        <polygon fill="#F8F9FB" points="0 100 100 100 100 0"></polygon>
       </svg>
     </section>
 
@@ -46,7 +47,7 @@
           <div class="col-12 col-md-2 mb-5">
             <nav class="nav flex-md-column">
               <a href="/changelog" class="nav-link">Changelog <span class="badge badge-secondary">v1</span></a>
-              <a href="/getting-started" class="active nav-link">Getting Started</a>
+              <a href="/getting-started" class="nav-link">Getting Started</a>
             </nav>
             <hr class="short">
             <nav class="nav flex-md-column mb-2">
@@ -54,38 +55,39 @@
               <a href="/docs/install-on-windows" class="nav-link">Install on Windows</a>
               <a href="/docs/install-on-macos" class="nav-link">Install on MacOS</a>
               <a href="/docs/purchase-webdollar" class="nav-link">Purchase WebDollar</a>
-              <a href="/docs/webdollar-pos-mining" class="nav-link">WebDollar POS Mining</a>
+              <a href="/docs/webdollar-pos-mining" class="active nav-link">WebDollar POS Mining</a>
             </nav>
           </div>
           <div class="col-12 col-md-8">
-            <article id="install">
-              <h3>Installation</h3>
-              <p>You can install Hostero on multiple operating systems:</p>
-              <ul>
-                <li><a href="/docs/install-on-ubuntu">Install on Ubuntu</a></li>
-                <li><a href="/docs/install-on-windows">Install on Windows</a></li>
-                <li><a href="/docs/install-on-macos">Install on MacOS</a></li>
-              </ul>
+            <article id="instructions">
+              <h3>Instructions</h3>
+              <p>You need to have an account to mine POS with WebDollar. If you don't already have one, go to <a href="https://dashboard.hostero.eu" target="_blank">Sign Up</a>.</p>
+
+              <h4>1. Go to Devices</h4>
+              <p>Go to <a href="https://dashboard.hostero.eu" target="_blank">Devices</a> and locate the <strong>WebDollar POS</strong> device.</p>
+
+              <h4>2. Deploy Miner</h4>
+              <p>Click on the <strong>+</strong> (plus) button, on the right side of the device, and enter your <a href="https://www.webdollar.io" target="_blank">WebDollar.io</a> wallet, then click <strong>Deploy</strong>.</p>
             </article>
 
-            <article id="feedback">
-              <h3>Giving Feedback</h3>
-              <div>
-                <p>We strive to improve our products and we rely on feedback from our users.</p>
-                <p>Please feel free to share any feedback about Hostero via twitter <a href="https://twitter.com/hosteroeu">@hosteroeu</a> or hosteroeu@gmail.com.</p>
-              </div>
+            <hr />
+
+            <article id="video-tutorial">
+              <h3>Video Tutorial</h3>
+              <iframe width="100%" height="400" src="https://www.youtube.com/embed/F0WgYTeD-M4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </article>
           </div>
           <div class="col">
             <nav id="nav-components" class="nav flex-md-column" data-sticky="below-nav">
-              <a data-smooth-scroll href="mailto:hosteroeu@gmail.com" class="nav-link text-small">Support</a>
+              <a data-smooth-scroll href="#instructions" class="nav-link text-small">Instructions</a>
+              <a data-smooth-scroll href="#video-tutorial" class="nav-link text-small">Video Tutorial</a>
             </nav>
           </div>
         </div>
       </div>
     </section>
 
-    {{> partials/start_mining }} {{> partials/subscribe }} {{> partials/footer }}
+    {{> partials/subscribe }} {{> partials/footer }}
   </div>
 
   {{> partials/scripts }}

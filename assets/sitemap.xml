@@ -46,6 +46,10 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://www.hostero.eu/docs/webdollar-pos-mining</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://www.hostero.eu/coins/webdollar</loc>
     <changefreq>weekly</changefreq>
   </url>
