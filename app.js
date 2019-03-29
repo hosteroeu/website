@@ -118,7 +118,7 @@ app.get('/pricing', function(req, res) {
   var name = get_name(req);
 
   res.render('pricing', {
-    title: 'Subscription plans for Hostero',
+    title: 'Pricing and Subscription plans for Hostero',
     description: 'Choose your subscription based on the required number of miners. We have a wide range of subscriptions available and a free plan.',
     link: 'https://www.hostero.eu/pricing',
     keywords: 'plans, subscriptions, prices, mining, software, hardware, crypto, cpu, miner, universal cpu miner, cpu miner',
