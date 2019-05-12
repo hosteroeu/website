@@ -5,7 +5,7 @@ var compression = require('compression');
 var mustacheExpress = require('mustache-express');
 var cookieParser = require('cookie-parser');
 var app = express();
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 3003;
 
 function render_404(req, res) {
   res.status(404).render('404', {
