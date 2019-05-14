@@ -12,43 +12,32 @@
 
         <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
           <ul class="navbar-nav">
-            <li class="nav-item">
-              <a href="/universal-miner" class="nav-link">Universal Miner</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown">Products</a>
+              <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                <a class="dropdown-item" href="/universal-miner">
+                    <span class="h6 mb-0">Universal Miner</span>
+                    <p class="text-small text-muted">Start mining over 10 cryptocurrencies in one minute</p>
+                </a>
+
+                <div class="dropdown-divider"></div>
+
+                <a class="dropdown-item" href="https://dashboard.hostero.eu" target="_blank">
+                    <span class="h6 mb-0">Dashboard</span>
+                    <p class="text-small text-muted">Mining software for CPU mineable cryptocurrencies</p>
+                </a>
+
+                <div class="dropdown-divider"></div>
+
+                <a class="dropdown-item" href="#">
+                    <span class="h6 mb-0">Bootstrap</span>
+                    <p class="text-small text-muted">Coming soon...</p>
+                </a>
+              </div>
             </li>
 
             <li class="nav-item">
               <a href="/pricing" class="nav-link">Pricing</a>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown">Tools</a>
-              <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                <a class="dropdown-item" href="https://t.me/HosteroBot" target="_blank">
-                    <span class="h6 mb-0">Hostero Bot</span>
-                    <p class="text-small text-muted">Telegram bot for interacting with Hostero</p>
-                </a>
-
-                <div class="dropdown-divider"></div>
-
-                <a class="dropdown-item" href="http://nodes.wd.hostero.eu" target="_blank">
-                    <span class="h6 mb-0">Full Nodes Monitor</span>
-                    <p class="text-small text-muted">Fallback Nodes Monitor for WebDollar</p>
-                </a>
-
-                <div class="dropdown-divider"></div>
-
-                <a class="dropdown-item" href="https://calculator.wd.hostero.eu" target="_blank">
-                  <span class="h6 mb-0">Mining Reward Calculator</span>
-                  <p class="text-small text-muted">Calculate Rewards for WebDollar Mining</p>
-                </a>
-
-                <div class="dropdown-divider"></div>
-
-                <a class="dropdown-item" href="https://hash.wd.hostero.eu/dashboard/db/webdollar-global-hashing-power" target="_blank">
-                  <span class="h6 mb-0">Statistics Dashboard</span>
-                  <p class="text-small text-muted">Statistics Charts for WebDollar</p>
-                </a>
-              </div>
             </li>
           </ul>
 
@@ -58,11 +47,8 @@
             </li>
             <li class="nav-item d-flex align-items-center">
               {{#name}}
-              <a href="https://dashboard.hostero.eu" class="btn btn-success">{{name}}</a>
-              {{/name}}
-              {{^name}}
-              <a href="https://dashboard.hostero.eu" class="btn btn-success">Log In</a>
-              {{/name}}
+              <a href="https://dashboard.hostero.eu" class="btn btn-success">{{name}}</a> {{/name}} {{^name}}
+              <a href="https://dashboard.hostero.eu" class="btn btn-success">Log In</a> {{/name}}
             </li>
           </ul>
         </div>
