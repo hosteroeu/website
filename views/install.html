@@ -38,7 +38,7 @@ echo ""
 export account='{{account_id}}'
 {{/account_id}}
 
-if [[ ! $account ]]; then
+if [ ! $account ]; then
   if [ -z $1 ]; then
     echo '=== Navigate to dashboard.hostero.eu and retrieve your ACCOUNT ID ==='
     echo ''
