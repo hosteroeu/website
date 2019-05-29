@@ -31,16 +31,15 @@
       <div class="container">
         <div class="row justify-content-between">
           <div class="col-auto order-md-2 mb-4">
+            {{#coin.website_url}}
             <div class="dropdown">
               <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Resources
                   <span class="sr-only">Toggle Dropdown</span>
               </button>
               <div class="dropdown-menu dropdown-menu-right dropdown-menu-sm">
-                {{#coin.website_url}}
                 <a class="dropdown-item" href="{{{coin.website_url}}}" target="_blank">Website</a>
                 <div class="dropdown-divider"></div>
-                {{/coin.website_url}}
                 {{#coin.explorer_url}}
                 <a class="dropdown-item" href="{{{coin.explorer_url}}}" target="_blank">Explorer</a> {{/coin.explorer_url}} {{#coin.exchange_url}}
                 <a class="dropdown-item" href="{{{coin.exchange_url}}}" target="_blank">Exchange</a> {{/coin.exchange_url}} {{#coin.statistics_url}}
@@ -49,6 +48,7 @@
                 <a class="dropdown-item" href="{{{coin.mining_pools_url}}}" target="_blank">Mining Pools</a> {{/coin.mining_pools_url}}
               </div>
             </div>
+            {{/coin.website_url}}
           </div>
           <!--end of col-->
           <div class="col order-md-1">
@@ -98,10 +98,10 @@
           <div class="col-12 col-md-6 col-lg-5">
             <div class="card card-lg text-center">
               <div class="card-body">
-                <i class="icon-add-to-list display-4 opacity-20"></i>
+                <i class="icon-squared-cross display-4 opacity-20"></i>
                 <h1 class="h5">{{coin.name}} has been removed from Hostero</h1>
                 <p>
-                  The project does not comply with the Hostero terms of service.
+                  The project does not comply with the terms of service.
                 </p>
                 <a href="mailto:hosteroeu@gmail.com" class="btn btn-lg btn-primary">Contact support</a>
               </div>
@@ -116,6 +116,7 @@
     <!--end of section-->
     {{/coin.removed}}
 
+    {{^coin.removed}}
     {{^coin.on_hostero}}
     <section class="height-70">
       <div class="container">
@@ -139,7 +140,10 @@
       <!--end of container-->
     </section>
     <!--end of section-->
-    {{/coin.on_hostero}} {{#coin.on_hostero}}
+    {{/coin.on_hostero}}
+    {{/coin.removed}}
+
+    {{#coin.on_hostero}}
     <section>
       <div class="container">
         <div class="row">
