@@ -18,7 +18,7 @@ function render_404(req, res) {
 
 function get_coins(callback, ttl) {
   crequest({
-    url: 'https://api.hostero.eu/v1/coins',
+    url: 'https://api.hostero.eu/v1/coins?removed=0',
     ttl: ttl || (3600 * 1000 * 24) // 1d
   }, function(error, response, body) {
     var coins = JSON.parse(body);
