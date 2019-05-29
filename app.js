@@ -18,7 +18,7 @@ function render_404(req, res) {
 
 function get_coins(callback, ttl) {
   crequest({
-    url: 'https://api.hostero.eu/v1/coins?removed=0',
+    url: 'https://api.hostero.eu/v1/coins',
     ttl: ttl || (3600 * 1000 * 24) // 1d
   }, function(error, response, body) {
     var coins = JSON.parse(body);
@@ -175,10 +175,11 @@ app.get('/webdollar', function(req, res) {
 
 app.get('/cpu-mineable-coins', function(req, res) {
   var name = get_name(req);
+  var coins = [];
 
-  get_coins(function(error, coins) {
-    for (var i=0; i<coins.length; i++) {
-      var coin = coins[i];
+  get_coins(function(error, _coins) {
+    for (var i=0; i<_coins.length; i++) {
+      var coin = _coins[i];
 
       if (coin.network_hashrate == 0) {
         coin.network_hashrate = null;
@@ -199,6 +200,10 @@ app.get('/cpu-mineable-coins', function(req, res) {
 
       if (coin.block_reward == 0) {
         coin.block_reward = null;
+      }
+
+      if (!coin.removed) {
+        coins.push(coin);
       }
     }
 
