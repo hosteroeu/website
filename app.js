@@ -280,8 +280,8 @@ app.get('/docs/webdollar-pos-mining', function(req, res) {
   var name = get_name(req);
 
   res.render('webdollar-pos-mining', {
-    title: 'Mine Proof-Of-Stake with WebDollar',
-    description: 'How to configure the POS miner for WebDollar',
+    title: 'Mine Proof Of Stake (POS) with WebDollar',
+    description: 'Learn how to configure the Proof of Stake (POS) miner for WebDollar',
     link: 'https://www.hostero.eu/docs/webdollar-pos-mining',
     keywords: 'universal, miner, webdollar, pos, software, cpu, cpu miner, crypto, cryptocurrencies',
     account_id: account_id,
