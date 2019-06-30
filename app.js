@@ -161,13 +161,13 @@ app.get('/docs/purchase-webdollar', function(req, res) {
   });
 });
 
-app.get('/webdollar', function(req, res) {
+app.get('/tools', function(req, res) {
   var name = get_name(req);
 
-  res.render('webdollar', {
-    title: 'Tools and Services for WebDollar',
-    description: 'List of tools and services developed for the WebDollar community. Crypto third-party tools that allow anybody to join the crypto space.',
-    link: 'https://www.hostero.eu/webdollar',
+  res.render('tools', {
+    title: 'Tools',
+    description: 'List of tools and services developed for the open-source community. Crypto tools that create a bridge for mass-adoption.',
+    link: 'https://www.hostero.eu/tools',
     keywords: 'tools, services, webdollar, community, list, cpu, cpu miner, crypto',
     name: name,
   });
@@ -407,6 +407,10 @@ app.get('/webdollar/chance.html', function(req, res) {
 
 app.get('/webdollar/fallback.html', function(req, res) {
   res.redirect(301, 'http://nodes.wd.hostero.eu');
+});
+
+app.get('/webdollar', function(req, res) {
+  res.redirect(301, 'https://www.hostero.eu/tools');
 });
 
 app.get('*', render_404);
