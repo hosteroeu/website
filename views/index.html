@@ -25,9 +25,9 @@
             <div class="main-carousel overflow-visible" data-flickity='{ "cellAlign": "center", "contain": true, "prevNextButtons":false, "pageDots":false, "wrapAround":true, "autoPlay":5000, "imagesLoaded":true, "initialIndex":0, "draggable":true }'>
               <div class="carousel-cell col-11">
                 <div class="card card-sm">
-                  <img class="card-img-top" src="/assets/img/screenshots/5.png" alt="Hostero Dashboard" data-action="zoom" />
+                  <img class="card-img-top" src="/assets/img/screenshots/dashboard_intro_low.gif" alt="Hostero Dashboard" data-action="zoom" />
                   <div class="card-footer d-flex justify-content-between">
-                    <a href="#" class="h6 m-0">Hostero Dashboard</a>
+                    <a href="https://dashboard.hostero.eu" class="h6 m-0" target="_blank">Miner Management</a>
                   </div>
                 </div>
               </div>
@@ -67,7 +67,6 @@
     </section>
   -->
 
-  {{> partials/announcement }}
   {{> partials/statistics }}
 
   <section>
@@ -103,7 +102,7 @@
           <a class="card">
             <img alt="Staking" src="/assets/img/screenshots/staking/2.png" class="img-fluid rounded" data-action="zoom" />
           </a>
-          <h5>Start staking coins fast and easy</h5>
+          <h5>Start staking quick and easy</h5>
           <p>Deploy a Proof of Stake (POS) miner, track status and view logs.</p>
           <a href="https://staking.hostero.eu">Go to Staking &rsaquo;</a>
         </li>
@@ -167,7 +166,7 @@
             <img alt="Image" src="/assets/img/panaitalexandru.jpg" class="avatar avatar-lg">
             <div class="media-body">
               <p class="h2">
-                "Hostero is a great platform for mining PoW cryptocurrencies! You can deploy your miners with just few clicks. This is amazing!"
+                “Hostero is a great platform for mining PoW cryptocurrencies!”
               </p>
               <span><strong>Alexandru Ionut Panait</strong>, General Manager &amp; Platform Dev., WebDollar.io</span>
             </div>
@@ -212,8 +211,6 @@
     </div>
   </section>
 
-  {{> partials/demo }}
-
   <section class="space">
     <div class="container">
       <div class="row justify-content-center text-center section-intro">
@@ -240,6 +237,8 @@
     </div>
   </section>
 
+  {{> partials/demo }}
+  {{> partials/announcement }}
   {{> partials/footer }}
   </div>
 
