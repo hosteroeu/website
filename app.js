@@ -66,6 +66,20 @@ app.engine('html', mustacheExpress());
 app.use(compression());
 app.use(cookieParser());
 
+// CORS
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+
+  next();
+});
+
+// Pre-flight and ELB requests
+app.options('*', function(req, res) {
+  res.send(200);
+});
+
 app.get('/*', function(req, res, next) {
   if (req.url.indexOf('/assets/') === 0) {
     res.setHeader('Cache-Control', 'public, max-age=2592000');
@@ -395,6 +409,8 @@ app.get('/sitemap.xml', function(req, res) {
 
 // The file is also accessible via /assets/fallbacks.json
 app.get('/webdollar/fallbacks.json', function(req, res) {
+  res.set('Content-Type', 'application/json');
+
   res.sendFile('fallbacks.json', {
     root: __dirname + '/assets/',
     dotfiles: 'deny',
