@@ -393,6 +393,18 @@ app.get('/sitemap.xml', function(req, res) {
   });
 });
 
+// The file is also accessible via /assets/fallbacks.json
+app.get('/webdollar/fallbacks.json', function(req, res) {
+  res.sendFile('fallbacks.json', {
+    root: __dirname + '/assets/',
+    dotfiles: 'deny',
+    headers: {
+      'x-timestamp': Date.now(),
+      'x-sent': true
+    }
+  });
+});
+
 app.get('/purchase-webdollar', function(req, res) {
   res.redirect(301, 'https://www.hostero.eu/docs/purchase-webdollar');
 });
