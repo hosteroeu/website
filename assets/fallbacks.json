@@ -1,0 +1,97 @@
+[{
+  "addr": ["https://webd.5q.ro:3333"]
+}, {
+  "addr": ["https://webdollar-vps1.ddns.net:80"]
+}, {
+  "addr": ["https://node1.petreus.ro:443"]
+}, {
+  "addr": ["https://node2.petreus.ro:443"]
+}, {
+  "addr": ["https://node3.petreus.ro:443"]
+}, {
+  "addr": ["https://node4.petreus.ro:443"]
+}, {
+  "addr": ["https://node5.petreus.ro:443"]
+}, {
+  "addr": ["https://node6.petreus.ro:443"]
+}, {
+  "addr": ["https://node7.petreus.ro:443"]
+}, {
+  "addr": ["https://node8.petreus.ro:443"]
+}, {
+  "addr": ["https://node9.petreus.ro:443"]
+}, {
+  "addr": ["https://node10.petreus.ro:443"]
+}, {
+  "addr": ["https://node.timi.ro:443"]
+}, {
+  "addr": ["https://node1.timi.ro:443"]
+}, {
+  "addr": ["https://node2.timi.ro:443"]
+}, {
+  "addr": ["https://node3.timi.ro:443"]
+}, {
+  "addr": ["https://node4.timi.ro:443"]
+}, {
+  "addr": ["https://node5.timi.ro:443"]
+}, {
+  "addr": ["https://node6.timi.ro:443"]
+}, {
+  "addr": ["https://node7.timi.ro:443"]
+}, {
+  "addr": ["https://node8.timi.ro:443"]
+}, {
+  "addr": ["https://node9.timi.ro:443"]
+}, {
+  "addr": ["https://node10.timi.ro:443"]
+}, {
+  "addr": ["https://node11.timi.ro:443"]
+}, {
+  "addr": ["https://node12.timi.ro:443"]
+}, {
+  "addr": ["https://node13.timi.ro:443"]
+}, {
+  "addr": ["https://node14.timi.ro:443"]
+}, {
+  "addr": ["https://node15.timi.ro:443"]
+}, {
+  "addr": ["https://node16.timi.ro:443"]
+}, {
+  "addr": ["https://node1.webdollarminingpool.com:443"]
+}, {
+  "addr": ["https://node2.webdollarminingpool.com:443"]
+}, {
+  "addr": ["https://node3.webdollarminingpool.com:443"]
+}, {
+  "addr": ["https://node4.webdollarminingpool.com:443"]
+}, {
+  "addr": ["https://node5.webdollarminingpool.com:443"]
+}, {
+  "addr": ["https://node6.webdollarminingpool.com:443"]
+}, {
+  "addr": ["https://node7.webdollarminingpool.com:443"]
+}, {
+  "addr": ["https://node8.webdollarminingpool.com:443"]
+}, {
+  "addr": ["https://node9.webdollarminingpool.com:443"]
+}, {
+  "addr": ["https://node10.webdollarminingpool.com:443"]
+}, {
+  "addr": ["https://node11.webdollarminingpool.com:443"]
+}, {
+  "addr": ["https://node12.webdollarminingpool.com:443"]
+}, {
+  "addr": ["https://node13.webdollarminingpool.com:443"]
+}, {
+  "addr": ["https://node14.webdollarminingpool.com:443"]
+}, {
+  "addr": ["https://node15.webdollarminingpool.com:443"]
+}, {
+  "addr": ["https://falx.romeonet.ro:65001"]
+}, {
+  "addr": ["https://romeonet.ddns.net:65101"]
+}, {
+  "addr": ["https://cryptocoingb.ddns.net:8080"]
+}, {
+  "addr": ["https://cryptocoingb.ddns.net:8081"]
+}]
