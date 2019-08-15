@@ -53,16 +53,16 @@
                 <p class="h3 mb-2">
                   Run this command in the Terminal:<br />
                   {{#account_id}}
-                  <span class="badge badge-info">curl https://www.hostero.eu/install?a=<strong>{{account_id}}</strong> | sh</span>
+                  <span class="badge badge-info">curl https://www.hostero.eu/install?a=<strong>{{account_id}}</strong> | sudo sh</span>
                   <br />
                   <br />
-                  <button class="btn btn-outline-secondary btn-sm" data-clipboard-text='curl https://www.hostero.eu/install?a={{account_id}} | sh'>Copy to clipboard</button>
+                  <button class="btn btn-outline-secondary btn-sm" data-clipboard-text='curl https://www.hostero.eu/install?a={{account_id}} | sudo sh'>Copy to clipboard</button>
                   {{/account_id}}
                   {{^account_id}}
-                  <span class="badge badge-info">curl https://www.hostero.eu/install | sh</span>
+                  <span class="badge badge-info">curl https://www.hostero.eu/install | sudo sh</span>
                   <br />
                   <br />
-                  <button class="btn btn-outline-secondary btn-sm" data-clipboard-text='curl https://www.hostero.eu/install | sh'>Copy to clipboard</button>
+                  <button class="btn btn-outline-secondary btn-sm" data-clipboard-text='curl https://www.hostero.eu/install | sudo sh'>Copy to clipboard</button>
                   {{/account_id}}
                 </p>
                 <br/ >

@@ -93,15 +93,15 @@
                   <h6 class="title-decorative">Run this command in the Terminal:</h6>
                   {{#account_id}}
                   <dl class="row justfiy-content-between">
-                    <code>curl https://www.hostero.eu/install?a=<strong>{{account_id}}</strong> | sh</code>
+                    <code>curl https://www.hostero.eu/install?a=<strong>{{account_id}}</strong> | sudo sh</code>
                   </dl>
-                  <button class="btn btn-outline-secondary btn-sm" data-clipboard-text="curl https://www.hostero.eu/install?a={{account_id}} | sh">Copy to clipboard</button>
+                  <button class="btn btn-outline-secondary btn-sm" data-clipboard-text="curl https://www.hostero.eu/install?a={{account_id}} | sudo sh">Copy to clipboard</button>
                   {{/account_id}}
                   {{^account_id}}
                   <dl class="row justfiy-content-between">
-                    <code>curl https://www.hostero.eu/install | sh</code>
+                    <code>curl https://www.hostero.eu/install | sudo sh</code>
                   </dl>
-                  <button class="btn btn-outline-secondary btn-sm" data-clipboard-text="curl https://www.hostero.eu/install | sh">Copy to clipboard</button>
+                  <button class="btn btn-outline-secondary btn-sm" data-clipboard-text="curl https://www.hostero.eu/install | sudo sh">Copy to clipboard</button>
                   {{/account_id}}
                 </div>
               </div>
