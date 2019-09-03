@@ -145,7 +145,7 @@ app.get('/getting-started', function(req, res) {
 
   res.render('getting-started', {
     title: 'Getting Started with the CPU Miner',
-    description: 'Learn how to deploy the Universal CPU Miner on your mining rigs. Follow our tutorial to install the CPU miner on your hardware.',
+    description: 'Learn how to deploy the CPU Miner on your mining rigs. Follow our tutorial to install the CPU miner on your hardware.',
     link: 'https://www.hostero.eu/getting-started',
     keywords: 'get started, tutorial, mining, software, hardware, crypto, cpu, miner, universal cpu miner, cpu miner',
     name: name,
@@ -233,15 +233,15 @@ app.get('/cpu-mineable-coins', function(req, res) {
   });
 });
 
-app.get('/universal-miner', function(req, res) {
+app.get('/cpu-miner', function(req, res) {
   var account_id = req.cookies.ACCOUNT_ID || null;
   var name = get_name(req);
 
-  res.render('universal-miner', {
-    title: 'Universal Miner',
-    description: 'Install the Universal Miner and start mining over 10 cryptocurrencies in under a minute.',
-    link: 'https://www.hostero.eu/universal-miner',
-    keywords: 'universal, miner, software, cpu, cpu miner, crypto, cryptocurrencies',
+  res.render('cpu-miner', {
+    title: 'CPU Miner',
+    description: 'Install the CPU Miner and start mining over 10 cryptocurrencies in under a minute.',
+    link: 'https://www.hostero.eu/cpu-miner',
+    keywords: 'cpu, miner, software, cpu miner, crypto, cryptocurrencies',
     account_id: account_id,
     name: name,
   });
@@ -253,9 +253,9 @@ app.get('/docs/install-on-ubuntu', function(req, res) {
 
   res.render('install-on-ubuntu', {
     title: 'Install Hostero on Ubuntu',
-    description: 'Install the Hostero Universal Miner on Ubuntu',
+    description: 'Install the CPU Miner on Ubuntu',
     link: 'https://www.hostero.eu/docs/install-on-ubuntu',
-    keywords: 'universal, miner, software, cpu, cpu miner, crypto, cryptocurrencies, install, guide, ubuntu',
+    keywords: 'cpu, miner, software, cpu miner, crypto, cryptocurrencies, install, guide, ubuntu',
     account_id: account_id,
     name: name,
   });
@@ -267,9 +267,9 @@ app.get('/docs/install-on-windows', function(req, res) {
 
   res.render('install-on-windows', {
     title: 'Install Hostero on Windows',
-    description: 'Install the Hostero Universal Miner on Windows',
+    description: 'Install the CPU Miner on Windows',
     link: 'https://www.hostero.eu/docs/install-on-windows',
-    keywords: 'universal, miner, software, cpu, cpu miner, crypto, cryptocurrencies, install, guide, windows',
+    keywords: 'cpu, miner, software, cpu miner, crypto, cryptocurrencies, install, guide, windows',
     account_id: account_id,
     name: name,
   });
@@ -281,9 +281,9 @@ app.get('/docs/install-on-macos', function(req, res) {
 
   res.render('install-on-macos', {
     title: 'Install Hostero on MacOS',
-    description: 'Install the Hostero Universal Miner on MacOS',
+    description: 'Install the CPU Miner on MacOS',
     link: 'https://www.hostero.eu/docs/install-on-macos',
-    keywords: 'universal, miner, software, cpu, cpu miner, crypto, cryptocurrencies, install, guide, macos',
+    keywords: 'cpu, miner, software, cpu miner, crypto, cryptocurrencies, install, guide, macos',
     account_id: account_id,
     name: name,
   });
@@ -297,7 +297,7 @@ app.get('/docs/webdollar-pos-mining', function(req, res) {
     title: 'Mine Proof Of Stake (POS) with WebDollar',
     description: 'Learn how to configure the Proof of Stake (POS) miner for WebDollar',
     link: 'https://www.hostero.eu/docs/webdollar-pos-mining',
-    keywords: 'universal, miner, webdollar, pos, software, cpu, cpu miner, crypto, cryptocurrencies',
+    keywords: 'miner, webdollar, pos, software, cpu, cpu miner, crypto, cryptocurrencies',
     account_id: account_id,
     name: name,
   });
@@ -427,6 +427,10 @@ app.get('/purchase-webdollar', function(req, res) {
 
 app.get('/cpu-minable-coins', function(req, res) {
   res.redirect(301, 'https://www.hostero.eu/cpu-mineable-coins');
+});
+
+app.get('/universal-miner', function(req, res) {
+  res.redirect(301, 'https://www.hostero.eu/cpu-miner');
 });
 
 app.get('/webdollar/chance.html', function(req, res) {
