@@ -86,6 +86,9 @@
                         {{#fixed_supply}}
                         <span class="badge badge-info">Fixed Supply</span>
                         {{/fixed_supply}}
+                        {{#hybrid}}
+                        <span class="badge badge-warning">Hybrid</span>
+                        {{/hybrid}}
                       </div>
                     </div>
                   </th>
@@ -114,7 +117,7 @@
                     {{^block_reward}}
                     <span class="small">Block Reward: -</span><br />
                     {{/block_reward}}
-                    <span class="small">Updated: {{updated_at}}</span><br />
+                    <span class="small">Updated: {{formatted_updated_at}}</span><br />
                   </td>
                   <td>
                     {{#on_hostero}}
