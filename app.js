@@ -326,6 +326,10 @@ app.get('/coins/:coin', function(req, res) {
       return render_404(req, res);
     }
 
+    if (coin.description_extra) {
+      coin.description_extra = coin.description_extra.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+    }
+
     coin.miner_link = null;
 
     if (coin.docker_image) {

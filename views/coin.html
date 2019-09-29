@@ -156,6 +156,28 @@
     {{#coin.on_hostero}}
     <section>
       <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-6 col-lg-5">
+            <div class="card card-lg text-center">
+              <div class="card-body">
+                <i class="icon-download display-4 opacity-20"></i>
+                <h1 class="h5">Mine <strong>{{coin.name}}</strong></h1>
+                <p>
+                  Run the {{coin.name}} miner in 1 minute. No advanced skills required.
+                </p>
+                <a href="https://dashboard.hostero.eu" class="btn btn-lg btn-primary">Start Mining</a>
+              </div>
+            </div>
+          </div>
+          <!--end of col-->
+        </div>
+        <!--end of row-->
+      </div>
+      <!--end of container-->
+    </section>
+
+    <section>
+      <div class="container">
         <h3><strong>{{coin.name}}</strong> Benchmarks</h3>
         <div class="row">
           <div class="col">
@@ -197,30 +219,23 @@
         </div>
       </div>
     </section>
-    <section class="flush-with-above">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-12 col-md-6 col-lg-5">
-            <div class="card card-lg text-center">
-              <div class="card-body">
-                <i class="icon-download display-4 opacity-20"></i>
-                <h1 class="h5">Mine <strong>{{coin.name}}</strong></h1>
-                <p>
-                  Run the {{coin.name}} miner in 1 minute. No advanced skills required.
-                </p>
-                <a href="https://dashboard.hostero.eu" class="btn btn-lg btn-primary">Start Mining</a>
-              </div>
-            </div>
-          </div>
-          <!--end of col-->
-        </div>
-        <!--end of row-->
-      </div>
-      <!--end of container-->
-    </section>
-    <!--end of section-->
 
-    {{/coin.on_hostero}} {{> partials/footer_small }}
+    {{/coin.on_hostero}}
+
+    {{#coin.description_extra}}
+    <section>
+      <div class="container">
+        <h3><strong>{{coin.name}}</strong> Description</h3>
+        <div class="card box-shadow">
+          <div class="card-body">
+            <span>{{{coin.description_extra}}}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    {{/coin.description_extra}}
+
+    {{> partials/footer_small }}
   </div>
 
   {{> partials/scripts }}
