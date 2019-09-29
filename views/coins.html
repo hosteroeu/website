@@ -8,7 +8,7 @@
 <body>
   {{> partials/header }}
 
-  <div class="main-container">
+  <div class="main-container" itemscope itemtype="http://schema.org/ItemList">
     <nav aria-label="breadcrumb" role="navigation" class="bg-primary text-white">
       <div class="container">
         <div class="row justify-content-center">
@@ -31,7 +31,7 @@
               <img alt="CPU Icon" src="/assets/img/cpu_icon.png" class="avatar avatar-lg avatar-square opacity-40" />
               <div class="media-body">
                 <div class="mb-3">
-                  <h1 class="h2 mb-2">Directory with <strong>CPU Mineable Coins</strong></h1>
+                  <h1 class="h2 mb-2" itemprop="name">Directory with <strong>CPU Mineable Coins</strong></h1>
                   <span>Hostero is constantly adding new coins and always looking for coins that are launched recently. The cryptocurrencies in the list are updated regularly and abandoned coins are removed.</span>
                 </div>
                 <div>
@@ -66,12 +66,17 @@
               </thead>
               <tbody>
                 {{#coins}}
-                <tr class="bg-white">
+                <tr class="bg-white" property="itemListElement" typeof="ListItem">
                   <th scope="row">
                     <div class="media align-items-center">
-                      <img alt="Logo" src="{{{logo_url}}}" class="avatar opacity-80" />
+                      <img alt="Logo" src="{{{logo_url}}}" class="avatar opacity-80" property="image" />
                       <div class="media-body">
-                        <h5 class="mb-0"><strong><a href="/coins/{{internal_name}}">{{name}}</a></strong>
+                        <h5 class="mb-0">
+                          <strong>
+                            <a href="/coins/{{internal_name}}" property="item" typeof="WebPage">
+                              <span property="name">{{name}}</span>
+                            </a>
+                          </strong>
                           {{#cmc_url}}
                           (<a href="{{{cmc_url}}}" target="_blank">{{short_name}}</a>)
                           {{/cmc_url}}
