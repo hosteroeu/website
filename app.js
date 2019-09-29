@@ -224,7 +224,7 @@ app.get('/cpu-mineable-coins', function(req, res) {
     }
 
     res.render('coins', {
-      title: 'CPU mineable cryptocurrencies - List with the most profitable CPU mineable coins',
+      title: 'CPU mineable cryptocurrencies - The most profitable CPU coins',
       description: 'Directory with CPU mineable cryptocurrencies that are integrated with our mining software. See our list with the most profitable CPU mineable coins.',
       link: 'https://www.hostero.eu/cpu-mineable-coins',
       keywords: 'directory, cpu, cpu miner, profitable, crypto, cryptocurrencies, mining software, multicurrency, list',
@@ -240,7 +240,7 @@ app.get('/cpu-miner', function(req, res) {
   var name = get_name(req);
 
   res.render('cpu-miner', {
-    title: 'Multiple coin CPU Miner - Mine over ten cryptocurrencies in minutes',
+    title: 'Multiple coin CPU Miner - Mine over ten cryptocurrencies',
     description: 'Mine over ten cryptocurrencies, on any number of devices, using the CPU Miner. It can be installed in a couple of minutes. No advanced skills required.',
     link: 'https://www.hostero.eu/cpu-miner',
     keywords: 'cpu, miner, software, cpu miner, multiple coin, crypto, cryptocurrencies',
@@ -369,7 +369,7 @@ app.get('/coins/:coin', function(req, res) {
       }
 
       res.render('coin', {
-        title: 'Run the ' + coin.name + ' CPU miner - Start mining ' + coin.name + ' in one minute',
+        title: '' + coin.name + ' CPU miner - Start mining ' + coin.name + ' in one minute',
         description: coin.description + '. Start mining ' + coin.name + ' and other cryptocurrencies in one minute on our CPU mining platform. Choose from over ten coins to mine from our directory.',
         link: 'https://www.hostero.eu/coins/' + coin.internal_name,
         keywords: coin.name + ', coin, benchmarks, directory, mine, cpu, cpu miner, crypto, cryptocurrencies, mining software, multicurrency, list',
