@@ -216,6 +216,7 @@ app.get('/cpu-mineable-coins', function(req, res) {
         coin.block_reward = null;
       }
 
+      coin.position = i+1;
       coin.formatted_updated_at = new Date(coin.updated_at).toISOString().slice(0,10);
 
       if (!coin.removed) {
