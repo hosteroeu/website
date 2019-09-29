@@ -31,22 +31,21 @@
               <img alt="CPU Icon" src="/assets/img/cpu_icon.png" class="avatar avatar-lg avatar-square opacity-40" />
               <div class="media-body">
                 <div class="mb-3">
-                  <h1 class="h2 mb-2">Directory with CPU Mineable Coins</h1>
-                  <span>Hostero is gradually adding new coins and always looking for coins that are launched recently. The coins on the directory are eventually all going to be available on the platform. </span>
+                  <h1 class="h2 mb-2">Directory with <strong>CPU Mineable Coins</strong></h1>
+                  <span>Hostero is constantly adding new coins and always looking for coins that are launched recently. The cryptocurrencies in the list are updated regularly and abandoned coins are removed.</span>
                 </div>
                 <div>
                   <ul class="list-inline text-small d-inline-block">
                     <li class="list-inline-item"><i class="icon-link"></i> <a href="https://api.hostero.eu/v1/coins" target="_blank">https://api.hostero.eu/v1/coins</a>
                     </li>
                     <li class="list-inline-item"><i class="icon-folder"></i> {{coins_no}}</li>
-                    <!--<li class="list-inline-item"><i class="icon-message"></i> 6</li>-->
                   </ul>
                 </div>
               </div>
             </div>
           </div>
           <div class="col-auto">
-            <a class="btn btn-primary" href="https://goo.gl/forms/BnKLLU00rir6mCvF3" target="_blank"><i class="icon-circle-with-plus mr-1"></i> Submit Coin</a>
+            <a class="btn btn-primary" href="https://goo.gl/forms/BnKLLU00rir6mCvF3" target="_blank"><i class="icon-circle-with-plus mr-1"></i> Request Coin</a>
           </div>
         </div>
       </div>
@@ -72,12 +71,12 @@
                     <div class="media align-items-center">
                       <img alt="Logo" src="{{{logo_url}}}" class="avatar opacity-80" />
                       <div class="media-body">
-                        <span class="h6 mb-0"><strong><a href="/coins/{{internal_name}}">{{name}}</a></strong>
+                        <h5 class="mb-0"><strong><a href="/coins/{{internal_name}}">{{name}}</a></strong>
                           {{#cmc_url}}
                           (<a href="{{{cmc_url}}}" target="_blank">{{short_name}}</a>)
                           {{/cmc_url}}
                           {{^cmc_url}}({{short_name}}){{/cmc_url}}
-                        </span>
+                        </h5>
 
                         <p><span class="small">Algo(s): {{algorithm}}</span></p>
                         {{#cpu_only}}
@@ -94,34 +93,34 @@
                   </th>
                   <td>
                     {{#price_eur}}
-                    <span class="small">Price: {{price_eur}} &euro;</span><br />
+                    <span class="small"><strong>Price</strong>: {{price_eur}} &euro;</span><br />
                     {{/price_eur}}
                     {{^price_eur}}
-                    <span class="small">Price: -</span><br />
+                    <span class="small"><strong>Price</strong>: -</span><br />
                     {{/price_eur}}
                     {{#network_hashrate}}
-                    <span class="small">Network Hashrate: {{network_hashrate}} MH/s</span><br />
+                    <span class="small"><strong>Network Hashrate</strong>: {{network_hashrate}} MH/s</span><br />
                     {{/network_hashrate}}
                     {{^network_hashrate}}
-                    <span class="small">Network Hashrate: -</span><br />
+                    <span class="small"><strong>Network Hashrate</strong>: -</span><br />
                     {{/network_hashrate}}
                     {{#block_time}}
-                    <span class="small">Block Time: {{block_time}} s</span><br />
+                    <span class="small"><strong>Block Time</strong>: {{block_time}} s</span><br />
                     {{/block_time}}
                     {{^block_time}}
-                    <span class="small">Block Time: -</span><br />
+                    <span class="small"><strong>Block Time</strong>: -</span><br />
                     {{/block_time}}
                     {{#block_reward}}
-                    <span class="small">Block Reward: {{block_reward}} {{short_name}}</span><br />
+                    <span class="small"><strong>Block Reward</strong>: {{block_reward}} {{short_name}}</span><br />
                     {{/block_reward}}
                     {{^block_reward}}
-                    <span class="small">Block Reward: -</span><br />
+                    <span class="small"><strong>Block Reward</strong>: -</span><br />
                     {{/block_reward}}
-                    <span class="small">Updated: {{formatted_updated_at}}</span><br />
+                    <span class="small"><strong>Updated</strong>: {{formatted_updated_at}}</span><br />
                   </td>
                   <td>
                     {{#on_hostero}}
-                      <a class="btn btn-outline-secondary" href="https://dashboard.hostero.eu">Start Mining</a>
+                      <a class="btn btn-outline-secondary" href="https://dashboard.hostero.eu"><strong>Start Mining</strong></a>
                     {{/on_hostero}}
                     {{^on_hostero}} <center>-</center> {{/on_hostero}}
                   </td>

@@ -53,18 +53,25 @@
           <!--end of col-->
           <div class="col order-md-1">
             <h1 class="mb-0">
-              {{coin.name}}
+              <strong>{{coin.name}}</strong> Miner
+            </h1>
+            <br />
+            <span class="h6 mb-0">
+              {{coin.description}}
               {{#coin.cmc_url}}
               (<a href="{{{coin.cmc_url}}}" target="_blank">{{coin.short_name}}</a>)
               {{/coin.cmc_url}}
               {{^coin.cmc_url}}({{coin.short_name}}){{/coin.cmc_url}}
-            </h1>
+            </span>
             <div class="media align-items-center my-3">
-              <img alt="Image" src="{{{coin.logo_url}}}" class="avatar avatar-sm mr-3">
+              <img alt="Coin logo" src="{{{coin.logo_url}}}" class="avatar avatar-sm mr-3">
+
               <div class="media-body">
-                <span class="h6 mb-0">{{coin.description}}</span>
                 <span class="text-small">Algo(s): {{coin.algorithm}}</span><br />
-                <span class="text-small">Liquidity Score: {{coin.liquidity_score}}</span>
+                <span class="text-small">Liquidity Score: {{coin.liquidity_score}}</span><br />
+                {{#coin.miner_link}}
+                <span class="text-small">Miner: <a href="{{{coin.miner_link}}}" target="_blank">{{coin.miner_name}}</a></span>
+                {{/coin.miner_link}}
               </div>
             </div>
             <div class="d-flex align-items-center">
@@ -128,11 +135,11 @@
             <div class="card card-lg text-center">
               <div class="card-body">
                 <i class="icon-add-to-list display-4 opacity-20"></i>
-                <h1 class="h5">{{coin.name}} is not yet added on Hostero</h1>
+                <h1 class="h5"><strong>{{coin.name}}</strong> is not yet on Hostero</h1>
                 <p>
-                  Benchmarks are going to be available as soon as the coin is integrated.
+                  Benchmarks and mining are going to be available when the coin is integrated.
                 </p>
-                <!--<a href="#" class="btn btn-lg btn-primary">Create something</a>-->
+                <!--<a href="#"  class="btn btn-lg btn-primary">Create something</a>-->
               </div>
             </div>
           </div>
@@ -149,6 +156,7 @@
     {{#coin.on_hostero}}
     <section>
       <div class="container">
+        <h3><strong>{{coin.name}}</strong> Benchmarks</h3>
         <div class="row">
           <div class="col">
             <table class="table table-hover align-items-center table-borderless">
@@ -196,11 +204,11 @@
             <div class="card card-lg text-center">
               <div class="card-body">
                 <i class="icon-download display-4 opacity-20"></i>
-                <h1 class="h5">Mine {{coin.name}}</h1>
+                <h1 class="h5">Mine <strong>{{coin.name}}</strong></h1>
                 <p>
-                  Start mining {{coin.name}} in 1 minute.
+                  Run the {{coin.name}} miner in 1 minute. No advanced skills required.
                 </p>
-                <a href="https://dashboard.hostero.eu" class="btn btn-lg btn-primary">Go to Dashboard</a>
+                <a href="https://dashboard.hostero.eu" class="btn btn-lg btn-primary">Start Mining</a>
               </div>
             </div>
           </div>
