@@ -71,14 +71,14 @@
                   <th scope="row">
                     <meta itemprop="position" content="{{position}}" />
                     <meta itemprop="url" content="https://www.hostero.eu/coins/{{internal_name}}" />
+                    <meta itemprop="name" content="{{name}}" />
+                    <meta itemprop="image" content="{{{logo_url}}}" />
                     <div class="media align-items-center">
-                      <img alt="Logo" src="{{{logo_url}}}" class="avatar opacity-80" property="image" />
+                      <img alt="Logo" src="{{{logo_url}}}" class="avatar opacity-80" />
                       <div class="media-body">
                         <h5 class="mb-0">
                           <strong>
-                            <a href="/coins/{{internal_name}}" property="item" typeof="WebPage">
-                              <span property="name">{{name}}</span>
-                            </a>
+                            <a href="/coins/{{internal_name}}">{{name}}</a>
                           </strong>
                           {{#cmc_url}}
                           (<a href="{{{cmc_url}}}" target="_blank">{{short_name}}</a>)
