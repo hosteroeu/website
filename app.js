@@ -132,7 +132,7 @@ app.get('/pricing', function(req, res) {
   var name = get_name(req);
 
   res.render('pricing', {
-    title: 'Pricing plans for Hostero',
+    title: 'Pricing and subscription plans for Hostero',
     description: 'Choose your plan based on the required number of miners. We have a wide range of plans available.',
     link: 'https://www.hostero.eu/pricing',
     keywords: 'plans, subscriptions, prices, mining, software, hardware, crypto, cpu, miner, universal cpu miner, cpu miner',
@@ -179,7 +179,7 @@ app.get('/tools', function(req, res) {
   var name = get_name(req);
 
   res.render('tools', {
-    title: 'Tools',
+    title: 'Third-party tools developed by Hostero',
     description: 'List of tools and services developed for the open-source community. Crypto tools that create a bridge for mass-adoption.',
     link: 'https://www.hostero.eu/tools',
     keywords: 'tools, services, webdollar, community, list, cpu, cpu miner, crypto',
@@ -254,8 +254,8 @@ app.get('/docs/install-on-ubuntu', function(req, res) {
   var name = get_name(req);
 
   res.render('install-on-ubuntu', {
-    title: 'Install Hostero on Ubuntu',
-    description: 'Install the CPU Miner on Ubuntu',
+    title: 'How to install Hostero on Ubuntu',
+    description: 'Tutorial on how to install the CPU Miner on Ubuntu',
     link: 'https://www.hostero.eu/docs/install-on-ubuntu',
     keywords: 'cpu, miner, software, cpu miner, crypto, cryptocurrencies, install, guide, ubuntu',
     account_id: account_id,
@@ -268,8 +268,8 @@ app.get('/docs/install-on-windows', function(req, res) {
   var name = get_name(req);
 
   res.render('install-on-windows', {
-    title: 'Install Hostero on Windows',
-    description: 'Install the CPU Miner on Windows',
+    title: 'How to install Hostero on Windows',
+    description: 'Tutorial on how to install the CPU Miner on Windows. This setup is experimental, support for installing the Windows miner is limited',
     link: 'https://www.hostero.eu/docs/install-on-windows',
     keywords: 'cpu, miner, software, cpu miner, crypto, cryptocurrencies, install, guide, windows',
     account_id: account_id,
@@ -282,8 +282,8 @@ app.get('/docs/install-on-macos', function(req, res) {
   var name = get_name(req);
 
   res.render('install-on-macos', {
-    title: 'Install Hostero on MacOS',
-    description: 'Install the CPU Miner on MacOS',
+    title: 'How to install Hostero on MacOS',
+    description: 'Tutorial on how to install the CPU Miner on MacOS. This setup is experimental, support for installing the MacOS miner is limited',
     link: 'https://www.hostero.eu/docs/install-on-macos',
     keywords: 'cpu, miner, software, cpu miner, crypto, cryptocurrencies, install, guide, macos',
     account_id: account_id,
