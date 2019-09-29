@@ -372,7 +372,7 @@ app.get('/coins/:coin', function(req, res) {
         title: '' + coin.name + ' CPU miner - Start mining ' + coin.name + ' in one minute',
         description: coin.description + '. Start mining ' + coin.name + ' and other cryptocurrencies in one minute on our CPU mining platform. Choose from over ten coins to mine from our directory.',
         link: 'https://www.hostero.eu/coins/' + coin.internal_name,
-        keywords: coin.name + ', coin, benchmarks, directory, mine, cpu, cpu miner, crypto, cryptocurrencies, mining software, multicurrency, list',
+        keywords: coin.internal_name + ', coin, coins, benchmarks, directory, mine, cpu, cpu miner, crypto, cryptocurrencies, mining software, multicurrency, list',
         coin: coin,
         benchmarks: benchmarks_with_profit,
         name: name,
