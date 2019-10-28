@@ -62,7 +62,7 @@ function get_name(req) {
 function show_cookie_notice(req) {
   var show = true;
 
-  if (req.cookies && req.cookies.hasOwnProperty('cookie_notice')) {
+  if (req.cookies && req.cookies.cookie_notice) {
     show = false;
   }
 
