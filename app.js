@@ -59,6 +59,16 @@ function get_name(req) {
   return name;
 }
 
+function show_cookie_notice(req) {
+  var show = true;
+
+  if (req.cookies.hasOwnProperty('cookie_notice')) {
+    show = false;
+  }
+
+  return show;
+}
+
 crequest.setCacheDirectory('tmp');
 
 app.engine('html', mustacheExpress());
@@ -114,7 +124,8 @@ app.get('/robots.txt', function(req, res) {
 });
 
 app.get('/', function(req, res) {
-  var name = get_name(req);
+  var name = get_name(req),
+    cookie_notice = show_cookie_notice(req);
 
   get_coins(function(error, coins) {
     res.render('index', {
@@ -123,13 +134,15 @@ app.get('/', function(req, res) {
       link: 'https://www.hostero.eu',
       keywords: 'mining, software, crypto, cpu, statistics, miner, universal cpu miner, cpu miner, webdollar, nerva, webchain',
       coins: coins,
-      name: name
+      name: name,
+      cookie_notice: cookie_notice,
     });
   });
 });
 
 app.get('/pricing', function(req, res) {
-  var name = get_name(req);
+  var name = get_name(req),
+    cookie_notice = show_cookie_notice(req);
 
   res.render('pricing', {
     title: 'Pricing and subscription plans for Hostero',
@@ -137,11 +150,13 @@ app.get('/pricing', function(req, res) {
     link: 'https://www.hostero.eu/pricing',
     keywords: 'plans, subscriptions, prices, mining, software, hardware, crypto, cpu, miner, universal cpu miner, cpu miner',
     name: name,
+    cookie_notice: cookie_notice,
   });
 });
 
 app.get('/getting-started', function(req, res) {
-  var name = get_name(req);
+  var name = get_name(req),
+    cookie_notice = show_cookie_notice(req);
 
   res.render('getting-started', {
     title: 'Getting Started with the CPU Miner',
@@ -149,22 +164,27 @@ app.get('/getting-started', function(req, res) {
     link: 'https://www.hostero.eu/getting-started',
     keywords: 'get started, tutorial, mining, software, hardware, crypto, cpu, miner, universal cpu miner, cpu miner',
     name: name,
+    cookie_notice: cookie_notice,
   });
 });
 
 app.get('/changelog', function(req, res) {
-  var name = get_name(req);
+  var name = get_name(req),
+    cookie_notice = show_cookie_notice(req);
 
   res.render('changelog', {
     title: 'Changelog for our Mining Software',
     description: 'Find out what new features we have released. We are constantly working on improving the mining software, and make your miners profitable.',
     link: 'https://www.hostero.eu/changelog',
-    keywords: 'changelog, chance log, improvements, features, mining, software, crypto, cpu, statistics, miner, universal cpu miner, cpu miner'
+    keywords: 'changelog, chance log, improvements, features, mining, software, crypto, cpu, statistics, miner, universal cpu miner, cpu miner',
+    name: name,
+    cookie_notice: cookie_notice,
   });
 });
 
 app.get('/docs/purchase-webdollar', function(req, res) {
-  var name = get_name(req);
+  var name = get_name(req),
+    cookie_notice = show_cookie_notice(req);
 
   res.render('purchase-webdollar', {
     title: 'Purchase WebDollar, only use Escrow',
@@ -172,11 +192,13 @@ app.get('/docs/purchase-webdollar', function(req, res) {
     link: 'https://www.hostero.eu/purchase-webdollar',
     keywords: 'purchase, webdollar, tutorial, crypto, cryptocurrencies, coins, escrow, cpu, cpu miner',
     name: name,
+    cookie_notice: cookie_notice,
   });
 });
 
 app.get('/tools', function(req, res) {
-  var name = get_name(req);
+  var name = get_name(req),
+    cookie_notice = show_cookie_notice(req);
 
   res.render('tools', {
     title: 'Third-party tools developed by Hostero',
@@ -184,11 +206,13 @@ app.get('/tools', function(req, res) {
     link: 'https://www.hostero.eu/tools',
     keywords: 'tools, services, webdollar, community, list, cpu, cpu miner, crypto',
     name: name,
+    cookie_notice: cookie_notice,
   });
 });
 
 app.get('/cpu-mineable-coins', function(req, res) {
-  var name = get_name(req);
+  var name = get_name(req),
+    cookie_notice = show_cookie_notice(req);
   var coins = [];
 
   get_coins(function(error, _coins) {
@@ -232,13 +256,15 @@ app.get('/cpu-mineable-coins', function(req, res) {
       coins: coins,
       coins_no: coins.length,
       name: name,
+      cookie_notice: cookie_notice,
     });
   });
 });
 
 app.get('/cpu-miner', function(req, res) {
   var account_id = req.cookies.ACCOUNT_ID || null;
-  var name = get_name(req);
+  var name = get_name(req),
+    cookie_notice = show_cookie_notice(req);
 
   res.render('cpu-miner', {
     title: 'Multiple coin CPU Miner - Mine over ten cryptocurrencies',
@@ -247,12 +273,14 @@ app.get('/cpu-miner', function(req, res) {
     keywords: 'cpu, miner, software, cpu miner, multiple coin, crypto, cryptocurrencies',
     account_id: account_id,
     name: name,
+    cookie_notice: cookie_notice,
   });
 });
 
 app.get('/docs/install-on-ubuntu', function(req, res) {
   var account_id = req.cookies.ACCOUNT_ID || null;
-  var name = get_name(req);
+  var name = get_name(req),
+    cookie_notice = show_cookie_notice(req);
 
   res.render('install-on-ubuntu', {
     title: 'How to install Hostero on Ubuntu',
@@ -261,12 +289,14 @@ app.get('/docs/install-on-ubuntu', function(req, res) {
     keywords: 'cpu, miner, software, cpu miner, crypto, cryptocurrencies, install, guide, ubuntu',
     account_id: account_id,
     name: name,
+    cookie_notice: cookie_notice,
   });
 });
 
 app.get('/docs/install-on-windows', function(req, res) {
   var account_id = req.cookies.ACCOUNT_ID || null;
-  var name = get_name(req);
+  var name = get_name(req),
+    cookie_notice = show_cookie_notice(req);
 
   res.render('install-on-windows', {
     title: 'How to install Hostero on Windows',
@@ -275,12 +305,14 @@ app.get('/docs/install-on-windows', function(req, res) {
     keywords: 'cpu, miner, software, cpu miner, crypto, cryptocurrencies, install, guide, windows',
     account_id: account_id,
     name: name,
+    cookie_notice: cookie_notice,
   });
 });
 
 app.get('/docs/install-on-macos', function(req, res) {
   var account_id = req.cookies.ACCOUNT_ID || null;
-  var name = get_name(req);
+  var name = get_name(req),
+    cookie_notice = show_cookie_notice(req);
 
   res.render('install-on-macos', {
     title: 'How to install Hostero on MacOS',
@@ -289,12 +321,14 @@ app.get('/docs/install-on-macos', function(req, res) {
     keywords: 'cpu, miner, software, cpu miner, crypto, cryptocurrencies, install, guide, macos',
     account_id: account_id,
     name: name,
+    cookie_notice: cookie_notice,
   });
 });
 
 app.get('/docs/webdollar-pos-mining', function(req, res) {
   var account_id = req.cookies.ACCOUNT_ID || null;
-  var name = get_name(req);
+  var name = get_name(req),
+    cookie_notice = show_cookie_notice(req);
 
   res.render('webdollar-pos-mining', {
     title: 'Mine Proof Of Stake (POS) with WebDollar',
@@ -303,6 +337,7 @@ app.get('/docs/webdollar-pos-mining', function(req, res) {
     keywords: 'miner, webdollar, pos, software, cpu, cpu miner, crypto, cryptocurrencies',
     account_id: account_id,
     name: name,
+    cookie_notice: cookie_notice,
   });
 });
 
@@ -311,7 +346,8 @@ app.get('/coins/:coin', function(req, res) {
     return render_404(req, res);
   }
 
-  var name = get_name(req);
+  var name = get_name(req),
+    cookie_notice = show_cookie_notice(req);
 
   get_coins(function(error, coins) {
     var coin;
@@ -381,6 +417,7 @@ app.get('/coins/:coin', function(req, res) {
         coin: coin,
         benchmarks: benchmarks_with_profit,
         name: name,
+        cookie_notice: cookie_notice,
       });
     }, coin.internal_name);
   }, 3600 * 1000);
