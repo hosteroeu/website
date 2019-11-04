@@ -18,6 +18,10 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://www.hostero.eu/mnr</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://www.hostero.eu/getting-started</loc>
     <changefreq>monthly</changefreq>
   </url>

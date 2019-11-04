@@ -210,6 +210,20 @@ app.get('/tools', function(req, res) {
   });
 });
 
+app.get('/mnr', function(req, res) {
+  var name = get_name(req),
+    cookie_notice = show_cookie_notice(req);
+
+  res.render('mnr', {
+    title: 'Hostero MNR',
+    description: 'Coming soon',
+    link: 'https://www.hostero.eu/mnr',
+    keywords: 'mnr, services, webdollar, community, list, cpu, cpu miner, crypto',
+    name: name,
+    cookie_notice: cookie_notice,
+  });
+});
+
 app.get('/cpu-mineable-coins', function(req, res) {
   var name = get_name(req),
     cookie_notice = show_cookie_notice(req);
