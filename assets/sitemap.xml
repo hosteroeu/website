@@ -157,6 +157,26 @@
     <loc>https://www.hostero.eu/coins/gulden</loc>
     <changefreq>weekly</changefreq>
   </url>
+  <url>
+    <loc>https://www.hostero.eu/coins/seele</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.hostero.eu/coins/pegnet</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.hostero.eu/coins/bytecoin</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.hostero.eu/coins/magi</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.hostero.eu/coins/sugarchain</loc>
+    <changefreq>weekly</changefreq>
+  </url>
 </urlset>
 <!--<guid value="d2f2ea52-d100-4bd5-9363-9c43c3716e21" />-->
 <!--Created using XmlSitemapGenerator.org - Free HTML, RSS and XML sitemap generator-->
