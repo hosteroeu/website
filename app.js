@@ -215,10 +215,10 @@ app.get('/mnr', function(req, res) {
     cookie_notice = show_cookie_notice(req);
 
   res.render('mnr', {
-    title: 'Hostero MNR',
-    description: 'Coming soon',
+    title: 'Hostero Miners (MNR)',
+    description: 'NMR is a non-fungible token (NFT) deployed on the Ethereum network that can be purchased on opensea.io.',
     link: 'https://www.hostero.eu/mnr',
-    keywords: 'mnr, services, webdollar, community, list, cpu, cpu miner, crypto',
+    keywords: 'MNR, token, NFT, non-fungile, ethereum, opensea, services, webdollar, community, list, cpu, cpu miner, crypto',
     name: name,
     cookie_notice: cookie_notice,
   });
