@@ -216,7 +216,7 @@ app.get('/mnr', function(req, res) {
 
   res.render('mnr', {
     title: 'Hostero Miners (MNR)',
-    description: 'NMR is a non-fungible token (NFT) deployed on the Ethereum network that can be purchased on opensea.io.',
+    description: 'MNR is a non-fungible token (NFT) deployed on the Ethereum network that can be purchased on opensea.io.',
     link: 'https://www.hostero.eu/mnr',
     keywords: 'MNR, token, NFT, non-fungile, ethereum, opensea, services, webdollar, community, list, cpu, cpu miner, crypto',
     name: name,
