@@ -51,7 +51,7 @@ function get_name(req) {
       } else {
         name = parsed.email;
       }
-    } catch(e) {
+    } catch (e) {
       console.error(e);
     }
   }
@@ -196,15 +196,15 @@ app.get('/docs/purchase-webdollar', function(req, res) {
   });
 });
 
-app.get('/tools', function(req, res) {
+app.get('/open-source', function(req, res) {
   var name = get_name(req),
     cookie_notice = show_cookie_notice(req);
 
   res.render('tools', {
-    title: 'Third-party tools developed by Hostero',
-    description: 'List of tools and services developed for the open-source community. Crypto tools that create a bridge for mass-adoption.',
-    link: 'https://www.hostero.eu/tools',
-    keywords: 'tools, services, webdollar, community, list, cpu, cpu miner, crypto',
+    title: 'Open source software developed by Hostero',
+    description: 'List of open source tools and services developed for the WebDollar community. Crypto tools that create a bridge for mass-adoption.',
+    link: 'https://www.hostero.eu/open-source',
+    keywords: 'open, source, software, tools, services, webdollar, community, list, cpu, cpu miner, crypto',
     name: name,
     cookie_notice: cookie_notice,
   });
@@ -230,7 +230,7 @@ app.get('/cpu-mineable-coins', function(req, res) {
   var coins = [];
 
   get_coins(function(error, _coins) {
-    for (var i=0; i<_coins.length; i++) {
+    for (var i = 0; i < _coins.length; i++) {
       var coin = _coins[i];
 
       if (coin.network_hashrate == 0) {
@@ -254,8 +254,8 @@ app.get('/cpu-mineable-coins', function(req, res) {
         coin.block_reward = null;
       }
 
-      coin.position = i+1;
-      coin.formatted_updated_at = new Date(coin.updated_at).toISOString().slice(0,10);
+      coin.position = i + 1;
+      coin.formatted_updated_at = new Date(coin.updated_at).toISOString().slice(0, 10);
 
       if (!coin.removed) {
         coins.push(coin);
@@ -511,6 +511,10 @@ app.get('/webdollar/fallback.html', function(req, res) {
 
 app.get('/webdollar', function(req, res) {
   res.redirect(301, 'https://www.hostero.eu/tools');
+});
+
+app.get('/tools', function(req, res) {
+  res.redirect(301, 'https://www.hostero.eu/open-source');
 });
 
 app.get('*', render_404);
