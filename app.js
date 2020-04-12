@@ -510,7 +510,7 @@ app.get('/webdollar/fallback.html', function(req, res) {
 });
 
 app.get('/webdollar', function(req, res) {
-  res.redirect(301, 'https://www.hostero.eu/tools');
+  res.redirect(301, 'https://www.hostero.eu/open-source');
 });
 
 app.get('/tools', function(req, res) {
