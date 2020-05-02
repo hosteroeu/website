@@ -266,7 +266,7 @@ app.get('/cpu-mineable-coins', function(req, res) {
       title: 'CPU mineable cryptocurrencies - The most profitable CPU coins',
       description: 'Directory with CPU mineable cryptocurrencies that are integrated with our mining software. See our list with the most profitable CPU mineable coins.',
       link: 'https://www.hostero.eu/cpu-mineable-coins',
-      keywords: 'directory, cpu, cpu miner, profitable, crypto, cryptocurrencies, mining software, multicurrency, list',
+      keywords: 'directory, curated, cpu, cpu miner, profitable, crypto, cryptocurrencies, mining software, multicurrency, list',
       coins: coins,
       coins_no: coins.length,
       name: name,
@@ -281,7 +281,7 @@ app.get('/cpu-miner', function(req, res) {
     cookie_notice = show_cookie_notice(req);
 
   res.render('cpu-miner', {
-    title: 'Multiple coin CPU Miner - Mine over ten cryptocurrencies',
+    title: 'CPU Miner - Mine over 10 cryptocurrencies, on any number of devices',
     description: 'Mine over ten cryptocurrencies, on any number of devices, using the CPU Miner. It can be installed in a couple of minutes. No advanced skills required.',
     link: 'https://www.hostero.eu/cpu-miner',
     keywords: 'cpu, miner, software, cpu miner, multiple coin, crypto, cryptocurrencies',

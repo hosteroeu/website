@@ -28,9 +28,9 @@
         <div class="row">
           <div class="col-12 col-md-6">
             <div class="space-lg pb-0">
-              <h1 class="display-4">Multiple coin<br/><strong>CPU Miner</strong></h1>
+              <h1 class="display-4"><strong>CPU Miner</strong></h1>
               <span class="lead">
-                Mine over 10 cryptocurrencies, on any number of devices, using the CPU Miner. It can be installed in a couple of minutes. No advanced skills required.
+                Mine over 10 cryptocurrencies, on any number of devices.
               </span>
             </div>
           </div>
@@ -41,36 +41,34 @@
       </svg>
     </section>
 
-    {{> partials/statistics_miner }}
-
-    <section class="bg-white space-lg">
+    <section class="space-lg">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-12 col-lg-8">
             <div class="media">
               <img alt="Terminal" src="/assets/img/terminal2.png" class="avatar avatar-lg" style="opacity:0.7" />
               <div class="media-body">
-                <p class="h3 mb-2">
-                  Run this command in the Terminal:<br />
-                  {{#account_id}}
-                  <span class="badge badge-info">curl https://www.hostero.eu/install?a=<strong>{{account_id}}</strong> | sudo sh</span>
-                  <br />
-                  <br />
-                  <button class="btn btn-outline-secondary btn-sm" data-clipboard-text='curl https://www.hostero.eu/install?a={{account_id}} | sudo sh'>Copy to clipboard</button>
-                  {{/account_id}}
-                  {{^account_id}}
-                  <span class="badge badge-info">curl https://www.hostero.eu/install | sudo sh</span>
-                  <br />
-                  <br />
-                  <button class="btn btn-outline-secondary btn-sm" data-clipboard-text='curl https://www.hostero.eu/install | sudo sh'>Copy to clipboard</button>
-                  {{/account_id}}
-                </p>
-                <br/ >
+                <p class="h4 mb-2">Run command in the terminal:</p>
+
                 {{#account_id}}
-                <small><strong>Warning:</strong> This command is specific to your account, do not share it with others.</small>
+                <h3><span class="badge badge-info">curl https://www.hostero.eu/install?a=<strong>{{account_id}}</strong> | sudo sh</span></h3>
+                <button class="btn btn-outline-secondary btn-sm" data-clipboard-text='curl https://www.hostero.eu/install?a={{account_id}} | sudo sh'>Copy to clipboard</button>
+                <br />
+                <br />
+                <small><strong>Note:</strong> The installation script installs <a href="https://www.docker.com" target="_blank">Docker</a> on your system. Ubuntu 16.04 and 18.04 officially supported.</small>
                 {{/account_id}}
-                <small><strong>Note:</strong> The installation script installs <a href="https://www.docker.com" target="_blank">Docker</a> on your system.</small>
-                <small><strong>Support:</strong> Ubuntu 16.04 (and 18.04). For experimental support, check out <a href="/getting-started">Getting Started</a>.</small>
+
+                {{^account_id}}
+                <h3><span class="badge badge-info">curl https://www.hostero.eu/install | sudo sh</span></h3>
+                <button class="btn btn-outline-secondary btn-sm" data-clipboard-text='curl https://www.hostero.eu/install | sudo sh'>Copy to clipboard</button>
+                <small><strong>Note:</strong> The installation script installs <a href="https://www.docker.com" target="_blank">Docker</a> on your system. Ubuntu 16.04 and 18.04 officially supported.</small>
+                <br />
+                <br />
+                {{/account_id}}
+
+                <br />
+                <br />
+                <p>For other platforms and experimental support, check out <a href="/getting-started">Getting Started</a>.</p>                
               </div>
             </div>
           </div>
@@ -82,13 +80,15 @@
     </section>
     <!--end of section-->
 
-    <section>
+    <section class="bg-white">
       <div class="container">
         <div class="row justify-content-center text-center section-intro">
           <div class="col-12 col-md-9 col-lg-8">
-            <span class="title-decorative">Mine multiple cryptocurrencies</span>
-            <h2 class="display-4">Why use CPU Miner?</h2>
-            <span class="lead">Leverage a big suite of time-saving features complete with third-party integrations.</span>
+            <span class="title-decorative">Multiple Coin Miner</span>
+            <h2 class="display-4">Hostero Miner <strong>Features</strong></h2>
+            <!--
+              <span class="lead">Mine over 10 cryptocurrencies, on any number of devices.</span>
+            -->
           </div>
         </div>
 
@@ -98,7 +98,7 @@
               <li>
                 <div class="active card" id="tab-1" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
                   <div class="card-body">
-                    <h5>Quick Installation</h5>
+                    <h5>Fast Installation</h5>
                     <p>
                       Install the <strong>CPU Miner</strong> in a few simple steps on any number of devices. Once installed, you can deploy any coin.
                     </p>
@@ -108,7 +108,7 @@
               <li>
                 <div class="card" id="tab-2" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
                   <div class="card-body">
-                    <h5>Easy Deployment</h5>
+                    <h5>Quick Deployment</h5>
                     <p>
                       Deploy a miner with just a few clicks from our dashboard. Miners can be deployed automatically when a new device is added to your account.
                     </p>
@@ -160,7 +160,7 @@
             <div class="accordion" id="accordion-1" data-children=".accordion-item">
               <div class="accordion-item">
                 <a data-toggle="collapse" data-parent="#accordion-1" href="#accordion-panel-1" aria-expanded="true" aria-controls="accordion-1">
-                  <h5>How to install</h5>
+                  <h5>How to install?</h5>
                   <i class="h5 icon-chevron-small-right"></i>
                 </a>
                 <div id="accordion-panel-1" class="collapse show" role="tabpanel">
@@ -220,7 +220,7 @@
                 </a>
                 <div id="accordion-panel-6" class="collapse" role="tabpanel">
                   <p>
-                    There is no performance change from mining with Hostero instead of the official miner.
+                    There is no performance change from mining with Hostero instead of the official miner. Our value proposition is allowing users to run multiple miners.
                   </p>
                 </div>
               </div>
@@ -230,7 +230,11 @@
       </div>
     </section>
 
-    {{> partials/subscribe }} {{> partials/announcement }} {{> partials/footer }}
+    {{> partials/start_mining }}
+
+    {{> partials/statistics_miner }}
+
+    {{> partials/footer }}
   </div>
 
   {{> partials/scripts }}
