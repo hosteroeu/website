@@ -1,7 +1,5 @@
 [{
-  "addr": ["https://webd.5q.ro:3333"]
-}, {
-  "addr": ["https://webdollar-vps1.ddns.net:80"]
+  "addr": ["https://webd.5q.ro:8443"]
 }, {
   "addr": ["https://node1.petreus.ro:443"]
 }, {
