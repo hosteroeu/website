@@ -489,20 +489,6 @@ app.get('/webdollar/fallbacks.json', function(req, res) {
   });
 });
 
-// The file is temporary
-app.get('/.well-known/apple-developer-merchantid-domain-association', function(req, res) {
-  //res.set('Content-Type', 'application/json');
-
-  res.sendFile('apple-developer-merchantid-domain-association', {
-    root: __dirname + '/assets/',
-    dotfiles: 'deny',
-    headers: {
-      'x-timestamp': Date.now(),
-      'x-sent': true
-    }
-  });
-});
-
 app.get('/purchase-webdollar', function(req, res) {
   res.redirect(301, 'https://www.hostero.eu/docs/purchase-webdollar');
 });
