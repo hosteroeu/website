@@ -126,6 +126,10 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://www.hostero.eu/coins/scala</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://www.hostero.eu/coins/golem</loc>
     <changefreq>weekly</changefreq>
   </url>
