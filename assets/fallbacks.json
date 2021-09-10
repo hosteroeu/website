@@ -1,4 +1,6 @@
 [{
+  "addr": ["https://webd.serverworks.ro:443"]
+}, {
   "addr": ["https://webd.5q.ro:8443"]
 }, {
   "addr": ["https://node1.petreus.ro:443"]
