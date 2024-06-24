@@ -17,6 +17,8 @@ function render_404(req, res) {
 }
 
 function get_coins(callback, ttl) {
+  return callback(null, []);
+  
   crequest({
     url: 'https://api.hostero.eu/v1/coins',
     ttl: ttl || (3600 * 1000 * 24) // 1d
@@ -28,6 +30,8 @@ function get_coins(callback, ttl) {
 }
 
 function get_benchmarks(callback, coin, ttl) {
+  return callback(null, []);
+  
   crequest({
     url: 'https://api.hostero.eu/v1/benchmarks?coin=' + coin,
     ttl: ttl || (3600 * 1000 * 24) // 1d
